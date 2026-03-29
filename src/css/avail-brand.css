@@ -1,0 +1,334 @@
+/* Avail Wellness Brand Colors - Extracted from availwell.com */
+
+:root {
+  /* Primary Avail Colors */
+  --avail-primary: #B8A082;       /* Main tan/beige from logo */
+  --avail-primary-light: #D4C4A8; /* Lighter tan */
+  --avail-primary-dark: #9C8366;  /* Darker tan */
+  --avail-secondary: #E8DCC6;     /* Very light cream */
+  --avail-accent: #2F4F4F;        /* Dark slate gray from website */
+  --avail-accent-light: #708090;  /* Slate gray */
+  
+  /* Text colors from their site */
+  --avail-text-primary: #2F4F4F;  /* Dark slate for headers */
+  --avail-text-secondary: #5A6B73; /* Medium gray for body text */
+  --avail-text-light: #8A9BA8;    /* Light gray for subtle text */
+  
+  /* Background colors */
+  --avail-bg-primary: #FFFFFF;    /* Pure white */
+  --avail-bg-secondary: #FAFAF8;  /* Off-white */
+  --avail-bg-accent: #F5F2ED;     /* Warm cream background */
+  
+  /* Success/health colors */
+  --avail-success: #6B8E5A;       /* Muted green */
+  --avail-success-light: #8FAA7A; /* Light green */
+  
+  /* Warning/attention colors */
+  --avail-warning: #D4A574;       /* Warm amber */
+  --avail-error: #B85450;         /* Muted red */
+  
+  /* Update existing variables to use Avail colors */
+  --primary: var(--avail-primary);
+  --primary-light: var(--avail-primary-light);
+  --primary-dark: var(--avail-primary-dark);
+  --secondary: var(--avail-text-secondary);
+  --accent: var(--avail-success);
+  --accent-light: var(--avail-success-light);
+  
+  /* Admin colors using Avail palette */
+  --admin-primary: var(--avail-primary-dark);
+  --admin-primary-light: var(--avail-primary);
+  --admin-primary-dark: #8A7459;
+  --admin-secondary: var(--avail-success);
+  --admin-warning: var(--avail-warning);
+  --admin-danger: var(--avail-error);
+  
+  /* Admin solid colors instead of gradients */
+  --admin-gradient: var(--avail-primary);
+}
+
+/* Update specific elements with Avail branding */
+body {
+  color: var(--avail-text-primary);
+  background-color: var(--avail-bg-secondary);
+}
+
+/* Health score card with Avail colors */
+.health-score-card {
+  background: var(--avail-primary);
+}
+
+/* Lab summary card with Avail accent */
+.lab-summary-card {
+  background: var(--avail-success);
+}
+
+/* Navigation active states */
+.nav-item.active {
+  background-color: var(--avail-secondary);
+  color: var(--avail-primary-dark);
+  border-right-color: var(--avail-primary);
+}
+
+/* Metric cards with Avail styling */
+.metric-card:hover {
+  border-color: var(--avail-primary-light);
+}
+
+/* Buttons with Avail colors */
+.btn-primary {
+  background: var(--avail-primary);
+  color: var(--white);
+  border-color: var(--avail-primary);
+}
+
+.btn-primary:hover {
+  background: var(--avail-primary-dark);
+  border-color: var(--avail-primary-dark);
+}
+
+/* Revenue card with professional Avail color */
+.revenue-card {
+  background: var(--avail-accent);
+}
+
+/* Chart colors using Avail palette */
+.chart-primary {
+  background-color: rgba(184, 160, 130, 0.1);
+  border-color: rgba(184, 160, 130, 0.8);
+}
+
+.chart-secondary {
+  background-color: rgba(107, 142, 90, 0.1);
+  border-color: rgba(107, 142, 90, 0.8);
+}
+
+/* Status badges with Avail colors */
+.status-active {
+  background: rgba(107, 142, 90, 0.1);
+  color: var(--avail-success);
+}
+
+.flag-excellent,
+.flag-excellentresponse {
+  background: rgba(107, 142, 90, 0.1);
+  color: var(--avail-success);
+}
+
+.flag-warning,
+.flag-lowadheren,
+.flag-lowadherence,
+.flag-dueforlabs {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--avail-warning);
+}
+
+/* Appointment and activity items */
+.appointment-time,
+.activity-icon {
+  background: var(--avail-primary);
+}
+
+.appointment-revenue,
+.revenue-amount {
+  color: var(--avail-primary-dark);
+}
+
+/* Form focus states */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--avail-primary);
+  box-shadow: 0 0 0 3px rgba(184, 160, 130, 0.1);
+}
+
+/* Notification improvements */
+.notification {
+  border-left-color: var(--avail-primary);
+}
+
+/* Adherence bars */
+.adherence-fill {
+  background: var(--avail-success);
+}
+
+/* Make everything feel more sophisticated and medical */
+.dashboard-section,
+.analytics-card,
+.patient-table-container {
+  background: var(--avail-bg-primary);
+  border-color: rgba(184, 160, 130, 0.2);
+}
+
+/* Real Avail Logo */
+.logo-img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.admin-sidebar .logo-img {
+  width: 160px;
+  height: auto;
+  filter: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.admin-sidebar .logo {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-sidebar .logo-text {
+  display: block;
+  text-align: center;
+}
+
+.logo h2 {
+  display: none; /* Logo image includes text */
+}
+
+/* SVG Icon styling */
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+  opacity: 1;
+}
+
+.switch-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Welcome Messages */
+.header-welcome {
+  margin-bottom: 12px;
+}
+
+.welcome-message {
+  color: var(--avail-primary-dark);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.admin-welcome {
+  color: var(--avail-primary-dark);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+/* Personalized touches */
+.patient-name {
+  color: var(--avail-primary-dark) !important;
+  font-weight: 600;
+}
+
+/* Make the health score more personal */
+.health-score-card h3 {
+  color: var(--white);
+}
+
+/* Provider Messaging Section */
+.messaging-section {
+  border-left: 4px solid var(--avail-primary);
+  background: var(--avail-bg-accent);
+}
+
+.messaging-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.provider-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.provider-avatar {
+  width: 50px;
+  height: 50px;
+  background: var(--avail-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.provider-details h3 {
+  margin: 0 0 4px;
+  color: var(--avail-text-primary);
+  font-size: 18px;
+}
+
+.provider-details p {
+  margin: 0;
+  color: var(--avail-text-secondary);
+  font-size: 14px;
+}
+
+.recent-messages {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border-left: 3px solid var(--avail-success);
+}
+
+.message-preview {
+  color: var(--avail-text-secondary);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Activity icons as SVG */
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--avail-primary);
+  border: 1px solid var(--gray-200);
+}
+
+/* Action card icons */
+.action-icon {
+  color: var(--avail-primary);
+}
+
+@media (max-width: 768px) {
+  .messaging-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .provider-info {
+    width: 100%;
+  }
+}

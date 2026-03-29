@@ -1,0 +1,541 @@
+---
+layout: admin.njk
+title: Appointment Management
+subtitle: Schedule, manage, and track all patient appointments
+---
+
+<!-- Appointment Overview Cards -->
+<div class="admin-stats-grid">
+    <div class="stat-card">
+        <div class="stat-header">
+            <h3>Today's Schedule</h3>
+        </div>
+        <div class="stat-content">
+            <div class="stat-value">8</div>
+            <div class="stat-detail">appointments scheduled</div>
+            <div class="stat-trend positive">+2 from yesterday</div>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-header">
+            <h3>This Week</h3>
+        </div>
+        <div class="stat-content">
+            <div class="stat-value">34</div>
+            <div class="stat-detail">total appointments</div>
+            <div class="stat-trend positive">95% attendance rate</div>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-header">
+            <h3>Revenue Today</h3>
+        </div>
+        <div class="stat-content">
+            <div class="stat-value">$2,947</div>
+            <div class="stat-detail">from appointments</div>
+            <div class="stat-trend positive">+18% vs last week</div>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-header">
+            <h3>No Shows</h3>
+        </div>
+        <div class="stat-content">
+            <div class="stat-value">2</div>
+            <div class="stat-detail">this week</div>
+            <div class="stat-trend negative">-1 from last week</div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="admin-section">
+    <div class="section-header">
+        <h3>Quick Actions</h3>
+        <div class="header-actions">
+            <button class="btn btn-primary">New Appointment</button>
+            <button class="btn btn-outline">Bulk Reschedule</button>
+            <button class="btn btn-outline">Send Reminders</button>
+        </div>
+    </div>
+</div>
+
+<!-- Today's Schedule -->
+<div class="admin-section">
+    <h3>Today's Schedule - Monday, March 30, 2026</h3>
+    <div class="schedule-container">
+        <!-- Morning Appointments -->
+        <div class="time-block">
+            <div class="time-header">
+                <h4>Morning (8:00 AM - 12:00 PM)</h4>
+            </div>
+            <div class="appointments-list">
+                <div class="appointment-item">
+                    <div class="apt-time">9:00 AM</div>
+                    <div class="apt-patient">Sarah Johnson</div>
+                    <div class="apt-type">Follow-up Consultation</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status confirmed">Confirmed</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Message</button>
+                    </div>
+                </div>
+                
+                <div class="appointment-item">
+                    <div class="apt-time">10:30 AM</div>
+                    <div class="apt-patient">Michael Chen</div>
+                    <div class="apt-type">Pellet Insertion</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status confirmed">Confirmed</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Message</button>
+                    </div>
+                </div>
+                
+                <div class="appointment-item">
+                    <div class="apt-time">11:45 AM</div>
+                    <div class="apt-patient">Jennifer Davis</div>
+                    <div class="apt-type">Lab Review</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status confirmed">Confirmed</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Afternoon Appointments -->
+        <div class="time-block">
+            <div class="time-header">
+                <h4>Afternoon (12:00 PM - 6:00 PM)</h4>
+            </div>
+            <div class="appointments-list">
+                <div class="appointment-item">
+                    <div class="apt-time">2:00 PM</div>
+                    <div class="apt-patient">Robert Wilson</div>
+                    <div class="apt-type">Initial Consultation</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status confirmed">Confirmed</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Message</button>
+                    </div>
+                </div>
+                
+                <div class="appointment-item">
+                    <div class="apt-time">3:30 PM</div>
+                    <div class="apt-patient">Lisa Thompson</div>
+                    <div class="apt-type">Follow-up Consultation</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status pending">Pending</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Confirm</button>
+                    </div>
+                </div>
+                
+                <div class="appointment-item">
+                    <div class="apt-time">4:45 PM</div>
+                    <div class="apt-patient">David Rodriguez</div>
+                    <div class="apt-type">Pellet Consultation</div>
+                    <div class="apt-provider">Brooke Welsh, WHNP</div>
+                    <div class="apt-status confirmed">Confirmed</div>
+                    <div class="apt-actions">
+                        <button class="btn-small">Edit</button>
+                        <button class="btn-small">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This Week's Appointments -->
+<div class="admin-section">
+    <h3>This Week's Appointments</h3>
+    <div class="week-schedule">
+        <div class="day-column">
+            <div class="day-header">
+                <div class="day-name">Tuesday</div>
+                <div class="day-date">March 31</div>
+            </div>
+            <div class="day-appointments">
+                <div class="mini-appointment">
+                    <div class="mini-time">9:00 AM</div>
+                    <div class="mini-patient">Amanda Foster</div>
+                    <div class="mini-type">Initial Consult</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">11:30 AM</div>
+                    <div class="mini-patient">John Smith</div>
+                    <div class="mini-type">Lab Review</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">2:00 PM</div>
+                    <div class="mini-patient">Maria Garcia</div>
+                    <div class="mini-type">Pellet Insert</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="day-column">
+            <div class="day-header">
+                <div class="day-name">Wednesday</div>
+                <div class="day-date">April 1</div>
+            </div>
+            <div class="day-appointments">
+                <div class="mini-appointment">
+                    <div class="mini-time">8:30 AM</div>
+                    <div class="mini-patient">Kevin Brown</div>
+                    <div class="mini-type">Follow-up</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">10:00 AM</div>
+                    <div class="mini-patient">Susan Lee</div>
+                    <div class="mini-type">Initial Consult</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">3:15 PM</div>
+                    <div class="mini-patient">Tom Wilson</div>
+                    <div class="mini-type">Lab Review</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="day-column">
+            <div class="day-header">
+                <div class="day-name">Thursday</div>
+                <div class="day-date">April 2</div>
+            </div>
+            <div class="day-appointments">
+                <div class="mini-appointment">
+                    <div class="mini-time">9:30 AM</div>
+                    <div class="mini-patient">Rachel Davis</div>
+                    <div class="mini-type">Pellet Insert</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">1:00 PM</div>
+                    <div class="mini-patient">Mark Johnson</div>
+                    <div class="mini-type">Follow-up</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="day-column">
+            <div class="day-header">
+                <div class="day-name">Friday</div>
+                <div class="day-date">April 3</div>
+            </div>
+            <div class="day-appointments">
+                <div class="mini-appointment">
+                    <div class="mini-time">10:30 AM</div>
+                    <div class="mini-patient">Emily Chen</div>
+                    <div class="mini-type">Initial Consult</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">2:30 PM</div>
+                    <div class="mini-patient">Carlos Rodriguez</div>
+                    <div class="mini-type">Lab Review</div>
+                </div>
+                <div class="mini-appointment">
+                    <div class="mini-time">4:00 PM</div>
+                    <div class="mini-patient">Patricia Moore</div>
+                    <div class="mini-type">Follow-up</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Provider Schedule -->
+<div class="admin-section">
+    <h3>Provider Availability</h3>
+    <div class="provider-card">
+        <div class="provider-info">
+            <h4>Brooke Welsh, WHNP</h4>
+            <div class="provider-specialty">Hormone Therapy Specialist</div>
+        </div>
+        <div class="provider-stats">
+            <div class="stat-item">
+                <div class="stat-label">Today:</div>
+                <div class="stat-value">8 appointments scheduled</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">This Week:</div>
+                <div class="stat-value">34 appointments, 92% booked</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Next Available:</div>
+                <div class="stat-value">Tuesday, April 1 at 4:30 PM</div>
+            </div>
+        </div>
+        <div class="provider-actions">
+            <button class="btn btn-outline btn-sm">View Full Calendar</button>
+            <button class="btn btn-outline btn-sm">Block Time</button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Clean, working appointment styles */
+.schedule-container {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+}
+
+.time-block {
+    margin-bottom: 32px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 24px;
+}
+
+.time-block:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.time-header {
+    margin-bottom: 16px;
+}
+
+.time-header h4 {
+    margin: 0;
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.appointment-item {
+    display: grid;
+    grid-template-columns: 80px 150px 200px 150px 100px 1fr;
+    gap: 16px;
+    align-items: center;
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #b8a082;
+}
+
+.apt-time {
+    font-weight: 700;
+    color: #b8a082;
+    font-size: 14px;
+    text-align: center;
+    background: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.apt-patient {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 15px;
+}
+
+.apt-type {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.apt-provider {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.apt-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.apt-status.confirmed {
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+}
+
+.apt-status.pending {
+    background: rgba(251, 191, 36, 0.1);
+    color: #d97706;
+}
+
+.apt-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-small {
+    padding: 4px 12px;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #6b7280;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-small:hover {
+    background: #f3f4f6;
+    border-color: #b8a082;
+    color: #b8a082;
+}
+
+.week-schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.day-column {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.day-header {
+    background: #b8a082;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.day-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.day-date {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+.day-appointments {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mini-appointment {
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+    border-left: 3px solid #6b8e5a;
+}
+
+.mini-time {
+    font-weight: 600;
+    color: #b8a082;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.mini-patient {
+    font-weight: 500;
+    color: #1f2937;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.mini-type {
+    color: #6b7280;
+    font-size: 11px;
+}
+
+.provider-card {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.provider-info {
+    margin-bottom: 16px;
+}
+
+.provider-info h4 {
+    margin: 0 0 4px;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.provider-specialty {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.provider-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-value {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.provider-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .appointment-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .week-schedule {
+        grid-template-columns: 1fr;
+    }
+    
+    .provider-actions {
+        flex-direction: column;
+    }
+}
+</style>

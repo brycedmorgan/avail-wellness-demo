@@ -1,0 +1,453 @@
+---
+layout: admin.njk
+title: Business Dashboard
+subtitle: Complete overview of clinic operations and performance
+---
+
+<!-- Key Performance Metrics -->
+<div class="dashboard-cards">
+    <div class="dashboard-card revenue-card">
+        <div class="card-header">
+            <h3 class="card-title">Monthly Revenue</h3>
+            <div class="card-icon">💰</div>
+        </div>
+        <div class="card-value">{{ adminData.businessMetrics.monthlyRevenue | currency }}</div>
+        <div class="card-change positive">+{{ adminData.analytics.revenueGrowth.growthPercent }}% from last month</div>
+        <div class="card-subtitle">{{ adminData.businessMetrics.activePatients }} active patients</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">New Patients</h3>
+            <div class="card-icon">👥</div>
+        </div>
+        <div class="card-value">{{ adminData.businessMetrics.newPatientsThisMonth }}</div>
+        <div class="card-change positive">This month</div>
+        <div class="card-subtitle">{{ adminData.businessMetrics.retentionRate }}% retention rate</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Avg Revenue/Patient</h3>
+            <div class="card-icon">📈</div>
+        </div>
+        <div class="card-value">${{ adminData.businessMetrics.averageRevenuePerPatient }}</div>
+        <div class="card-change positive">+12% vs industry avg</div>
+        <div class="card-subtitle">Hormone optimization premium</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">This Week</h3>
+            <div class="card-icon">📅</div>
+        </div>
+        <div class="card-value">{{ adminData.businessMetrics.appointmentsThisWeek }}</div>
+        <div class="card-change">Appointments</div>
+        <div class="card-subtitle">{{ adminData.businessMetrics.noShowRate }}% no-show rate</div>
+    </div>
+</div>
+
+<!-- Today's Schedule -->
+<div class="appointments-today">
+    <div class="dashboard-section">
+        <h3>Today's Schedule - March 31, 2026</h3>
+        {% for appointment in adminData.appointments %}
+        <div class="appointment-item">
+            <div class="appointment-time">{{ appointment.time }}</div>
+            <div class="appointment-details">
+                <div class="appointment-patient">{{ appointment.patient }}</div>
+                <div class="appointment-type">{{ appointment.type }}</div>
+            </div>
+            <div class="appointment-revenue">{{ appointment.revenue | currency }}</div>
+            <div class="appointment-status status-{{ appointment.status | replace(' ', '-') | lower }}">
+                {{ appointment.status }}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="schedule-summary">
+            <strong>Daily Total: $1,525 • 4 appointments</strong>
+        </div>
+    </div>
+</div>
+
+<!-- Analytics and Patient Management -->
+<div class="analytics-grid">
+    <!-- Revenue Trend Chart -->
+    <div class="analytics-card">
+        <h3 class="analytics-title">Revenue Growth Trend</h3>
+        <div class="chart-container">
+            <canvas id="revenueChart" width="600" height="300"></canvas>
+        </div>
+        <div class="chart-insights">
+            <p>Consistent growth driven by hormone optimization outcomes and patient referrals. Pellet procedures showing 23% increase quarter-over-quarter.</p>
+        </div>
+    </div>
+
+    <!-- Patient Outcome Summary -->
+    <div class="analytics-card">
+        <h3 class="analytics-title">Patient Outcomes</h3>
+        <div class="outcome-metrics">
+            <div class="outcome-item">
+                <div class="outcome-value">{{ adminData.analytics.patientOutcomes.averageTestosteroneIncrease }}%</div>
+                <div class="outcome-label">Avg Testosterone Increase</div>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-value">{{ adminData.analytics.patientOutcomes.averageWeightLoss }}lbs</div>
+                <div class="outcome-label">Avg Weight Loss</div>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-value">{{ adminData.analytics.patientOutcomes.energyScoreImprovement }}</div>
+                <div class="outcome-label">Energy Score Improvement</div>
+            </div>
+            <div class="outcome-item">
+                <div class="outcome-value">{{ adminData.analytics.patientOutcomes.patientSatisfaction }}/5</div>
+                <div class="outcome-label">Patient Satisfaction</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Action Items Dashboard -->
+<div class="dashboard-grid">
+    <div class="dashboard-section">
+        <h3>Pending Labs & Results</h3>
+        <div class="labs-pending">
+            {% for lab in adminData.labsPending %}
+            <div class="lab-item">
+                <div class="lab-patient">{{ lab.patient }}</div>
+                <div class="lab-details">
+                    <span class="lab-type">{{ lab.type }}</span>
+                    <span class="lab-date">Ordered: {{ lab.ordered | dateFormat }}</span>
+                </div>
+                <div class="lab-status status-{{ lab.status | replace(' ', '-') | lower }}">{{ lab.status }}</div>
+                {% if lab.status == "Results Available" %}
+                <button class="action-btn">Review</button>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h3>New Leads & Inquiries</h3>
+        <div class="leads-summary">
+            {% for lead in adminData.leads %}
+            <div class="lead-item">
+                <div class="lead-info">
+                    <div class="lead-name">{{ lead.name }}</div>
+                    <div class="lead-inquiry">{{ lead.inquiry }}</div>
+                    <div class="lead-source">{{ lead.source }} • {{ lead.date | dateFormat }}</div>
+                </div>
+                <div class="lead-score">{{ lead.score }}/100</div>
+                <div class="lead-status">{{ lead.status }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Top Performing Patients -->
+<div class="patient-table-container">
+    <div class="table-header">
+        <h3 class="table-title">Patient Overview</h3>
+        <div class="table-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Needs Attention</button>
+            <button class="filter-btn">High Value</button>
+            <button class="filter-btn">New</button>
+        </div>
+    </div>
+    
+    <table class="patient-table">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Program</th>
+                <th>Monthly Revenue</th>
+                <th>Adherence</th>
+                <th>Status</th>
+                <th>Next Visit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in adminData.patients %}
+            <tr>
+                <td>
+                    <div class="patient-name">{{ patient.name }}</div>
+                    <div class="patient-id">{{ patient.id }} • {{ patient.age }}{{ patient.gender.substring(0,1) }}</div>
+                </td>
+                <td>
+                    <div class="program-name">{{ patient.program }}</div>
+                    <div class="treatment-duration">{{ patient.treatmentStart | dateFormat }}</div>
+                </td>
+                <td>
+                    <div class="revenue-amount">{{ patient.monthlyRevenue | currency }}/mo</div>
+                </td>
+                <td>
+                    <div style="display: flex; align-items: center;">
+                        <div class="adherence-bar">
+                            <div class="adherence-fill" style="width: {{ patient.adherence }}%"></div>
+                        </div>
+                        <span class="adherence-text">{{ patient.adherence }}%</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="status-badge status-{{ patient.status | lower }}">{{ patient.status }}</div>
+                    <div class="patient-flags">
+                        {% for flag in patient.flags %}
+                        <span class="flag-badge flag-{{ flag | replace(' ', '') | lower }}">{{ flag }}</span>
+                        {% endfor %}
+                    </div>
+                </td>
+                <td>
+                    {% if patient.nextAppointment %}
+                    {{ patient.nextAppointment | dateFormat }}
+                    {% else %}
+                    <span class="text-gray-400">None scheduled</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <button class="action-btn">View</button>
+                    <button class="action-btn">Message</button>
+                    {% if patient.status == "Inactive" %}
+                    <button class="action-btn">Re-engage</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+/* Additional dashboard-specific styles */
+.schedule-summary {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--admin-gradient);
+    color: var(--white);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.outcome-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.outcome-item {
+    text-align: center;
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: 8px;
+}
+
+.outcome-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--admin-primary);
+    margin-bottom: 4px;
+}
+
+.outcome-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.labs-pending,
+.leads-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lab-item,
+.lead-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--gray-50);
+    border-radius: 6px;
+}
+
+.lab-patient,
+.lead-name {
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.lab-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lab-type {
+    font-size: 14px;
+    color: var(--gray-700);
+}
+
+.lab-date {
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+.lead-info {
+    flex: 1;
+}
+
+.lead-inquiry {
+    font-size: 14px;
+    color: var(--gray-700);
+    margin: 2px 0;
+}
+
+.lead-source {
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+.lead-score {
+    background: var(--admin-primary);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.text-gray-400 {
+    color: var(--gray-400);
+    font-style: italic;
+}
+
+.treatment-duration {
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+.program-name {
+    font-size: 14px;
+    color: var(--gray-700);
+    font-weight: 500;
+}
+</style>
+
+<script>
+// Revenue Growth Chart
+const ctx = document.getElementById('revenueChart').getContext('2d');
+const revenueChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+        datasets: [{
+            label: 'Monthly Revenue',
+            data: [38200, 41500, 44200, 42800, 45600, 47850],
+            backgroundColor: 'rgba(184, 160, 130, 0.1)',
+            borderColor: 'rgba(184, 160, 130, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(184, 160, 130, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 6
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: 'white',
+                bodyColor: 'white',
+                callbacks: {
+                    label: function(context) {
+                        return 'Revenue: $' + context.parsed.y.toLocaleString();
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    color: '#6B7280'
+                }
+            },
+            y: {
+                grid: {
+                    color: 'rgba(107, 114, 128, 0.1)'
+                },
+                ticks: {
+                    color: '#6B7280',
+                    callback: function(value) {
+                        return '$' + (value / 1000) + 'K';
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const patientRows = document.querySelectorAll('.patient-table tbody tr');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.textContent.toLowerCase();
+            
+            patientRows.forEach(row => {
+                const patientData = {
+                    status: row.querySelector('.status-badge').textContent.toLowerCase(),
+                    revenue: parseFloat(row.querySelector('.revenue-amount').textContent.replace('$', '').replace(',', '')),
+                    flags: Array.from(row.querySelectorAll('.flag-badge')).map(flag => flag.textContent.toLowerCase())
+                };
+                
+                let show = true;
+                
+                switch(filter) {
+                    case 'needs attention':
+                        show = patientData.flags.some(flag => 
+                            flag.includes('low adherence') || 
+                            flag.includes('follow-up needed') || 
+                            flag.includes('lapsed')
+                        );
+                        break;
+                    case 'high value':
+                        show = patientData.revenue >= 400;
+                        break;
+                    case 'new':
+                        // Would implement based on treatment start date
+                        show = true; // Placeholder
+                        break;
+                    default:
+                        show = true;
+                }
+                
+                row.style.display = show ? '' : 'none';
+            });
+        });
+    });
+});
+</script>

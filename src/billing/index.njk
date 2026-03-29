@@ -1,0 +1,589 @@
+---
+layout: base.njk
+title: Billing & Payments
+subtitle: Your payment history, invoices, and subscription management
+---
+
+<!-- Account Summary -->
+<div class="billing-hero">
+    <div class="account-overview">
+        <div class="account-status">
+            <h3>Account Status: Active</h3>
+            <p>{{ patient.patient.name }} • Patient ID: {{ patient.patient.name.split(' ')[0] | upper }}{{ patient.patient.dob.split('/')[2] }}</p>
+        </div>
+        <div class="current-plan">
+            <div class="plan-name">Hormone Support Program</div>
+            <div class="plan-cost">$200/month</div>
+            <div class="plan-status">Next billing: April 5, 2026</div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Methods -->
+<div class="dashboard-section">
+    <div class="section-header">
+        <h3>Payment Methods</h3>
+        <button class="btn btn-outline btn-sm">Add Payment Method</button>
+    </div>
+    
+    <div class="payment-methods">
+        <div class="payment-card primary">
+            <div class="card-icon">💳</div>
+            <div class="card-details">
+                <div class="card-type">Visa ending in 4242</div>
+                <div class="card-expiry">Expires 12/2028</div>
+                <div class="card-status">Primary Payment Method</div>
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-sm btn-outline">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Invoices -->
+<div class="dashboard-section">
+    <div class="section-header">
+        <h3>Recent Invoices</h3>
+        <button class="btn btn-outline btn-sm">View All</button>
+    </div>
+    
+    <div class="invoice-list">
+        {% for invoice in patient.billing %}
+        <div class="invoice-item">
+            <div class="invoice-date">
+                <div class="date-month">{{ invoice.date | dateFormat | truncate(3, true, '') | upper }}</div>
+                <div class="date-day">{{ invoice.date.split('-')[2] }}</div>
+            </div>
+            <div class="invoice-details">
+                <div class="invoice-description">{{ invoice.description }}</div>
+                <div class="invoice-id">Invoice #{{ invoice.date.replace('-', '') }}{{ loop.index }}</div>
+            </div>
+            <div class="invoice-amount">{{ invoice.amount | currency }}</div>
+            <div class="invoice-status paid">{{ invoice.status }}</div>
+            <div class="invoice-actions">
+                <button class="btn btn-sm btn-outline">Download PDF</button>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Additional invoices for demo -->
+        <div class="invoice-item">
+            <div class="invoice-date">
+                <div class="date-month">FEB</div>
+                <div class="date-day">20</div>
+            </div>
+            <div class="invoice-details">
+                <div class="invoice-description">Hormone Support - Monthly Fee</div>
+                <div class="invoice-id">Invoice #20260220001</div>
+            </div>
+            <div class="invoice-amount">$200.00</div>
+            <div class="invoice-status paid">Paid</div>
+            <div class="invoice-actions">
+                <button class="btn btn-sm btn-outline">Download PDF</button>
+            </div>
+        </div>
+        
+        <div class="invoice-item">
+            <div class="invoice-date">
+                <div class="date-month">JAN</div>
+                <div class="date-day">20</div>
+            </div>
+            <div class="invoice-details">
+                <div class="invoice-description">Hormone Support - Monthly Fee</div>
+                <div class="invoice-id">Invoice #20260120001</div>
+            </div>
+            <div class="invoice-amount">$200.00</div>
+            <div class="invoice-status paid">Paid</div>
+            <div class="invoice-actions">
+                <button class="btn btn-sm btn-outline">Download PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Billing History Chart -->
+<div class="dashboard-section">
+    <h3>Annual Spending Summary</h3>
+    <div class="spending-summary">
+        <div class="summary-stats">
+            <div class="stat-card">
+                <div class="stat-value">$3,226.81</div>
+                <div class="stat-label">Year to Date</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$2,400</div>
+                <div class="stat-label">Monthly Subscriptions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$826.81</div>
+                <div class="stat-label">Procedures & Supplements</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="spendingChart" width="800" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Subscription Management -->
+<div class="dashboard-section">
+    <h3>Subscription Details</h3>
+    <div class="subscription-card">
+        <div class="subscription-info">
+            <div class="sub-plan">
+                <h4>Hormone Support Program</h4>
+                <p>Comprehensive hormone optimization with monthly follow-ups, lab reviews, and protocol adjustments.</p>
+            </div>
+            <div class="sub-features">
+                <div class="feature">✓ Monthly provider consultations</div>
+                <div class="feature">✓ Lab result reviews and analysis</div>
+                <div class="feature">✓ Supplement protocol management</div>
+                <div class="feature">✓ Direct messaging with provider</div>
+                <div class="feature">✓ Prescription management</div>
+            </div>
+        </div>
+        <div class="subscription-billing">
+            <div class="billing-cycle">
+                <div class="cycle-amount">$200.00</div>
+                <div class="cycle-period">per month</div>
+                <div class="next-billing">Next billing: April 5, 2026</div>
+            </div>
+            <div class="subscription-actions">
+                <button class="btn btn-outline">Update Plan</button>
+                <button class="btn btn-outline">Pause Subscription</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Insurance & Tax Documents -->
+<div class="dashboard-grid">
+    <div class="dashboard-section">
+        <h3>Insurance & Reimbursement</h3>
+        <div class="insurance-info">
+            <div class="info-card">
+                <h4>HSA/FSA Eligible</h4>
+                <p>Your hormone therapy treatments may be eligible for reimbursement through your Health Savings Account or Flexible Spending Account.</p>
+                <button class="btn btn-sm btn-outline">Get Documentation</button>
+            </div>
+            <div class="info-card">
+                <h4>Superbill Generation</h4>
+                <p>Request detailed medical billing statements for insurance reimbursement.</p>
+                <button class="btn btn-sm btn-outline">Request Superbill</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard-section">
+        <h3>Tax Documents</h3>
+        <div class="tax-documents">
+            <div class="document-item">
+                <div class="doc-icon">📄</div>
+                <div class="doc-info">
+                    <div class="doc-name">2026 Medical Expenses Summary</div>
+                    <div class="doc-description">Year-to-date medical spending for tax purposes</div>
+                </div>
+                <button class="btn btn-sm btn-outline">Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Billing page styles */
+.billing-hero {
+    background: var(--avail-primary);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.account-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-status h3 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.account-status p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.current-plan {
+    text-align: right;
+}
+
+.plan-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.plan-cost {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.plan-status {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+    border: 2px solid var(--gray-200);
+}
+
+.payment-card.primary {
+    border-color: var(--avail-primary);
+    background: var(--avail-bg-accent);
+}
+
+.card-icon {
+    font-size: 32px;
+}
+
+.card-details {
+    flex: 1;
+}
+
+.card-type {
+    font-weight: 600;
+    color: var(--avail-text-primary);
+    margin-bottom: 2px;
+}
+
+.card-expiry {
+    font-size: 14px;
+    color: var(--avail-text-secondary);
+    margin-bottom: 2px;
+}
+
+.card-status {
+    font-size: 12px;
+    color: var(--avail-primary);
+    font-weight: 500;
+}
+
+.invoice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.invoice-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+}
+
+.invoice-date {
+    text-align: center;
+    background: var(--avail-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    min-width: 60px;
+}
+
+.date-month {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.date-day {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.invoice-details {
+    flex: 1;
+}
+
+.invoice-description {
+    font-weight: 600;
+    color: var(--avail-text-primary);
+    margin-bottom: 2px;
+}
+
+.invoice-id {
+    font-size: 12px;
+    color: var(--avail-text-light);
+}
+
+.invoice-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--avail-primary);
+    min-width: 80px;
+    text-align: right;
+}
+
+.invoice-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.invoice-status.paid {
+    background: rgba(107, 142, 90, 0.1);
+    color: var(--avail-success);
+}
+
+.spending-summary {
+    margin-top: 16px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
+    background: var(--avail-bg-accent);
+    border-radius: 8px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--avail-primary);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--avail-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.subscription-card {
+    display: flex;
+    gap: 32px;
+    padding: 24px;
+    background: var(--avail-bg-accent);
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-primary);
+}
+
+.subscription-info {
+    flex: 2;
+}
+
+.sub-plan h4 {
+    margin: 0 0 8px;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.sub-plan p {
+    margin: 0 0 16px;
+    color: var(--avail-text-secondary);
+    line-height: 1.6;
+}
+
+.sub-features {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.feature {
+    color: var(--avail-text-secondary);
+    font-size: 14px;
+}
+
+.subscription-billing {
+    flex: 1;
+    text-align: center;
+}
+
+.billing-cycle {
+    margin-bottom: 20px;
+}
+
+.cycle-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--avail-primary);
+    margin-bottom: 4px;
+}
+
+.cycle-period {
+    color: var(--avail-text-secondary);
+    margin-bottom: 8px;
+}
+
+.next-billing {
+    font-size: 12px;
+    color: var(--avail-text-light);
+}
+
+.subscription-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.insurance-info,
+.tax-documents {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info-card {
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 6px;
+    border-left: 3px solid var(--avail-success);
+}
+
+.info-card h4 {
+    margin: 0 0 8px;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.info-card p {
+    margin: 0 0 12px;
+    color: var(--avail-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--avail-bg-secondary);
+    border-radius: 6px;
+}
+
+.doc-icon {
+    font-size: 24px;
+}
+
+.doc-info {
+    flex: 1;
+}
+
+.doc-name {
+    font-weight: 600;
+    color: var(--avail-text-primary);
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.doc-description {
+    font-size: 12px;
+    color: var(--avail-text-light);
+}
+
+@media (max-width: 768px) {
+    .account-overview {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .invoice-item {
+        flex-wrap: wrap;
+    }
+    
+    .subscription-card {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Annual Spending Chart
+const spendingCtx = document.getElementById('spendingChart').getContext('2d');
+const spendingChart = new Chart(spendingCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+            label: 'Monthly Spending',
+            data: [1000, 200, 226.81, 200, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(184, 160, 130, 0.8)',
+            borderColor: 'rgba(184, 160, 130, 1)',
+            borderWidth: 1,
+            borderRadius: 4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return '$' + value;
+                    }
+                }
+            }
+        }
+    }
+});
+</script>

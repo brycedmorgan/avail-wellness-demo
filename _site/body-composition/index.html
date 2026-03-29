@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Composition - Avail Wellness Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/avail-brand.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/images/avail-logo-real.png" alt="Avail Wellness" class="logo-img">
+            </div>
+            
+            <div class="nav-menu">
+                <a href="/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="/labs/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 2v3h2V2h2v3h2V2h2v5H7V2h2zm8 8.5c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1zM9 12c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm3 9.5L8.5 18c-.28 0-.5-.22-.5-.5s.22-.5.5-.5l3.5 3.5z"/>
+                    </svg>
+                    Lab Results
+                </a>
+                <a href="/body-composition/" class="nav-item active">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/>
+                    </svg>
+                    Body Composition
+                </a>
+                <a href="/supplements/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3.5 6L2 7.5 7.5 13 2 18.5 3.5 20l5.5-5.5L14.5 20 16 18.5 10.5 13 16 7.5 14.5 6 9 11.5 3.5 6zM20.5 6c-.83 0-1.5.67-1.5 1.5v9c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5z"/>
+                    </svg>
+                    Supplements
+                </a>
+                <a href="/treatments/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3V8zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+                    </svg>
+                    Treatments
+                </a>
+                <a href="/appointments/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                    </svg>
+                    Appointments
+                </a>
+                <a href="/billing/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                    </svg>
+                    Billing
+                </a>
+            </div>
+            
+            <div class="nav-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">BM</div>
+                    <div class="user-info">
+                        <div class="user-name">Bryce Morgan</div>
+                        <div class="user-role">Patient</div>
+                    </div>
+                </div>
+                <div class="portal-switch">
+                    <a href="/admin/" class="switch-link">
+                        <svg class="switch-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                        View Provider Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <div class="header-welcome">
+                    <div class="welcome-message">Welcome back, Bryce! 👋</div>
+                </div>
+                <h1>Body Composition</h1>
+                
+                <p class="page-subtitle">DEXA scan results and progress tracking</p>
+                
+            </header>
+            
+            <div class="content">
+                
+<!-- Progress Overview -->
+<div class="composition-hero">
+    <div class="hero-content">
+        <h3>Bryce's Body Transformation</h3>
+        <p>Comprehensive DEXA scan analysis showing your body composition changes alongside hormone optimization.</p>
+        
+        <div class="progress-highlights">
+            <div class="highlight-metric">
+                <div class="metric-value">-9.8%</div>
+                <div class="metric-label">Body Fat Reduction</div>
+            </div>
+            <div class="highlight-metric">
+                <div class="metric-value">+9.8 lbs</div>
+                <div class="metric-label">Lean Mass Gained</div>
+            </div>
+            <div class="highlight-metric">
+                <div class="metric-value">-1.7</div>
+                <div class="metric-label">Visceral Fat Levels</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DEXA Scan Comparison -->
+<div class="dashboard-section">
+    <h3>DEXA Scan Results</h3>
+    <div class="scan-comparison">
+        
+        <div class="scan-card">
+            <div class="scan-header">
+                <h4>Aug 14, 2025</h4>
+                <div class="scan-summary">Significant improvement in body composition</div>
+            </div>
+            
+            <div class="composition-metrics">
+                <div class="metric-circle">
+                    <div class="circle-chart" data-percentage="21.3">
+                        <div class="circle-inner">
+                            <div class="percentage">21.3%</div>
+                            <div class="label">Body Fat</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detailed-metrics">
+                    <div class="metric-row">
+                        <span class="metric-name">Lean Mass:</span>
+                        <span class="metric-value">78.7 kg</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">Visceral Fat:</span>
+                        <span class="metric-value">2.1</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">Bone Density:</span>
+                        <span class="metric-value">1.18 g/cm²</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scan-card">
+            <div class="scan-header">
+                <h4>Jan 19, 2024</h4>
+                <div class="scan-summary">Baseline assessment prior to treatment</div>
+            </div>
+            
+            <div class="composition-metrics">
+                <div class="metric-circle">
+                    <div class="circle-chart" data-percentage="31.1">
+                        <div class="circle-inner">
+                            <div class="percentage">31.1%</div>
+                            <div class="label">Body Fat</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detailed-metrics">
+                    <div class="metric-row">
+                        <span class="metric-name">Lean Mass:</span>
+                        <span class="metric-value">68.9 kg</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">Visceral Fat:</span>
+                        <span class="metric-value">3.8</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">Bone Density:</span>
+                        <span class="metric-value">1.12 g/cm²</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Progress Charts -->
+<div class="dashboard-section">
+    <h3>Body Composition Trends</h3>
+    <div class="chart-container">
+        <canvas id="bodyCompositionChart" width="800" height="300"></canvas>
+    </div>
+</div>
+
+<!-- Correlation with Hormone Levels -->
+<div class="dashboard-section">
+    <h3>Hormone Correlation Analysis</h3>
+    <div class="correlation-insights">
+        <div class="insight-card">
+            <h4>Key Findings</h4>
+            <ul>
+                <li><strong>Testosterone Optimization Impact:</strong> Your testosterone increase from 281 to 853 ng/dl correlates directly with the 9.8% body fat reduction.</li>
+                <li><strong>Muscle Preservation:</strong> Lean mass increased by 9.8 lbs while losing fat - indicating proper hormone balance.</li>
+                <li><strong>Visceral Fat Improvement:</strong> Dangerous visceral fat reduced from 3.8 to 2.1 - excellent cardiovascular benefit.</li>
+                <li><strong>Bone Health:</strong> Bone density improved from 1.12 to 1.18 g/cm² - testosterone supports bone strength.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+.composition-hero {
+    background: var(--avail-primary);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.hero-content p {
+    opacity: 0.9;
+    margin: 0 0 24px;
+    font-size: 16px;
+}
+
+.progress-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.highlight-metric {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.metric-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.scan-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+.scan-card {
+    background: var(--avail-bg-secondary);
+    padding: 24px;
+    border-radius: 12px;
+    border: 2px solid var(--gray-200);
+}
+
+.scan-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.scan-header h4 {
+    margin: 0 0 4px;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.scan-summary {
+    font-size: 14px;
+    color: var(--avail-text-secondary);
+}
+
+.composition-metrics {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.metric-circle {
+    flex-shrink: 0;
+}
+
+.circle-chart {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--avail-primary) 0deg 100deg, var(--gray-200) 100deg 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-inner {
+    width: 90px;
+    height: 90px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.percentage {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--avail-primary);
+}
+
+.label {
+    font-size: 12px;
+    color: var(--gray-600);
+}
+
+.detailed-metrics {
+    flex: 1;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.metric-name {
+    color: var(--avail-text-secondary);
+    font-size: 14px;
+}
+
+.metric-value {
+    color: var(--avail-text-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.correlation-insights {
+    background: var(--avail-bg-accent);
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-success);
+}
+
+.insight-card h4 {
+    margin: 0 0 16px;
+    color: var(--avail-text-primary);
+}
+
+.insight-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.insight-card li {
+    margin-bottom: 12px;
+    color: var(--avail-text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .composition-metrics {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .scan-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Body Composition Chart
+const ctx = document.getElementById('bodyCompositionChart').getContext('2d');
+const bodyChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['January 2024', 'August 2025'],
+        datasets: [{
+            label: 'Body Fat %',
+            data: [31.1, 21.3],
+            backgroundColor: 'rgba(184, 160, 130, 0.1)',
+            borderColor: 'rgba(184, 160, 130, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(184, 160, 130, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 8
+        }, {
+            label: 'Lean Mass (kg)',
+            data: [68.9, 78.7],
+            backgroundColor: 'rgba(107, 142, 90, 0.1)',
+            borderColor: 'rgba(107, 142, 90, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(107, 142, 90, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 8,
+            yAxisID: 'y1'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false }
+            },
+            y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                title: {
+                    display: true,
+                    text: 'Body Fat %'
+                }
+            },
+            y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: {
+                    display: true,
+                    text: 'Lean Mass (kg)'
+                },
+                grid: { drawOnChartArea: false }
+            }
+        }
+    }
+});
+</script>
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/app.js"></script>
+</body>
+</html>

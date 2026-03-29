@@ -1,0 +1,19 @@
+<svg width="160" height="48" viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+      .logo-avail { font-size: 22px; font-weight: 700; fill: #B8A082; }
+      .logo-wellness { font-size: 16px; font-weight: 400; fill: #9C8366; }
+    </style>
+  </defs>
+  
+  <!-- Simple dot accent -->
+  <circle cx="130" cy="24" r="3" fill="#6B8E5A"/>
+  
+  <!-- Text -->
+  <text x="8" y="30" class="logo-text logo-avail">Avail</text>
+  <text x="72" y="30" class="logo-text logo-wellness">Wellness</text>
+  
+  <!-- Underline accent -->
+  <rect x="8" y="35" width="55" height="2" fill="#B8A082" opacity="0.3" rx="1"/>
+</svg>

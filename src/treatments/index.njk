@@ -1,0 +1,602 @@
+---
+layout: base.njk
+title: Treatments & Procedures
+subtitle: Your hormone therapy history and upcoming procedures
+---
+
+<!-- Treatment Timeline Overview -->
+<div class="treatment-hero">
+    <div class="timeline-summary">
+        <h3>{{ patient.patient.name.split(' ')[0] }}'s Treatment Journey</h3>
+        <p>Complete history of your hormone optimization treatments with Avail Wellness.</p>
+        
+        <div class="journey-stats">
+            <div class="stat-item">
+                <div class="stat-value">{{ patient.treatments.length }}</div>
+                <div class="stat-label">Procedures Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">204%</div>
+                <div class="stat-label">Testosterone Increase</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">3-6 months</div>
+                <div class="stat-label">Current Pellet Duration</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Treatment History -->
+<div class="dashboard-section">
+    <h3>Treatment History</h3>
+    <div class="treatment-timeline">
+        {% for treatment in patient.treatments %}
+        <div class="timeline-item completed">
+            <div class="timeline-marker">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            <div class="timeline-content">
+                <div class="treatment-header">
+                    <h4>{{ treatment.type }}</h4>
+                    <div class="treatment-date">{{ treatment.date | dateFormat }}</div>
+                </div>
+                <div class="treatment-details">
+                    <div class="treatment-cost">{{ treatment.cost | currency }}</div>
+                    <div class="treatment-provider">Provider: {{ treatment.provider }}</div>
+                    <div class="treatment-notes">{{ treatment.notes }}</div>
+                </div>
+                <div class="treatment-outcomes">
+                    <div class="outcome-badge success">Excellent Response</div>
+                    <div class="outcome-details">Testosterone levels optimized within 6 weeks</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Pre-treatment consultation -->
+        <div class="timeline-item completed">
+            <div class="timeline-marker">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <div class="timeline-content">
+                <div class="treatment-header">
+                    <h4>Initial Consultation & Assessment</h4>
+                    <div class="treatment-date">March 4, 2025</div>
+                </div>
+                <div class="treatment-details">
+                    <div class="treatment-cost">$400.00</div>
+                    <div class="treatment-provider">Provider: Brooke Welsh, WHNP</div>
+                    <div class="treatment-notes">Comprehensive hormone evaluation, baseline labs ordered</div>
+                </div>
+                <div class="treatment-outcomes">
+                    <div class="outcome-badge info">Assessment Complete</div>
+                    <div class="outcome-details">Treatment plan developed based on lab results</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Current Treatment Status -->
+<div class="dashboard-section">
+    <h3>Current Treatment Status</h3>
+    <div class="current-status-grid">
+        <div class="status-card">
+            <div class="status-header">
+                <h4>Active Pellet</h4>
+                <div class="status-indicator active"></div>
+            </div>
+            <div class="status-details">
+                <div class="detail-row">
+                    <span class="detail-label">Insertion Date:</span>
+                    <span class="detail-value">January 5, 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Expected Duration:</span>
+                    <span class="detail-value">3-6 months</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Next Evaluation:</span>
+                    <span class="detail-value">April 15, 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Current Effectiveness:</span>
+                    <span class="detail-value effectiveness excellent">Excellent</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-card">
+            <div class="status-header">
+                <h4>Supplement Protocol</h4>
+                <div class="status-indicator active"></div>
+            </div>
+            <div class="status-details">
+                <div class="detail-row">
+                    <span class="detail-label">Current Protocol:</span>
+                    <span class="detail-value">9 supplements daily</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Adherence Rate:</span>
+                    <span class="detail-value">{{ patient.supplements.adherence.lastMonth }}%</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Last Updated:</span>
+                    <span class="detail-value">March 15, 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value effectiveness good">Optimized</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-card">
+            <div class="status-header">
+                <h4>Lab Monitoring</h4>
+                <div class="status-indicator active"></div>
+            </div>
+            <div class="status-details">
+                <div class="detail-row">
+                    <span class="detail-label">Latest Labs:</span>
+                    <span class="detail-value">February 19, 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Next Labs Due:</span>
+                    <span class="detail-value">May 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Current T Levels:</span>
+                    <span class="detail-value">853 ng/dl</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value effectiveness excellent">Optimized</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Treatment Effectiveness Chart -->
+<div class="dashboard-section">
+    <h3>Treatment Response Over Time</h3>
+    <div class="chart-container">
+        <canvas id="treatmentChart" width="800" height="300"></canvas>
+    </div>
+    <div class="chart-insights">
+        <div class="insight-item">
+            <h4>Pellet Absorption Profile</h4>
+            <p>Your testosterone pellet shows excellent absorption kinetics with steady hormone levels maintained throughout the treatment period.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Provider Notes -->
+<div class="dashboard-section">
+    <h3>Provider Treatment Notes</h3>
+    <div class="provider-notes">
+        <div class="note-card">
+            <div class="note-header">
+                <div class="provider-info">
+                    <strong>Brooke Welsh, WHNP</strong>
+                    <span class="note-date">March 25, 2026</span>
+                </div>
+            </div>
+            <div class="note-content">
+                <p>Bryce continues to show outstanding response to hormone pellet therapy. Current testosterone levels of 853 ng/dl represent optimal range for his age and symptoms. Patient reports significant improvements in energy, sleep quality, and overall well-being.</p>
+                <p><strong>Treatment Plan:</strong> Continue current pellet schedule. Next insertion likely needed in June-July 2026 based on absorption patterns. Maintain current supplement protocol with excellent adherence rates.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Treatment page styles */
+.treatment-hero {
+    background: var(--avail-primary);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.timeline-summary h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.timeline-summary p {
+    opacity: 0.9;
+    margin: 0 0 24px;
+    font-size: 16px;
+}
+
+.journey-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.treatment-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.treatment-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-200);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--avail-success);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--avail-success);
+}
+
+.timeline-content {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-success);
+    box-shadow: var(--shadow-sm);
+}
+
+.treatment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.treatment-header h4 {
+    margin: 0;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.treatment-date {
+    color: var(--avail-text-light);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.treatment-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 6px;
+}
+
+.treatment-cost {
+    font-weight: 700;
+    color: var(--avail-primary);
+    font-size: 18px;
+}
+
+.treatment-provider,
+.treatment-notes {
+    color: var(--avail-text-secondary);
+    font-size: 14px;
+}
+
+.treatment-outcomes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.outcome-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.outcome-badge.success {
+    background: rgba(107, 142, 90, 0.1);
+    color: var(--avail-success);
+}
+
+.outcome-badge.info {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
+}
+
+.outcome-details {
+    color: var(--avail-text-secondary);
+    font-size: 14px;
+}
+
+.current-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.status-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.status-header h4 {
+    margin: 0;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-indicator.active {
+    background: var(--avail-success);
+    box-shadow: 0 0 0 3px rgba(107, 142, 90, 0.2);
+}
+
+.status-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--avail-text-secondary);
+    font-size: 14px;
+}
+
+.detail-value {
+    color: var(--avail-text-primary);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.effectiveness.excellent {
+    color: var(--avail-success);
+    font-weight: 600;
+}
+
+.effectiveness.good {
+    color: var(--avail-primary);
+    font-weight: 600;
+}
+
+.chart-insights {
+    margin-top: 16px;
+    background: var(--avail-bg-accent);
+    padding: 16px;
+    border-radius: 6px;
+}
+
+.insight-item h4 {
+    margin: 0 0 8px;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.insight-item p {
+    margin: 0;
+    color: var(--avail-text-secondary);
+    line-height: 1.6;
+}
+
+.provider-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.note-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.note-header {
+    margin-bottom: 12px;
+}
+
+.provider-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-date {
+    color: var(--avail-text-light);
+    font-size: 12px;
+}
+
+.note-content p {
+    margin: 0 0 12px;
+    color: var(--avail-text-secondary);
+    line-height: 1.6;
+}
+
+.note-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .journey-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .treatment-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .current-status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .treatment-outcomes {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+</style>
+
+<script>
+// Treatment Response Chart
+const treatmentCtx = document.getElementById('treatmentChart').getContext('2d');
+const treatmentChart = new Chart(treatmentCtx, {
+    type: 'line',
+    data: {
+        labels: ['Baseline', '2 Weeks', '4 Weeks', '8 Weeks', '12 Weeks', '16 Weeks'],
+        datasets: [{
+            label: 'Testosterone Level (ng/dl)',
+            data: [281, 450, 650, 780, 825, 853],
+            backgroundColor: 'rgba(107, 142, 90, 0.1)',
+            borderColor: 'rgba(107, 142, 90, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(107, 142, 90, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 6
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: 'white',
+                bodyColor: 'white',
+                callbacks: {
+                    label: function(context) {
+                        return 'Testosterone: ' + context.parsed.y + ' ng/dl';
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { color: '#6B7280' }
+            },
+            y: {
+                beginAtZero: false,
+                min: 200,
+                grid: { color: 'rgba(107, 114, 128, 0.1)' },
+                ticks: {
+                    color: '#6B7280',
+                    callback: function(value) {
+                        return value + ' ng/dl';
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Testosterone Level',
+                    color: '#374151'
+                }
+            }
+        },
+        annotations: {
+            annotations: {
+                pelletInsertion: {
+                    type: 'line',
+                    mode: 'vertical',
+                    scaleID: 'x',
+                    value: 'Baseline',
+                    borderColor: 'rgba(184, 160, 130, 0.8)',
+                    borderWidth: 2,
+                    label: {
+                        content: 'Pellet Insertion',
+                        enabled: true,
+                        position: 'top'
+                    }
+                }
+            }
+        }
+    }
+});
+</script>

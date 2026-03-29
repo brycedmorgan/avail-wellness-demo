@@ -1,0 +1,616 @@
+---
+layout: base.njk
+title: Supplements & Protocols
+subtitle: Your personalized supplement regimen and adherence tracking
+---
+
+<!-- Current Protocol Overview -->
+<div class="protocol-hero">
+    <div class="protocol-summary">
+        <h3>{{ patient.patient.name.split(' ')[0] }}'s Custom Protocol</h3>
+        <p>Your personalized supplement regimen, carefully designed by Brooke Welsh based on your February 2026 lab results and testosterone optimization goals.</p>
+        <div class="adherence-overview">
+            <div class="adherence-score">
+                <div class="score-circle">
+                    <span class="score-number">{{ patient.supplements.adherence.lastMonth }}%</span>
+                    <span class="score-label">Monthly Adherence</span>
+                </div>
+            </div>
+            <div class="adherence-trends">
+                <div class="trend-item">
+                    <span class="trend-label">This Week</span>
+                    <span class="trend-value">{{ patient.supplements.adherence.lastWeek }}%</span>
+                </div>
+                <div class="trend-item">
+                    <span class="trend-label">All Time</span>
+                    <span class="trend-value">{{ patient.supplements.adherence.allTime }}%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Daily Protocol -->
+<div class="protocol-sections">
+    <!-- Morning Protocol -->
+    <div class="protocol-section">
+        <div class="section-header">
+            <h3>Morning Protocol</h3>
+            <span class="time-badge">🌅 Upon Waking</span>
+        </div>
+        <div class="supplement-grid">
+            {% for supplement in patient.supplements.current.morning %}
+            <div class="supplement-card">
+                <svg class="supplement-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.5 6L2 7.5 7.5 13 2 18.5 3.5 20l5.5-5.5L14.5 20 16 18.5 10.5 13 16 7.5 14.5 6 9 11.5 3.5 6z"/>
+                </svg>
+                <div class="supplement-info">
+                    <h4>{{ supplement.name }}</h4>
+                    <p class="dosage">{{ supplement.dosage }}</p>
+                    <p class="purpose">{{ supplement.purpose }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Afternoon Protocol -->
+    <div class="protocol-section">
+        <div class="section-header">
+            <h3>Afternoon Protocol</h3>
+            <span class="time-badge">🌤️ Mid-Day</span>
+        </div>
+        <div class="supplement-grid">
+            {% for supplement in patient.supplements.current.afternoon %}
+            <div class="supplement-card">
+                <svg class="supplement-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <div class="supplement-info">
+                    <h4>{{ supplement.name }}</h4>
+                    <p class="dosage">{{ supplement.dosage }}</p>
+                    <p class="purpose">{{ supplement.purpose }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Evening Protocol -->
+    <div class="protocol-section">
+        <div class="section-header">
+            <h3>Evening Protocol</h3>
+            <span class="time-badge">🌙 Before Bed</span>
+        </div>
+        <div class="supplement-grid">
+            {% for supplement in patient.supplements.current.night %}
+            <div class="supplement-card">
+                <svg class="supplement-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 2v3h2V2h2v3h2V2h2v5H7V2h2zm0 12c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/>
+                </svg>
+                <div class="supplement-info">
+                    <h4>{{ supplement.name }}</h4>
+                    <p class="dosage">{{ supplement.dosage }}</p>
+                    <p class="purpose">{{ supplement.purpose }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Weekly Adherence Chart -->
+<div class="dashboard-section">
+    <h3>Weekly Adherence Tracking</h3>
+    <div class="chart-container">
+        <canvas id="adherenceChart" width="800" height="300"></canvas>
+    </div>
+</div>
+
+<!-- Supplement History & Adjustments -->
+<div class="dashboard-grid">
+    <div class="dashboard-section">
+        <h3>Recent Protocol Changes</h3>
+        <div class="protocol-history">
+            <div class="history-item">
+                <div class="history-date">March 15, 2026</div>
+                <div class="history-change">
+                    <span class="change-type added">Added</span>
+                    <span class="change-detail">Zinc 15mg (Evening) - Immune support</span>
+                </div>
+                <div class="history-reason">Based on latest testosterone optimization</div>
+            </div>
+            
+            <div class="history-item">
+                <div class="history-date">February 20, 2026</div>
+                <div class="history-change">
+                    <span class="change-type adjusted">Adjusted</span>
+                    <span class="change-detail">Magnesium increased to 400mg - Better recovery</span>
+                </div>
+                <div class="history-reason">Post-pellet insertion support</div>
+            </div>
+            
+            <div class="history-item">
+                <div class="history-date">January 10, 2026</div>
+                <div class="history-change">
+                    <span class="change-type added">Added</span>
+                    <span class="change-detail">Tongkat Ali 2 caps - Testosterone support</span>
+                </div>
+                <div class="history-reason">Pre-pellet optimization protocol</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h3>Reorder Reminders</h3>
+        <div class="reorder-list">
+            <div class="reorder-item">
+                <div class="supplement-name">Vitamin D3K2</div>
+                <div class="stock-level low">
+                    <span class="stock-bar">
+                        <span class="stock-fill" style="width: 25%"></span>
+                    </span>
+                    <span class="stock-text">8 days remaining</span>
+                </div>
+                <button class="btn btn-primary btn-sm">Reorder</button>
+            </div>
+            
+            <div class="reorder-item">
+                <div class="supplement-name">Omega 3</div>
+                <div class="stock-level good">
+                    <span class="stock-bar">
+                        <span class="stock-fill" style="width: 70%"></span>
+                    </span>
+                    <span class="stock-text">21 days remaining</span>
+                </div>
+                <button class="btn btn-outline btn-sm">View Details</button>
+            </div>
+            
+            <div class="reorder-item">
+                <div class="supplement-name">Tongkat Ali</div>
+                <div class="stock-level medium">
+                    <span class="stock-bar">
+                        <span class="stock-fill" style="width: 45%"></span>
+                    </span>
+                    <span class="stock-text">14 days remaining</span>
+                </div>
+                <button class="btn btn-outline btn-sm">View Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Protocol Notes -->
+<div class="dashboard-section">
+    <h3>Provider Notes & Recommendations</h3>
+    <div class="provider-notes">
+        <div class="note-item">
+            <div class="note-header">
+                <strong>Brooke Welsh, WHNP</strong>
+                <span class="note-date">March 25, 2026</span>
+            </div>
+            <p>Excellent adherence to current protocol! Testosterone levels are responding beautifully to the pellet + supplement combination. The addition of zinc should help maintain optimal levels longer. Continue current regimen through next labs in May.</p>
+        </div>
+        
+        <div class="note-item">
+            <div class="note-header">
+                <strong>System Recommendation</strong>
+                <span class="note-date">March 20, 2026</span>
+            </div>
+            <p>Consider timing Tongkat Ali with workout schedule for maximum benefit. Take 30 minutes before training when possible.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Supplements page styles */
+.protocol-hero {
+    background: var(--avail-primary);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.protocol-summary h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.protocol-summary p {
+    opacity: 0.9;
+    margin: 0 0 24px;
+    font-size: 16px;
+}
+
+.adherence-overview {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.adherence-score .score-circle {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.adherence-score .score-number {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.adherence-score .score-label {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.adherence-trends {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    min-width: 160px;
+}
+
+.trend-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.trend-value {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.protocol-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.protocol-section {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    margin: 0;
+    color: var(--avail-text-primary);
+    font-weight: 600;
+}
+
+.time-badge {
+    background: var(--avail-secondary);
+    color: var(--avail-text-primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.supplement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.supplement-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.supplement-card:hover {
+    border-color: var(--avail-primary-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.supplement-info {
+    flex: 1;
+}
+
+.supplement-info h4 {
+    margin: 0 0 4px;
+    font-weight: 600;
+    color: var(--avail-text-primary);
+}
+
+.dosage {
+    margin: 0 0 2px;
+    font-weight: 500;
+    color: var(--avail-primary-dark);
+    font-size: 14px;
+}
+
+.purpose {
+    margin: 0;
+    font-size: 12px;
+    color: var(--avail-text-light);
+}
+
+.supplement-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--avail-primary);
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.protocol-history {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.history-item {
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-primary);
+}
+
+.history-date {
+    font-size: 12px;
+    color: var(--avail-text-light);
+    margin-bottom: 8px;
+}
+
+.history-change {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.change-type {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.change-type.added {
+    background: rgba(107, 142, 90, 0.15);
+    color: var(--avail-success);
+}
+
+.change-type.adjusted {
+    background: rgba(212, 165, 116, 0.15);
+    color: var(--avail-warning);
+}
+
+.change-detail {
+    font-weight: 500;
+    color: var(--avail-text-primary);
+}
+
+.history-reason {
+    font-size: 12px;
+    color: var(--avail-text-secondary);
+    font-style: italic;
+}
+
+.reorder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reorder-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+}
+
+.supplement-name {
+    font-weight: 600;
+    color: var(--avail-text-primary);
+    min-width: 120px;
+}
+
+.stock-level {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stock-bar {
+    width: 100px;
+    height: 8px;
+    background: var(--gray-200);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stock-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.stock-level.low .stock-fill {
+    background: var(--avail-error);
+}
+
+.stock-level.medium .stock-fill {
+    background: var(--avail-warning);
+}
+
+.stock-level.good .stock-fill {
+    background: var(--avail-success);
+}
+
+.stock-text {
+    font-size: 12px;
+    color: var(--avail-text-secondary);
+    min-width: 100px;
+}
+
+.provider-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.note-item {
+    padding: 16px;
+    background: var(--avail-bg-secondary);
+    border-radius: 8px;
+    border-left: 4px solid var(--avail-success);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.note-header strong {
+    color: var(--avail-text-primary);
+}
+
+.note-date {
+    font-size: 12px;
+    color: var(--avail-text-light);
+}
+
+.note-item p {
+    margin: 0;
+    color: var(--avail-text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .adherence-overview {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .supplement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .supplement-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+</style>
+
+<script>
+// Weekly Adherence Chart
+const ctx = document.getElementById('adherenceChart').getContext('2d');
+const adherenceChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+            label: 'Daily Adherence %',
+            data: [95, 100, 85, 90, 100, 100, 90],
+            backgroundColor: 'rgba(184, 160, 130, 0.1)',
+            borderColor: 'rgba(184, 160, 130, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(184, 160, 130, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 6
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: 'white',
+                bodyColor: 'white',
+                callbacks: {
+                    label: function(context) {
+                        return 'Adherence: ' + context.parsed.y + '%';
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    color: '#6B7280'
+                }
+            },
+            y: {
+                min: 0,
+                max: 100,
+                grid: {
+                    color: 'rgba(107, 114, 128, 0.1)'
+                },
+                ticks: {
+                    color: '#6B7280',
+                    callback: function(value) {
+                        return value + '%';
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Supplement page interactions (simplified)
+document.addEventListener('DOMContentLoaded', function() {
+    // Add any future supplement interactions here
+    console.log('Supplement protocol loaded');
+});
+</script>

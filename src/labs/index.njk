@@ -1,0 +1,510 @@
+---
+layout: base.njk
+title: Lab Results
+subtitle: Your comprehensive hormone and health panel history
+---
+
+<!-- Latest Results Summary -->
+<div class="lab-summary-card">
+    <div class="summary-header">
+        <h3>Latest Results - {{ patient.labResults[0].date | dateFormat }}</h3>
+        <span class="lab-status complete">{{ patient.labResults[0].status }}</span>
+    </div>
+    <p class="summary-text">{{ patient.labResults[0].summary }}</p>
+    
+    <div class="key-highlights">
+        <div class="highlight-item">
+            <span class="highlight-label">Total Testosterone</span>
+            <span class="highlight-value">{{ patient.labResults[0].highlights.totalTestosterone.value }} {{ patient.labResults[0].highlights.totalTestosterone.unit }}</span>
+            <span class="highlight-change positive">{{ patient.labResults[0].highlights.totalTestosterone.change }}</span>
+        </div>
+        <div class="highlight-item">
+            <span class="highlight-label">Free Testosterone</span>
+            <span class="highlight-value">{{ patient.labResults[0].highlights.freeTestosterone.value }} {{ patient.labResults[0].highlights.freeTestosterone.unit }}</span>
+            <span class="highlight-change positive">{{ patient.labResults[0].highlights.freeTestosterone.change }}</span>
+        </div>
+        <div class="highlight-item">
+            <span class="highlight-label">Estradiol</span>
+            <span class="highlight-value">{{ patient.labResults[0].highlights.estradiol.value }} {{ patient.labResults[0].highlights.estradiol.unit }}</span>
+            <span class="highlight-trend">{{ patient.labResults[0].highlights.estradiol.trend | trendArrow }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Testosterone Trend Chart -->
+<div class="dashboard-section">
+    <h3>Testosterone Optimization Journey</h3>
+    <div class="chart-container">
+        <canvas id="testosteroneChart" width="800" height="300"></canvas>
+    </div>
+    <div class="chart-insights">
+        <div class="insight-card">
+            <h4>Bryce's Optimization Success Story</h4>
+            <p>Your testosterone levels have increased by <strong>204%</strong> since starting treatment with Avail Wellness. The pellet insertion in January 2026 shows excellent absorption and sustained release - exactly the results we hoped to see for your specific case.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Lab History Timeline -->
+<div class="dashboard-section">
+    <h3>Complete Lab History</h3>
+    <div class="lab-timeline">
+        {% for lab in patient.labResults %}
+        <div class="timeline-item">
+            <div class="timeline-date">
+                <div class="date-circle"></div>
+                <span>{{ lab.date | dateFormat }}</span>
+            </div>
+            <div class="timeline-content">
+                <div class="lab-header">
+                    <h4>{{ lab.lab }} - {{ lab.status }}</h4>
+                    {% if lab.highlights.totalTestosterone.flag %}
+                    <span class="lab-flag {{ lab.highlights.totalTestosterone.flag }}">{{ lab.highlights.totalTestosterone.flag }}</span>
+                    {% endif %}
+                </div>
+                <p class="lab-summary">{{ lab.summary }}</p>
+                
+                <div class="lab-highlights">
+                    <div class="lab-metric">
+                        <span class="metric-name">Total T:</span>
+                        <span class="metric-value">{{ lab.highlights.totalTestosterone.value }} {{ lab.highlights.totalTestosterone.unit }}</span>
+                        <span class="metric-range">({{ lab.highlights.totalTestosterone.range }})</span>
+                    </div>
+                    <div class="lab-metric">
+                        <span class="metric-name">Free T:</span>
+                        <span class="metric-value">{{ lab.highlights.freeTestosterone.value }} {{ lab.highlights.freeTestosterone.unit }}</span>
+                        <span class="metric-range">({{ lab.highlights.freeTestosterone.range }})</span>
+                    </div>
+                    <div class="lab-metric">
+                        <span class="metric-name">Estradiol:</span>
+                        <span class="metric-value">{{ lab.highlights.estradiol.value }} {{ lab.highlights.estradiol.unit }}</span>
+                        <span class="metric-range">({{ lab.highlights.estradiol.range }})</span>
+                    </div>
+                </div>
+                
+                <div class="lab-actions">
+                    <button class="btn btn-outline btn-sm">View Full Report</button>
+                    <button class="btn btn-outline btn-sm">Download PDF</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Reference Ranges Info -->
+<div class="dashboard-section">
+    <h3>Understanding Your Results</h3>
+    <div class="reference-info">
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>Optimal vs. Lab Range</h4>
+                <p>We use optimal reference ranges, not just lab normals. Your goal is to feel your best, not just "normal."</p>
+                <ul>
+                    <li>Lab Range: Based on all men tested (including unhealthy)</li>
+                    <li>Optimal Range: Based on healthy, energetic men your age</li>
+                    <li>Your Target: Top 25% of optimal range for symptom relief</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Treatment Response</h4>
+                <p>Your body has responded excellently to hormone optimization therapy:</p>
+                <ul>
+                    <li>Testosterone increased 204% since baseline</li>
+                    <li>Free testosterone now in optimal range</li>
+                    <li>Estradiol properly balanced (not too high/low)</li>
+                    <li>Symptom scores improved across all categories</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Lab-specific styles */
+.lab-summary-card {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.summary-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.lab-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lab-status.complete {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.summary-text {
+    font-size: 16px;
+    margin: 0 0 24px;
+    opacity: 0.9;
+}
+
+.key-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.highlight-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.highlight-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.highlight-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.highlight-change {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.highlight-change.positive {
+    color: var(--accent-light);
+}
+
+.chart-insights {
+    margin-top: 24px;
+}
+
+.insight-card {
+    background: var(--gray-50);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+
+.insight-card h4 {
+    margin: 0 0 8px;
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.insight-card p {
+    margin: 0;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+/* Lab Timeline */
+.lab-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.lab-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-200);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-date {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.date-circle {
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-content {
+    margin-left: 20px;
+}
+
+.lab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.lab-header h4 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.lab-flag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.lab-flag.H {
+    background: var(--error);
+    color: white;
+}
+
+.lab-flag.L {
+    background: var(--warning);
+    color: white;
+}
+
+.lab-summary {
+    color: var(--gray-600);
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+
+.lab-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.lab-metric {
+    background: var(--gray-50);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.metric-name {
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.metric-value {
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-left: 4px;
+}
+
+.metric-range {
+    color: var(--gray-500);
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.lab-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* Reference Info */
+.reference-info {
+    margin-top: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.info-card {
+    background: var(--gray-50);
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.info-card h4 {
+    margin: 0 0 12px;
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.info-card p {
+    margin: 0 0 16px;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.info-card ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--gray-700);
+}
+
+.info-card li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+</style>
+
+<script>
+// Testosterone Trend Chart
+const ctx = document.getElementById('testosteroneChart').getContext('2d');
+const testosteroneChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Mar 2025', 'Sep 2025', 'Dec 2025', 'Feb 2026'],
+        datasets: [{
+            label: 'Total Testosterone (ng/dl)',
+            data: [305, 586, 281, 853],
+            backgroundColor: 'rgba(107, 142, 90, 0.1)',
+            borderColor: 'rgba(107, 142, 90, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(107, 142, 90, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 6
+        }, {
+            label: 'Free Testosterone (ng/dl)',
+            data: [7.3, 17.4, 6.8, 21.3],
+            backgroundColor: 'rgba(184, 160, 130, 0.1)',
+            borderColor: 'rgba(184, 160, 130, 0.8)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: 'rgba(184, 160, 130, 1)',
+            pointBorderColor: 'white',
+            pointBorderWidth: 2,
+            pointRadius: 6,
+            yAxisID: 'y1'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+            intersect: false,
+            mode: 'index'
+        },
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    usePointStyle: true,
+                    padding: 20
+                }
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: 'white',
+                bodyColor: 'white',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    color: '#6B7280'
+                }
+            },
+            y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                title: {
+                    display: true,
+                    text: 'Total Testosterone (ng/dl)',
+                    color: '#374151'
+                },
+                grid: {
+                    color: 'rgba(107, 114, 128, 0.1)'
+                },
+                ticks: {
+                    color: '#6B7280'
+                }
+            },
+            y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: {
+                    display: true,
+                    text: 'Free Testosterone (ng/dl)',
+                    color: '#374151'
+                },
+                grid: {
+                    drawOnChartArea: false,
+                },
+                ticks: {
+                    color: '#6B7280'
+                }
+            }
+        }
+    }
+});
+
+// Add annotations for treatment events
+const pelletInsertionDate = new Date('2026-01-05');
+const chartDates = ['2025-03-04', '2025-09-25', '2025-12-18', '2026-02-19'];
+
+// You could add vertical lines or annotations here for treatment events
+</script>
