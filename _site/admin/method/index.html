@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works · Method &amp; Compliance - Avail Wellness Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/avail-brand.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-theme">
+    <div class="admin-container">
+        <!-- Admin Navigation -->
+        <nav class="admin-sidebar">
+            <div class="logo">
+                <img src="/images/avail-logo-real.png" alt="Avail Wellness" class="logo-img">
+                <div class="logo-text">
+                    <span class="admin-badge">Provider Portal</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="/admin/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    </svg>
+                    Dashboard
+                </a>
+
+                <div class="nav-section-label">AI Tools</div>
+
+                <a href="/admin/protocol-builder/" class="nav-item nav-item-feature ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Protocol Builder
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/personas/" class="nav-item nav-item-feature ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                    Patient Personas
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/method/" class="nav-item active">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                    How It Works
+                </a>
+
+                <div class="nav-section-label">Patient Care</div>
+
+                <a href="/admin/patients/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63c-.34-1.02-1.3-1.74-2.46-1.74s-2.12.72-2.46 1.74L12.5 16H15v6h5zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 9.5v7h2v7h4v-7h2v-7C10 8.67 9.33 8 8.5 8z"/>
+                    </svg>
+                    Patients
+                </a>
+                <a href="/admin/labs/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 2v3h2V2h2v3h2V2h2v5H7V2h2zm8 8.5c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1zM9 12c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/>
+                    </svg>
+                    Labs &amp; Results
+                </a>
+                <a href="/admin/analytics/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/>
+                    </svg>
+                    Analytics
+                </a>
+
+                <div class="nav-section-label">Existing systems</div>
+                <a href="/admin/appointments/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    Calendar <span class="nav-ext">EMR</span>
+                </a>
+                <a href="/admin/billing/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    Billing <span class="nav-ext">EMR</span>
+                </a>
+            </div>
+            
+            <div class="nav-footer">
+                <div class="admin-profile">
+                    <div class="user-avatar provider">BW</div>
+                    <div class="user-info">
+                        <div class="user-name">Brooke Welsh</div>
+                        <div class="user-role">Provider • Admin</div>
+                    </div>
+                </div>
+                <div class="portal-switch">
+                    <a href="/" class="switch-link">
+                        <svg class="switch-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6C15 7.1 14.1 8 13 8H11C9.9 8 9 7.1 9 6V4L3 7V9H21ZM22 16C22 17.1 21.1 18 20 18H4C2.9 18 2 17.1 2 16V10H22V16Z"/>
+                        </svg>
+                        View Patient Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Admin Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <div class="admin-welcome">Provider Dashboard — Brooke Welsh, WHNP</div>
+                        <h1>How It Works · Method &amp; Compliance</h1>
+                        
+                        <p class="header-subtitle">HIPAA-eligible architecture, no EMR replacement, low-risk pilot path</p>
+                        
+                    </div>
+                    <div class="header-actions">
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">156</span>
+                                <span class="stat-label">Active Patients</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Cohorts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="admin-content">
+                
+<div class="met-hero">
+    <span class="met-pill">Compliance & Architecture</span>
+    <h2 style="color: white; margin: 0.5rem 0 0.5rem;">No EMR replacement. HIPAA-eligible from day one. Pilot in weeks, not quarters.</h2>
+    <p style="color: rgba(255,255,255,0.92); margin: 0; max-width: 780px; line-height: 1.55;">
+        Avail keeps the EMR they already use. We add a thin layer on top that turns consult recordings, lab data, and prior notes into <strong>draft protocols</strong> and <strong>cohort intelligence</strong>. Nothing is auto-sent. The provider always reviews and signs off.
+    </p>
+</div>
+
+<!-- Architecture diagram -->
+<div class="met-section">
+    <h3>The flow</h3>
+    <div class="met-flow">
+        <div class="met-step">
+            <div class="met-step-num">1</div>
+            <div class="met-step-icon">🎙️</div>
+            <h4>Capture consult</h4>
+            <p>Patient signs a one-page consent. Brooke records on her phone or laptop. Auto-uploads to a HIPAA-compliant intake.</p>
+        </div>
+        <div class="met-arrow">→</div>
+        <div class="met-step">
+            <div class="met-step-num">2</div>
+            <div class="met-step-icon">🔐</div>
+            <h4>Secure transcribe</h4>
+            <p>Audio → text via a HIPAA-eligible transcription service (AWS Transcribe Medical, Azure Speech, or Whisper on a HIPAA-eligible host). PHI stays inside the BAA boundary.</p>
+        </div>
+        <div class="met-arrow">→</div>
+        <div class="met-step">
+            <div class="met-step-num">3</div>
+            <div class="met-step-icon">🧠</div>
+            <h4>Cohort match + draft</h4>
+            <p>De-identified vector search across past patients. Claude (via AWS Bedrock w/ BAA) drafts the protocol with rationale and source citations.</p>
+        </div>
+        <div class="met-arrow">→</div>
+        <div class="met-step">
+            <div class="met-step-num">4</div>
+            <div class="met-step-icon">✅</div>
+            <h4>Provider review</h4>
+            <p>Brooke or Nicki reviews the draft, edits, approves. Only then does anything reach the patient. Sign-off is logged.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Compliance grid -->
+<div class="met-section">
+    <h3>Compliance posture</h3>
+    <div class="met-comp-grid">
+        <div class="met-comp">
+            <div class="met-comp-head">🔒 HIPAA</div>
+            <ul>
+                <li>BAAs signed with every vendor that touches PHI (AWS, Anthropic, transcription provider).</li>
+                <li>PHI stored only in HIPAA-eligible services (AWS HealthLake / S3 with encryption + audit).</li>
+                <li>De-identification before any cohort/analytics use (Safe Harbor method, 18 identifiers stripped).</li>
+                <li>Role-based access · audit logs on every read · session timeouts · MFA required.</li>
+                <li>Minimum-necessary principle: AI gets only the data it needs for the specific draft.</li>
+            </ul>
+        </div>
+        <div class="met-comp">
+            <div class="met-comp-head">💳 PCI</div>
+            <ul>
+                <li><strong>We don't touch payments.</strong> Avail keeps using their existing billing system.</li>
+                <li>PCI scope for this product = zero. If billing ever connects, it's via a tokenized handoff to a Level-1 PCI provider (Stripe, Square).</li>
+            </ul>
+        </div>
+        <div class="met-comp">
+            <div class="met-comp-head">📜 Consent</div>
+            <ul>
+                <li>One-page recording consent added to existing intake. Patient can opt out anytime.</li>
+                <li>De-identified cohort data only — patients are never identifiable in trend views.</li>
+                <li>Pilot starts with 5–10 patients who explicitly opt in. Easy to expand once Brooke is comfortable.</li>
+            </ul>
+        </div>
+        <div class="met-comp">
+            <div class="met-comp-head">🛟 Liability</div>
+            <ul>
+                <li>The system <strong>drafts</strong> — it does not prescribe. Provider sign-off is mandatory and logged.</li>
+                <li>All sources cited — Brooke can see exactly which past patient or note influenced the draft.</li>
+                <li>Watch-fors flagged automatically (drug interactions, abnormal labs, contraindications).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Phased rollout -->
+<div class="met-section">
+    <h3>Pilot path · low risk, fast to value</h3>
+    <div class="met-phases">
+        <div class="met-phase">
+            <div class="met-phase-tag" style="background: #dcfce7; color: #166534;">Phase 1 · Weeks 1–4</div>
+            <h4>Manual workflow pilot</h4>
+            <p>5 opted-in patients. Brooke records consult, uploads to intake form. Within 24 hours, AI returns draft protocol via secure email. <strong>No EMR integration. No live system. Just proof of value.</strong></p>
+            <div class="met-phase-cost">Investment: ~40 build hrs · ~$200/mo infra</div>
+        </div>
+        <div class="met-phase">
+            <div class="met-phase-tag" style="background: #dbeafe; color: #1e40af;">Phase 2 · Weeks 5–12</div>
+            <h4>Automated pipeline + cohort dashboard</h4>
+            <p>Direct upload from phone. Real-time draft (under 60 sec). Patient persona dashboard live. Brooke can pull protocols by cohort.</p>
+            <div class="met-phase-cost">Investment: ~120 build hrs · ~$400/mo infra (scales with usage)</div>
+        </div>
+        <div class="met-phase">
+            <div class="met-phase-tag" style="background: #fef3c7; color: #92400e;">Phase 3 · Optional</div>
+            <h4>EMR read-only integration</h4>
+            <p>If/when valuable: pull patient context from existing EMR via API (read-only, scoped). Still no EMR replacement. Brooke retains the system she already trusts.</p>
+            <div class="met-phase-cost">Investment: scoped after phase 2 results</div>
+        </div>
+    </div>
+</div>
+
+<!-- Tools used -->
+<div class="met-section">
+    <h3>Tools we'd use (HIPAA-eligible)</h3>
+    <div class="met-tools">
+        <div class="met-tool">
+            <strong>Anthropic Claude via AWS Bedrock</strong>
+            <span>LLM with BAA · the engine that drafts protocols</span>
+        </div>
+        <div class="met-tool">
+            <strong>AWS Transcribe Medical</strong>
+            <span>Medical-vocabulary speech-to-text · HIPAA-eligible</span>
+        </div>
+        <div class="met-tool">
+            <strong>AWS S3 + KMS</strong>
+            <span>Encrypted storage · audit-logged · BAA</span>
+        </div>
+        <div class="met-tool">
+            <strong>Pinecone (HIPAA-eligible tier) or pgvector</strong>
+            <span>De-identified embeddings for cohort matching</span>
+        </div>
+        <div class="met-tool">
+            <strong>Existing EMR</strong>
+            <span>Stays put · no replacement · optional read-only API later</span>
+        </div>
+        <div class="met-tool">
+            <strong>Existing billing</strong>
+            <span>Untouched · zero PCI scope</span>
+        </div>
+    </div>
+</div>
+
+<style>
+.met-hero { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+.met-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; }
+.met-section { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; }
+.met-section h3 { margin: 0 0 1.25rem 0; font-size: 1.15rem; color: #111827; }
+.met-flow { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
+.met-step { flex: 1; min-width: 200px; background: #f9fafb; border-radius: 12px; padding: 1.25rem; }
+.met-step-num { background: #111827; color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+.met-step-icon { font-size: 1.75rem; margin: 0.5rem 0; }
+.met-step h4 { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #111827; }
+.met-step p { margin: 0; font-size: 0.82rem; color: #4b5563; line-height: 1.5; }
+.met-arrow { display: flex; align-items: center; color: #9ca3af; font-size: 1.5rem; padding: 0 0.25rem; }
+.met-comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+.met-comp { background: #f9fafb; border-radius: 10px; padding: 1.25rem; }
+.met-comp-head { font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.met-comp ul { margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: #4b5563; line-height: 1.65; }
+.met-comp li { margin-bottom: 0.4rem; }
+.met-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+.met-phase { background: #f9fafb; border-radius: 10px; padding: 1.25rem; }
+.met-phase-tag { display: inline-block; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; margin-bottom: 0.5rem; }
+.met-phase h4 { margin: 0.25rem 0 0.5rem 0; font-size: 1rem; color: #111827; }
+.met-phase p { margin: 0; font-size: 0.85rem; color: #4b5563; line-height: 1.5; }
+.met-phase-cost { font-size: 0.78rem; color: #6b7280; margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px dashed #e5e7eb; font-weight: 500; }
+.met-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+.met-tool { background: #f9fafb; padding: 0.85rem 1rem; border-radius: 8px; }
+.met-tool strong { display: block; color: #111827; font-size: 0.9rem; margin-bottom: 2px; }
+.met-tool span { font-size: 0.8rem; color: #6b7280; }
+</style>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

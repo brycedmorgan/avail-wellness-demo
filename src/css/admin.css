@@ -946,3 +946,66 @@
     grid-template-columns: 1fr;
   }
 }
+/* === Pivot additions: nav sections, feature highlights === */
+.nav-section-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(255,255,255,0.45);
+  padding: 1rem 1.25rem 0.4rem 1.25rem;
+  font-weight: 700;
+}
+.nav-item-feature {
+  background: linear-gradient(90deg, rgba(139,92,246,0.18), transparent);
+  border-left: 3px solid #8b5cf6;
+}
+.nav-item-feature:hover {
+  background: linear-gradient(90deg, rgba(139,92,246,0.32), transparent);
+}
+.nav-new {
+  background: #8b5cf6;
+  color: white;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+  margin-left: auto;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.nav-item-external { opacity: 0.55; }
+.nav-item-external:hover { opacity: 0.85; }
+.nav-ext {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+
+/* Highlight banner used on admin dashboard */
+.feature-banner {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #0ea5e9 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 900px) { .feature-banner { grid-template-columns: 1fr; } }
+.feature-banner h2 { color: white; margin: 0.5rem 0; font-size: 1.5rem; }
+.feature-banner p { color: rgba(255,255,255,0.95); margin: 0; line-height: 1.55; }
+.feature-banner-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
+.feature-banner-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.feature-banner-card { background: rgba(255,255,255,0.13); padding: 1rem; border-radius: 10px; backdrop-filter: blur(4px); }
+.feature-banner-card a { color: white; text-decoration: none; display: block; }
+.feature-banner-card .fb-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.feature-banner-card .fb-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+.feature-banner-card .fb-desc { font-size: 0.78rem; opacity: 0.92; line-height: 1.4; }
+.feature-banner-card:hover { background: rgba(255,255,255,0.22); }

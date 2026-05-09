@@ -8,6 +8,7 @@ module.exports = function(eleventyConfig) {
   // Add data files
   eleventyConfig.addGlobalData("patient", require("./patient-data.json"));
   eleventyConfig.addGlobalData("adminData", require("./admin-data.json"));
+  eleventyConfig.addGlobalData("cohortData", require("./cohort-data.json"));
 
   // Date filter
   eleventyConfig.addFilter("dateFormat", function(date) {
@@ -20,8 +21,8 @@ module.exports = function(eleventyConfig) {
 
   // Trend arrow filter
   eleventyConfig.addFilter("trendArrow", function(trend) {
-    if (trend === "up") return "↗️";
-    if (trend === "down") return "↘️";
+    if (trend === "up") return "↗";
+    if (trend === "down") return "↘";
     return "→";
   });
 

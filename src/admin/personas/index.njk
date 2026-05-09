@@ -1,0 +1,132 @@
+---
+layout: admin.njk
+title: Patient Personas & Outcomes
+subtitle: Cohort trends across your patient base — what's working, for whom, and how well
+---
+
+<div class="per-hero">
+    <div>
+        <span class="per-pill">New • Outcome intelligence</span>
+        <h2 style="margin: 0.5rem 0; color: white;">Your data, organized into protocols that work.</h2>
+        <p style="color: rgba(255,255,255,0.92); margin: 0; max-width: 720px; line-height: 1.55;">
+            Every cohort below is built from <strong>your patients, your protocols, your outcomes</strong>. As Brooke and Nicki finalize protocols, the system learns which combinations move the needle for which presentations. Filter, compare, and use the top-performing protocol as the starting draft for new patients with the same profile.
+        </p>
+    </div>
+    <div class="per-stats">
+        <div class="per-stat"><div class="per-stat-num">{{ cohortData.cohorts | length }}</div><div class="per-stat-lbl">Cohorts</div></div>
+        <div class="per-stat"><div class="per-stat-num">156</div><div class="per-stat-lbl">Patients tracked</div></div>
+        <div class="per-stat"><div class="per-stat-num">91%</div><div class="per-stat-lbl">Avg adherence</div></div>
+    </div>
+</div>
+
+<div class="per-grid">
+    {% for cohort in cohortData.cohorts %}
+    <div class="per-card" style="border-top: 4px solid {{ cohort.color }};">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: {{ cohort.color }}1a; color: {{ cohort.color }};">{{ cohort.icon }}</div>
+            <div>
+                <div class="per-name">{{ cohort.name }}</div>
+                <div class="per-count">{{ cohort.patientCount }} patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">{{ cohort.topProtocol.effectivenessScore }}</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">{{ cohort.summary }}</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">{{ cohort.outcomes.primary.label }}</div>
+            <div class="per-primary-val" style="color: {{ cohort.color }};">{{ cohort.outcomes.primary.value }}</div>
+            <div class="per-primary-meta">{{ cohort.outcomes.primary.from }} → {{ cohort.outcomes.primary.to }} · over {{ cohort.outcomes.primary.weeks }} wks</div>
+        </div>
+
+        <div class="per-secondary">
+            {% for s in cohort.outcomes.secondary %}
+            <div class="per-sec-cell">
+                <div class="per-sec-val">{{ s.value }}</div>
+                <div class="per-sec-lbl">{{ s.label }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> {{ cohort.topProtocol.name }}</span>
+                <span class="per-conf">{{ cohort.topProtocol.confidence }}</span>
+            </summary>
+            <ul class="per-protocol-list">
+                {% for t in cohort.topProtocol.treatments %}
+                <li><span class="per-cat-tag">{{ t.type }}</span> {{ t.detail }}</li>
+                {% endfor %}
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="per-cta">
+    <h3>What this enables</h3>
+    <div class="per-cta-grid">
+        <div>
+            <div class="per-cta-icon">🎯</div>
+            <h4>Faster, more confident protocols</h4>
+            <p>New patient looks like a perimenopause cohort? Start with the protocol that worked for 38 patients before her. Provider always reviews and adjusts.</p>
+        </div>
+        <div>
+            <div class="per-cta-icon">📈</div>
+            <h4>Continuous learning</h4>
+            <p>As outcomes come in, the system updates "what's working" — including subtle differences (BMI, age, comorbidities) that shift the recommendation.</p>
+        </div>
+        <div>
+            <div class="per-cta-icon">💬</div>
+            <h4>Better patient conversations</h4>
+            <p>"Patients with your exact profile typically see X improvement in Y weeks on this protocol" — backed by your actual outcome data.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.per-hero { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%); color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.per-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; }
+.per-stats { display: flex; gap: 1rem; align-items: center; }
+.per-stat { background: rgba(255,255,255,0.15); padding: 1rem 1.25rem; border-radius: 12px; text-align: center; min-width: 90px; }
+.per-stat-num { font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.per-stat-lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-top: 4px; }
+.per-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+.per-card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; }
+.per-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.per-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.per-name { font-weight: 600; font-size: 1.05rem; color: #111827; }
+.per-count { font-size: 0.8rem; color: #6b7280; margin-top: 2px; }
+.per-score { margin-left: auto; text-align: center; background: #f3f4f6; padding: 0.5rem 0.75rem; border-radius: 10px; }
+.per-score-num { font-size: 1.4rem; font-weight: 700; color: #111827; line-height: 1; }
+.per-score-lbl { font-size: 0.7rem; color: #6b7280; margin-top: 2px; }
+.per-summary { font-size: 0.85rem; color: #4b5563; line-height: 1.5; margin: 0 0 1rem 0; }
+.per-primary { background: #f9fafb; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+.per-primary-lbl { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+.per-primary-val { font-size: 1.75rem; font-weight: 700; line-height: 1.1; margin: 0.25rem 0; }
+.per-primary-meta { font-size: 0.78rem; color: #6b7280; }
+.per-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+.per-sec-cell { background: #f9fafb; padding: 0.5rem 0.65rem; border-radius: 6px; }
+.per-sec-val { font-weight: 600; color: #111827; font-size: 0.9rem; }
+.per-sec-lbl { font-size: 0.72rem; color: #6b7280; margin-top: 2px; }
+.per-protocol { border-top: 1px solid #f3f4f6; padding-top: 0.75rem; }
+.per-protocol summary { cursor: pointer; font-size: 0.85rem; color: #111827; display: flex; justify-content: space-between; gap: 0.5rem; }
+.per-conf { font-size: 0.7rem; color: #6b7280; font-weight: 500; }
+.per-protocol-list { margin: 0.75rem 0 0.75rem 0; padding-left: 0; list-style: none; font-size: 0.82rem; color: #4b5563; line-height: 1.6; }
+.per-protocol-list li { padding: 0.3rem 0; border-bottom: 1px dashed #f3f4f6; }
+.per-cat-tag { display: inline-block; font-size: 0.65rem; background: #e5e7eb; color: #374151; padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 0.5rem; font-weight: 600; }
+.per-protocol-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.per-cta { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; }
+.per-cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.per-cta-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.per-cta h4 { margin: 0 0 0.5rem 0; font-size: 1rem; color: #111827; }
+.per-cta p { margin: 0; font-size: 0.88rem; color: #4b5563; line-height: 1.55; }
+.btn-sm { padding: 0.4rem 0.85rem; font-size: 0.82rem; }
+</style>

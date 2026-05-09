@@ -1,0 +1,198 @@
+---
+layout: admin.njk
+title: AI Protocol Builder
+subtitle: Draft data-backed protocols from consult recordings, notes, and cohort outcomes
+---
+
+{% set demo = cohortData.protocolBuilderDemo %}
+{% set cohort = cohortData.cohorts | selectattr("id", "equalto", demo.matchedCohort) | first %}
+
+<div class="pb-hero">
+    <div class="pb-hero-text">
+        <span class="pb-pill">New • AI-assisted</span>
+        <h2 style="margin: 0.5rem 0 0.5rem 0;">From consult recording to draft protocol in &lt; 60 seconds.</h2>
+        <p class="pb-hero-sub">Upload (or auto-import) a consult recording and prior notes. The system transcribes, matches the patient against cohorts of similar patients you've already treated, and drafts a starting protocol with rationale and source citations. <strong>Brooke and Nicki review and approve — nothing reaches the patient without sign-off.</strong></p>
+    </div>
+</div>
+
+<!-- Stage indicator -->
+<div class="pb-stages">
+    <div class="pb-stage done"><span class="pb-stage-num">1</span> Capture</div>
+    <div class="pb-stage done"><span class="pb-stage-num">2</span> Transcribe + extract</div>
+    <div class="pb-stage done"><span class="pb-stage-num">3</span> Cohort match</div>
+    <div class="pb-stage active"><span class="pb-stage-num">4</span> Draft protocol</div>
+    <div class="pb-stage"><span class="pb-stage-num">5</span> Provider review</div>
+</div>
+
+<div class="pb-grid">
+    <!-- LEFT: Inputs -->
+    <div class="pb-col">
+        <div class="pb-card">
+            <h3 class="pb-card-title">📥 Inputs (auto-collected)</h3>
+            <div class="pb-input-row">
+                <div class="pb-input-icon">🎙️</div>
+                <div>
+                    <div class="pb-input-label">Consult recording — 38 min</div>
+                    <div class="pb-input-meta">Uploaded {{ demo.samplePatient.intakeDate | dateFormat }} · transcribed via HIPAA-compliant service</div>
+                </div>
+                <span class="pb-status-ok">✓</span>
+            </div>
+            <div class="pb-input-row">
+                <div class="pb-input-icon">📝</div>
+                <div>
+                    <div class="pb-input-label">Prior F/U notes (3 visits)</div>
+                    <div class="pb-input-meta">Pulled from existing EMR via secure import</div>
+                </div>
+                <span class="pb-status-ok">✓</span>
+            </div>
+            <div class="pb-input-row">
+                <div class="pb-input-icon">🧪</div>
+                <div>
+                    <div class="pb-input-label">Latest lab panel</div>
+                    <div class="pb-input-meta">Access Medical Labs · 7 markers parsed</div>
+                </div>
+                <span class="pb-status-ok">✓</span>
+            </div>
+            <div class="pb-input-row">
+                <div class="pb-input-icon">📊</div>
+                <div>
+                    <div class="pb-input-label">Body comp + vitals</div>
+                    <div class="pb-input-meta">DEXA from {{ demo.samplePatient.intakeDate | dateFormat }}</div>
+                </div>
+                <span class="pb-status-ok">✓</span>
+            </div>
+        </div>
+
+        <div class="pb-card">
+            <h3 class="pb-card-title">👤 Patient snapshot</h3>
+            <div class="pb-patient-name">{{ demo.samplePatient.name }} · {{ demo.samplePatient.age }} · ID {{ demo.samplePatient.id }}</div>
+            <p class="pb-presenting"><strong>Presenting:</strong> {{ demo.samplePatient.presentingConcern }}</p>
+            <div class="pb-lab-grid">
+                {% for k, v in demo.samplePatient.labSnapshot %}
+                <div class="pb-lab-cell">
+                    <div class="pb-lab-key">{{ k }}</div>
+                    <div class="pb-lab-val">{{ v }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="pb-card pb-cohort-card" style="border-left: 4px solid {{ cohort.color }};">
+            <div class="pb-cohort-header">
+                <span class="pb-cohort-icon" style="background: {{ cohort.color }}22; color: {{ cohort.color }};">{{ cohort.icon }}</span>
+                <div>
+                    <div class="pb-cohort-eyebrow">Best-match cohort</div>
+                    <div class="pb-cohort-name">{{ cohort.name }}</div>
+                    <div class="pb-cohort-meta">{{ cohort.patientCount }} similar patients · top protocol score {{ cohort.topProtocol.effectivenessScore }}/100</div>
+                </div>
+            </div>
+            <p class="pb-cohort-summary">{{ cohort.summary }}</p>
+            <a href="/admin/personas/" class="pb-link">View full cohort →</a>
+        </div>
+    </div>
+
+    <!-- RIGHT: Draft protocol -->
+    <div class="pb-col">
+        <div class="pb-card pb-draft-card">
+            <div class="pb-draft-header">
+                <h3 class="pb-card-title" style="margin: 0;">✨ Draft protocol</h3>
+                <span class="pb-draft-badge">AI draft · awaiting provider review</span>
+            </div>
+
+            <div class="pb-section">
+                <div class="pb-section-label">Working diagnosis</div>
+                <p class="pb-diagnosis">{{ demo.draftProtocol.diagnosis }}</p>
+            </div>
+
+            <div class="pb-section">
+                <div class="pb-section-label">Recommended plan</div>
+                {% for item in demo.draftProtocol.treatmentPlan %}
+                <div class="pb-plan-item">
+                    <div class="pb-plan-cat">{{ item.category }}</div>
+                    <div class="pb-plan-detail">
+                        <div class="pb-plan-title">{{ item.item }}</div>
+                        <div class="pb-plan-rationale">↳ {{ item.rationale }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="pb-section pb-expected">
+                <div class="pb-section-label">Expected outcome</div>
+                <p>{{ demo.draftProtocol.expectedOutcome }}</p>
+            </div>
+
+            <div class="pb-section pb-redflag">
+                <div class="pb-section-label">⚠ Watch-fors</div>
+                <p>{{ demo.draftProtocol.redFlags }}</p>
+            </div>
+
+            <div class="pb-section">
+                <div class="pb-section-label">📚 Sources cited</div>
+                <ul class="pb-sources">
+                    {% for s in demo.draftProtocol.sources %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="pb-actions">
+                <button class="btn btn-primary">Approve & send to patient</button>
+                <button class="btn btn-outline">Edit draft</button>
+                <button class="btn btn-outline">Request second opinion</button>
+            </div>
+            <p class="pb-disclaimer">Provider must review and approve. Draft is generated from de-identified pattern matching; no protocol reaches the patient without provider sign-off.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.pb-hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+.pb-hero h2 { color: white; }
+.pb-hero-sub { color: rgba(255,255,255,0.92); margin: 0; line-height: 1.55; }
+.pb-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; }
+.pb-stages { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.pb-stage { flex: 1; min-width: 140px; background: #f3f4f6; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; color: #6b7280; display: flex; align-items: center; gap: 0.5rem; }
+.pb-stage.done { background: #dcfce7; color: #166534; }
+.pb-stage.active { background: #dbeafe; color: #1e40af; font-weight: 600; box-shadow: 0 0 0 2px #3b82f6; }
+.pb-stage-num { background: rgba(0,0,0,0.1); width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem; }
+.pb-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 1.5rem; }
+@media (max-width: 1100px) { .pb-grid { grid-template-columns: 1fr; } }
+.pb-col { display: flex; flex-direction: column; gap: 1.25rem; }
+.pb-card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.25rem 1.5rem; }
+.pb-card-title { font-size: 1rem; margin: 0 0 1rem 0; color: #111827; }
+.pb-input-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 0; border-bottom: 1px solid #f3f4f6; }
+.pb-input-row:last-child { border-bottom: none; }
+.pb-input-icon { font-size: 1.25rem; width: 36px; height: 36px; border-radius: 8px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.pb-input-label { font-weight: 500; color: #111827; font-size: 0.9rem; }
+.pb-input-meta { font-size: 0.78rem; color: #6b7280; margin-top: 2px; }
+.pb-status-ok { margin-left: auto; color: #16a34a; font-weight: 700; font-size: 1.1rem; }
+.pb-patient-name { font-weight: 600; font-size: 1.05rem; color: #111827; margin-bottom: 0.4rem; }
+.pb-presenting { color: #4b5563; font-size: 0.88rem; line-height: 1.5; margin: 0 0 1rem 0; }
+.pb-lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.pb-lab-cell { background: #f9fafb; padding: 0.5rem 0.75rem; border-radius: 6px; }
+.pb-lab-key { font-size: 0.72rem; color: #6b7280; text-transform: capitalize; letter-spacing: 0.3px; }
+.pb-lab-val { font-size: 0.85rem; color: #111827; font-weight: 500; }
+.pb-cohort-header { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.75rem; }
+.pb-cohort-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.pb-cohort-eyebrow { font-size: 0.7rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; }
+.pb-cohort-name { font-weight: 600; color: #111827; font-size: 1rem; }
+.pb-cohort-meta { font-size: 0.78rem; color: #6b7280; margin-top: 2px; }
+.pb-cohort-summary { font-size: 0.85rem; color: #4b5563; line-height: 1.5; margin: 0 0 0.5rem 0; }
+.pb-link { color: #3b82f6; font-size: 0.85rem; font-weight: 500; text-decoration: none; }
+.pb-draft-card { border-left: 4px solid #8b5cf6; }
+.pb-draft-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.pb-draft-badge { background: #ede9fe; color: #6d28d9; font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 600; }
+.pb-section { margin-bottom: 1.25rem; }
+.pb-section-label { font-size: 0.72rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; font-weight: 600; }
+.pb-diagnosis { background: #fef3c7; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem; color: #78350f; line-height: 1.5; margin: 0; }
+.pb-plan-item { display: grid; grid-template-columns: 100px 1fr; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px dashed #f3f4f6; }
+.pb-plan-cat { font-size: 0.72rem; color: #6b7280; text-transform: uppercase; font-weight: 600; padding-top: 2px; }
+.pb-plan-title { font-size: 0.88rem; color: #111827; font-weight: 500; line-height: 1.4; }
+.pb-plan-rationale { font-size: 0.78rem; color: #6b7280; margin-top: 3px; line-height: 1.4; }
+.pb-expected p { background: #ecfdf5; padding: 0.65rem 1rem; border-radius: 8px; font-size: 0.85rem; color: #065f46; margin: 0; line-height: 1.5; }
+.pb-redflag p { background: #fef2f2; padding: 0.65rem 1rem; border-radius: 8px; font-size: 0.85rem; color: #991b1b; margin: 0; line-height: 1.5; }
+.pb-sources { margin: 0; padding-left: 1.25rem; font-size: 0.82rem; color: #4b5563; line-height: 1.6; }
+.pb-actions { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.pb-disclaimer { font-size: 0.75rem; color: #6b7280; margin-top: 0.75rem; line-height: 1.4; font-style: italic; }
+</style>

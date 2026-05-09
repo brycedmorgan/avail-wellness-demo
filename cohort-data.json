@@ -1,0 +1,191 @@
+{
+  "cohorts": [
+    {
+      "id": "low-t-male",
+      "name": "Low Testosterone (Male)",
+      "icon": "♂",
+      "patientCount": 47,
+      "color": "#3B82F6",
+      "summary": "Men 35-65 presenting with fatigue, low libido, body comp changes. Total T <400 ng/dL at intake.",
+      "outcomes": {
+        "primary": { "label": "Avg Total T Increase", "value": "+204%", "from": "292", "to": "887 ng/dL", "weeks": 12 },
+        "secondary": [
+          { "label": "Avg Lean Mass Gained", "value": "+8.4 lbs" },
+          { "label": "Avg Body Fat Reduction", "value": "-7.2%" },
+          { "label": "Energy Score Improvement", "value": "+4.1 / 5" },
+          { "label": "Adherence Rate", "value": "91%" }
+        ]
+      },
+      "topProtocol": {
+        "name": "Pellet + Foundation Stack",
+        "treatments": [
+          { "type": "Treatment", "detail": "Testosterone pellet implant (3-6 mo duration)" },
+          { "type": "Supplement", "detail": "Tongkat Ali 2 caps AM" },
+          { "type": "Supplement", "detail": "Vitamin D3/K2 1 cap AM" },
+          { "type": "Supplement", "detail": "Zinc + Magnesium PM" },
+          { "type": "Lifestyle", "detail": "Resistance training 4x/week, 7+ hr sleep target" }
+        ],
+        "effectivenessScore": 94,
+        "confidence": "High (n=47, p<0.01)"
+      },
+      "samplePatients": ["Bryce Morgan", "Michael Johnson", "Mark Rodriguez"]
+    },
+    {
+      "id": "perimenopause",
+      "name": "Perimenopause",
+      "icon": "🌸",
+      "patientCount": 38,
+      "color": "#EC4899",
+      "summary": "Women 40-55 with irregular cycles, sleep disruption, weight gain, mood changes. Estradiol fluctuating, low progesterone.",
+      "outcomes": {
+        "primary": { "label": "Avg Symptom Score Reduction", "value": "-68%", "from": "Severe", "to": "Mild/Resolved", "weeks": 16 },
+        "secondary": [
+          { "label": "Sleep Quality Score", "value": "+3.6 / 5" },
+          { "label": "Avg Weight Loss", "value": "-12 lbs" },
+          { "label": "Hot Flash Frequency", "value": "-82%" },
+          { "label": "Adherence Rate", "value": "94%" }
+        ]
+      },
+      "topProtocol": {
+        "name": "Bioidentical HRT + Metabolic Support",
+        "treatments": [
+          { "type": "Treatment", "detail": "Estradiol pellet + oral progesterone (cyclic)" },
+          { "type": "Supplement", "detail": "Magnesium glycinate 400mg PM" },
+          { "type": "Supplement", "detail": "Omega-3 2g/day" },
+          { "type": "Treatment", "detail": "Tirzepatide (low-dose) for metabolic patients" },
+          { "type": "Lifestyle", "detail": "Strength training, protein 1g/lb lean mass" }
+        ],
+        "effectivenessScore": 91,
+        "confidence": "High (n=38, p<0.01)"
+      },
+      "samplePatients": ["Jennifer Smith", "Sarah Williams"]
+    },
+    {
+      "id": "pcos",
+      "name": "PCOS",
+      "icon": "🩺",
+      "patientCount": 23,
+      "color": "#8B5CF6",
+      "summary": "Women 25-40 with insulin resistance, irregular cycles, hyperandrogenism. Goal: metabolic + hormonal balance.",
+      "outcomes": {
+        "primary": { "label": "Avg A1C Reduction", "value": "-0.6%", "from": "5.9%", "to": "5.3%", "weeks": 20 },
+        "secondary": [
+          { "label": "Cycle Regularity", "value": "+76% cycles regular" },
+          { "label": "Avg Weight Loss", "value": "-18 lbs" },
+          { "label": "Free T Reduction", "value": "-34%" },
+          { "label": "Adherence Rate", "value": "88%" }
+        ]
+      },
+      "topProtocol": {
+        "name": "Insulin-Sensitizing + Anti-Androgen Stack",
+        "treatments": [
+          { "type": "Supplement", "detail": "Inositol (Myo + D-Chiro 40:1) 4g/day" },
+          { "type": "Treatment", "detail": "Metformin 500mg BID" },
+          { "type": "Treatment", "detail": "Tirzepatide (escalating dose) for BMI >30" },
+          { "type": "Supplement", "detail": "Vitamin D3 5000 IU, Berberine 500mg TID" },
+          { "type": "Lifestyle", "detail": "Low-glycemic diet, 150 min/week zone 2 cardio" }
+        ],
+        "effectivenessScore": 87,
+        "confidence": "Moderate (n=23, p<0.05)"
+      },
+      "samplePatients": ["Amanda Taylor"]
+    },
+    {
+      "id": "weight-loss",
+      "name": "Metabolic / Weight Loss",
+      "icon": "⚖",
+      "patientCount": 31,
+      "color": "#10B981",
+      "summary": "Patients with BMI 28-40, insulin resistance, prior failed diets. GLP-1 + lifestyle protocols.",
+      "outcomes": {
+        "primary": { "label": "Avg Weight Loss", "value": "-19.4%", "from": "228 lbs", "to": "184 lbs", "weeks": 24 },
+        "secondary": [
+          { "label": "Avg Body Fat Reduction", "value": "-9.1%" },
+          { "label": "Lean Mass Preserved", "value": "92%" },
+          { "label": "A1C Reduction", "value": "-0.5%" },
+          { "label": "Adherence Rate", "value": "89%" }
+        ]
+      },
+      "topProtocol": {
+        "name": "GLP-1 + Protein-Forward Lifestyle",
+        "treatments": [
+          { "type": "Treatment", "detail": "Tirzepatide titrated 2.5 to 10 mg weekly" },
+          { "type": "Supplement", "detail": "Whey protein 1g/lb lean mass target" },
+          { "type": "Supplement", "detail": "Multivitamin + B12, Omega-3" },
+          { "type": "Lifestyle", "detail": "Resistance training 3x/week (lean mass preservation)" },
+          { "type": "Monitoring", "detail": "Monthly DEXA, weekly weight + waist" }
+        ],
+        "effectivenessScore": 92,
+        "confidence": "High (n=31, p<0.01)"
+      },
+      "samplePatients": ["Sarah Williams", "Lisa Garcia"]
+    },
+    {
+      "id": "thyroid",
+      "name": "Subclinical Hypothyroid",
+      "icon": "🦋",
+      "patientCount": 17,
+      "color": "#F59E0B",
+      "summary": "TSH elevated with normal-low free T4/T3. Symptoms: fatigue, cold intolerance, hair loss, weight retention.",
+      "outcomes": {
+        "primary": { "label": "Avg TSH Normalization", "value": "94%", "from": "5.8 mIU/L", "to": "1.9 mIU/L", "weeks": 14 },
+        "secondary": [
+          { "label": "Energy Score Improvement", "value": "+3.4 / 5" },
+          { "label": "Weight Loss", "value": "-7 lbs avg" },
+          { "label": "Reverse T3 Reduction", "value": "-22%" },
+          { "label": "Adherence Rate", "value": "96%" }
+        ]
+      },
+      "topProtocol": {
+        "name": "NDT + Cofactor Support",
+        "treatments": [
+          { "type": "Treatment", "detail": "NP Thyroid 30-60mg titrated to symptoms + labs" },
+          { "type": "Supplement", "detail": "Selenium 200mcg, Iodine (low-dose), Iron if low ferritin" },
+          { "type": "Supplement", "detail": "Vitamin D3, B-complex" },
+          { "type": "Monitoring", "detail": "TSH/fT3/fT4/rT3 q6 weeks until stable" }
+        ],
+        "effectivenessScore": 89,
+        "confidence": "Moderate (n=17, p<0.05)"
+      },
+      "samplePatients": []
+    }
+  ],
+  "protocolBuilderDemo": {
+    "samplePatient": {
+      "name": "Jennifer Smith",
+      "age": 42,
+      "id": "P002",
+      "presentingConcern": "Worsening fatigue, sleep disruption, 8lb weight gain over 6mo, cycle irregularity",
+      "intakeDate": "2026-04-12",
+      "labSnapshot": {
+        "estradiol": "52 pg/mL (fluctuating)",
+        "progesterone": "1.8 ng/mL (low for luteal)",
+        "fsh": "18 mIU/mL (elevated)",
+        "tsh": "2.4 (normal)",
+        "freeTestosterone": "1.2 ng/dL (low-normal)",
+        "a1c": "5.5%",
+        "vitaminD": "28 ng/mL (low)"
+      }
+    },
+    "matchedCohort": "perimenopause",
+    "draftProtocol": {
+      "diagnosis": "Perimenopausal symptom cluster with low progesterone and Vitamin D insufficiency. Differential: subclinical insulin resistance given borderline A1C.",
+      "treatmentPlan": [
+        { "category": "Hormone", "item": "Estradiol pellet 75mg + oral micronized progesterone 100mg PM (cyclic days 14-28)", "rationale": "Matches top-effectiveness protocol from 38 perimenopause patients with symptom score -68%" },
+        { "category": "Supplement", "item": "Vitamin D3/K2 5000 IU AM (target 50-80 ng/mL)", "rationale": "Low at 28; correlates with sleep + mood improvements" },
+        { "category": "Supplement", "item": "Magnesium glycinate 400mg PM", "rationale": "Sleep support, common in perimenopause cohort" },
+        { "category": "Supplement", "item": "Omega-3 2g/day", "rationale": "Cardio-metabolic protective, mild mood benefit" },
+        { "category": "Lifestyle", "item": "Strength training 3x/wk + protein 100g/day", "rationale": "Lean mass preservation (cohort avg -1.2 lbs LBM if not addressed)" },
+        { "category": "Monitoring", "item": "Recheck full panel + A1C at 12 weeks", "rationale": "Standard cohort follow-up cadence" }
+      ],
+      "expectedOutcome": "Based on 38-patient cohort: symptom score -68% by week 16, sleep +3.6/5, weight stabilization or -8 to -12 lbs.",
+      "redFlags": "If A1C trends upward at 12wk recheck, consider adding metabolic cohort protocol overlay (low-dose tirzepatide).",
+      "sources": [
+        "F/U notes from prior consult (2026-03-20) -- patient mentioned worsening sleep",
+        "Cohort: Perimenopause (n=38, top-effectiveness protocol, score 91)",
+        "Lab trend: rising FSH consistent with late-stage perimenopause",
+        "Brooke's prior protocol for similar patient (Sarah Williams, P004) -- modified for lower BMI"
+      ]
+    }
+  }
+}

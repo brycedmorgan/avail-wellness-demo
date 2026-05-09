@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Personas &amp; Outcomes - Avail Wellness Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/avail-brand.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-theme">
+    <div class="admin-container">
+        <!-- Admin Navigation -->
+        <nav class="admin-sidebar">
+            <div class="logo">
+                <img src="/images/avail-logo-real.png" alt="Avail Wellness" class="logo-img">
+                <div class="logo-text">
+                    <span class="admin-badge">Provider Portal</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="/admin/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    </svg>
+                    Dashboard
+                </a>
+
+                <div class="nav-section-label">AI Tools</div>
+
+                <a href="/admin/protocol-builder/" class="nav-item nav-item-feature ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Protocol Builder
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/personas/" class="nav-item nav-item-feature active">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                    Patient Personas
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/method/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                    How It Works
+                </a>
+
+                <div class="nav-section-label">Patient Care</div>
+
+                <a href="/admin/patients/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63c-.34-1.02-1.3-1.74-2.46-1.74s-2.12.72-2.46 1.74L12.5 16H15v6h5zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 9.5v7h2v7h4v-7h2v-7C10 8.67 9.33 8 8.5 8z"/>
+                    </svg>
+                    Patients
+                </a>
+                <a href="/admin/labs/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 2v3h2V2h2v3h2V2h2v5H7V2h2zm8 8.5c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1zM9 12c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/>
+                    </svg>
+                    Labs &amp; Results
+                </a>
+                <a href="/admin/analytics/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/>
+                    </svg>
+                    Analytics
+                </a>
+
+                <div class="nav-section-label">Existing systems</div>
+                <a href="/admin/appointments/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    Calendar <span class="nav-ext">EMR</span>
+                </a>
+                <a href="/admin/billing/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    Billing <span class="nav-ext">EMR</span>
+                </a>
+            </div>
+            
+            <div class="nav-footer">
+                <div class="admin-profile">
+                    <div class="user-avatar provider">BW</div>
+                    <div class="user-info">
+                        <div class="user-name">Brooke Welsh</div>
+                        <div class="user-role">Provider • Admin</div>
+                    </div>
+                </div>
+                <div class="portal-switch">
+                    <a href="/" class="switch-link">
+                        <svg class="switch-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6C15 7.1 14.1 8 13 8H11C9.9 8 9 7.1 9 6V4L3 7V9H21ZM22 16C22 17.1 21.1 18 20 18H4C2.9 18 2 17.1 2 16V10H22V16Z"/>
+                        </svg>
+                        View Patient Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Admin Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <div class="admin-welcome">Provider Dashboard — Brooke Welsh, WHNP</div>
+                        <h1>Patient Personas &amp; Outcomes</h1>
+                        
+                        <p class="header-subtitle">Cohort trends across your patient base — what&#39;s working, for whom, and how well</p>
+                        
+                    </div>
+                    <div class="header-actions">
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">156</span>
+                                <span class="stat-label">Active Patients</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Cohorts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="admin-content">
+                
+<div class="per-hero">
+    <div>
+        <span class="per-pill">New • Outcome intelligence</span>
+        <h2 style="margin: 0.5rem 0; color: white;">Your data, organized into protocols that work.</h2>
+        <p style="color: rgba(255,255,255,0.92); margin: 0; max-width: 720px; line-height: 1.55;">
+            Every cohort below is built from <strong>your patients, your protocols, your outcomes</strong>. As Brooke and Nicki finalize protocols, the system learns which combinations move the needle for which presentations. Filter, compare, and use the top-performing protocol as the starting draft for new patients with the same profile.
+        </p>
+    </div>
+    <div class="per-stats">
+        <div class="per-stat"><div class="per-stat-num">5</div><div class="per-stat-lbl">Cohorts</div></div>
+        <div class="per-stat"><div class="per-stat-num">156</div><div class="per-stat-lbl">Patients tracked</div></div>
+        <div class="per-stat"><div class="per-stat-num">91%</div><div class="per-stat-lbl">Avg adherence</div></div>
+    </div>
+</div>
+
+<div class="per-grid">
+    
+    <div class="per-card" style="border-top: 4px solid #3B82F6;">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: #3B82F61a; color: #3B82F6;">♂</div>
+            <div>
+                <div class="per-name">Low Testosterone (Male)</div>
+                <div class="per-count">47 patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">94</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">Men 35-65 presenting with fatigue, low libido, body comp changes. Total T &lt;400 ng/dL at intake.</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">Avg Total T Increase</div>
+            <div class="per-primary-val" style="color: #3B82F6;">+204%</div>
+            <div class="per-primary-meta">292 → 887 ng/dL · over 12 wks</div>
+        </div>
+
+        <div class="per-secondary">
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">+8.4 lbs</div>
+                <div class="per-sec-lbl">Avg Lean Mass Gained</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-7.2%</div>
+                <div class="per-sec-lbl">Avg Body Fat Reduction</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">+4.1 / 5</div>
+                <div class="per-sec-lbl">Energy Score Improvement</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">91%</div>
+                <div class="per-sec-lbl">Adherence Rate</div>
+            </div>
+            
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> Pellet + Foundation Stack</span>
+                <span class="per-conf">High (n=47, p&lt;0.01)</span>
+            </summary>
+            <ul class="per-protocol-list">
+                
+                <li><span class="per-cat-tag">Treatment</span> Testosterone pellet implant (3-6 mo duration)</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Tongkat Ali 2 caps AM</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Vitamin D3/K2 1 cap AM</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Zinc + Magnesium PM</li>
+                
+                <li><span class="per-cat-tag">Lifestyle</span> Resistance training 4x/week, 7+ hr sleep target</li>
+                
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    
+    <div class="per-card" style="border-top: 4px solid #EC4899;">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: #EC48991a; color: #EC4899;">🌸</div>
+            <div>
+                <div class="per-name">Perimenopause</div>
+                <div class="per-count">38 patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">91</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">Women 40-55 with irregular cycles, sleep disruption, weight gain, mood changes. Estradiol fluctuating, low progesterone.</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">Avg Symptom Score Reduction</div>
+            <div class="per-primary-val" style="color: #EC4899;">-68%</div>
+            <div class="per-primary-meta">Severe → Mild/Resolved · over 16 wks</div>
+        </div>
+
+        <div class="per-secondary">
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">+3.6 / 5</div>
+                <div class="per-sec-lbl">Sleep Quality Score</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-12 lbs</div>
+                <div class="per-sec-lbl">Avg Weight Loss</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-82%</div>
+                <div class="per-sec-lbl">Hot Flash Frequency</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">94%</div>
+                <div class="per-sec-lbl">Adherence Rate</div>
+            </div>
+            
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> Bioidentical HRT + Metabolic Support</span>
+                <span class="per-conf">High (n=38, p&lt;0.01)</span>
+            </summary>
+            <ul class="per-protocol-list">
+                
+                <li><span class="per-cat-tag">Treatment</span> Estradiol pellet + oral progesterone (cyclic)</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Magnesium glycinate 400mg PM</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Omega-3 2g/day</li>
+                
+                <li><span class="per-cat-tag">Treatment</span> Tirzepatide (low-dose) for metabolic patients</li>
+                
+                <li><span class="per-cat-tag">Lifestyle</span> Strength training, protein 1g/lb lean mass</li>
+                
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    
+    <div class="per-card" style="border-top: 4px solid #8B5CF6;">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: #8B5CF61a; color: #8B5CF6;">🩺</div>
+            <div>
+                <div class="per-name">PCOS</div>
+                <div class="per-count">23 patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">87</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">Women 25-40 with insulin resistance, irregular cycles, hyperandrogenism. Goal: metabolic + hormonal balance.</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">Avg A1C Reduction</div>
+            <div class="per-primary-val" style="color: #8B5CF6;">-0.6%</div>
+            <div class="per-primary-meta">5.9% → 5.3% · over 20 wks</div>
+        </div>
+
+        <div class="per-secondary">
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">+76% cycles regular</div>
+                <div class="per-sec-lbl">Cycle Regularity</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-18 lbs</div>
+                <div class="per-sec-lbl">Avg Weight Loss</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-34%</div>
+                <div class="per-sec-lbl">Free T Reduction</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">88%</div>
+                <div class="per-sec-lbl">Adherence Rate</div>
+            </div>
+            
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> Insulin-Sensitizing + Anti-Androgen Stack</span>
+                <span class="per-conf">Moderate (n=23, p&lt;0.05)</span>
+            </summary>
+            <ul class="per-protocol-list">
+                
+                <li><span class="per-cat-tag">Supplement</span> Inositol (Myo + D-Chiro 40:1) 4g/day</li>
+                
+                <li><span class="per-cat-tag">Treatment</span> Metformin 500mg BID</li>
+                
+                <li><span class="per-cat-tag">Treatment</span> Tirzepatide (escalating dose) for BMI &gt;30</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Vitamin D3 5000 IU, Berberine 500mg TID</li>
+                
+                <li><span class="per-cat-tag">Lifestyle</span> Low-glycemic diet, 150 min/week zone 2 cardio</li>
+                
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    
+    <div class="per-card" style="border-top: 4px solid #10B981;">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: #10B9811a; color: #10B981;">⚖</div>
+            <div>
+                <div class="per-name">Metabolic / Weight Loss</div>
+                <div class="per-count">31 patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">92</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">Patients with BMI 28-40, insulin resistance, prior failed diets. GLP-1 + lifestyle protocols.</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">Avg Weight Loss</div>
+            <div class="per-primary-val" style="color: #10B981;">-19.4%</div>
+            <div class="per-primary-meta">228 lbs → 184 lbs · over 24 wks</div>
+        </div>
+
+        <div class="per-secondary">
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-9.1%</div>
+                <div class="per-sec-lbl">Avg Body Fat Reduction</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">92%</div>
+                <div class="per-sec-lbl">Lean Mass Preserved</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-0.5%</div>
+                <div class="per-sec-lbl">A1C Reduction</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">89%</div>
+                <div class="per-sec-lbl">Adherence Rate</div>
+            </div>
+            
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> GLP-1 + Protein-Forward Lifestyle</span>
+                <span class="per-conf">High (n=31, p&lt;0.01)</span>
+            </summary>
+            <ul class="per-protocol-list">
+                
+                <li><span class="per-cat-tag">Treatment</span> Tirzepatide titrated 2.5 to 10 mg weekly</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Whey protein 1g/lb lean mass target</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Multivitamin + B12, Omega-3</li>
+                
+                <li><span class="per-cat-tag">Lifestyle</span> Resistance training 3x/week (lean mass preservation)</li>
+                
+                <li><span class="per-cat-tag">Monitoring</span> Monthly DEXA, weekly weight + waist</li>
+                
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    
+    <div class="per-card" style="border-top: 4px solid #F59E0B;">
+        <div class="per-card-head">
+            <div class="per-icon" style="background: #F59E0B1a; color: #F59E0B;">🦋</div>
+            <div>
+                <div class="per-name">Subclinical Hypothyroid</div>
+                <div class="per-count">17 patients</div>
+            </div>
+            <div class="per-score" title="Top protocol effectiveness score">
+                <div class="per-score-num">89</div>
+                <div class="per-score-lbl">/100</div>
+            </div>
+        </div>
+
+        <p class="per-summary">TSH elevated with normal-low free T4/T3. Symptoms: fatigue, cold intolerance, hair loss, weight retention.</p>
+
+        <div class="per-primary">
+            <div class="per-primary-lbl">Avg TSH Normalization</div>
+            <div class="per-primary-val" style="color: #F59E0B;">94%</div>
+            <div class="per-primary-meta">5.8 mIU/L → 1.9 mIU/L · over 14 wks</div>
+        </div>
+
+        <div class="per-secondary">
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">+3.4 / 5</div>
+                <div class="per-sec-lbl">Energy Score Improvement</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-7 lbs avg</div>
+                <div class="per-sec-lbl">Weight Loss</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">-22%</div>
+                <div class="per-sec-lbl">Reverse T3 Reduction</div>
+            </div>
+            
+            <div class="per-sec-cell">
+                <div class="per-sec-val">96%</div>
+                <div class="per-sec-lbl">Adherence Rate</div>
+            </div>
+            
+        </div>
+
+        <details class="per-protocol">
+            <summary>
+                <span><strong>Top protocol:</strong> NDT + Cofactor Support</span>
+                <span class="per-conf">Moderate (n=17, p&lt;0.05)</span>
+            </summary>
+            <ul class="per-protocol-list">
+                
+                <li><span class="per-cat-tag">Treatment</span> NP Thyroid 30-60mg titrated to symptoms + labs</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Selenium 200mcg, Iodine (low-dose), Iron if low ferritin</li>
+                
+                <li><span class="per-cat-tag">Supplement</span> Vitamin D3, B-complex</li>
+                
+                <li><span class="per-cat-tag">Monitoring</span> TSH/fT3/fT4/rT3 q6 weeks until stable</li>
+                
+            </ul>
+            <div class="per-protocol-actions">
+                <button class="btn btn-primary btn-sm">Use as draft for new patient</button>
+                <button class="btn btn-outline btn-sm">View patient list</button>
+            </div>
+        </details>
+    </div>
+    
+</div>
+
+<div class="per-cta">
+    <h3>What this enables</h3>
+    <div class="per-cta-grid">
+        <div>
+            <div class="per-cta-icon">🎯</div>
+            <h4>Faster, more confident protocols</h4>
+            <p>New patient looks like a perimenopause cohort? Start with the protocol that worked for 38 patients before her. Provider always reviews and adjusts.</p>
+        </div>
+        <div>
+            <div class="per-cta-icon">📈</div>
+            <h4>Continuous learning</h4>
+            <p>As outcomes come in, the system updates "what's working" — including subtle differences (BMI, age, comorbidities) that shift the recommendation.</p>
+        </div>
+        <div>
+            <div class="per-cta-icon">💬</div>
+            <h4>Better patient conversations</h4>
+            <p>"Patients with your exact profile typically see X improvement in Y weeks on this protocol" — backed by your actual outcome data.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.per-hero { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%); color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.per-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; }
+.per-stats { display: flex; gap: 1rem; align-items: center; }
+.per-stat { background: rgba(255,255,255,0.15); padding: 1rem 1.25rem; border-radius: 12px; text-align: center; min-width: 90px; }
+.per-stat-num { font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.per-stat-lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; margin-top: 4px; }
+.per-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+.per-card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; }
+.per-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.per-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.per-name { font-weight: 600; font-size: 1.05rem; color: #111827; }
+.per-count { font-size: 0.8rem; color: #6b7280; margin-top: 2px; }
+.per-score { margin-left: auto; text-align: center; background: #f3f4f6; padding: 0.5rem 0.75rem; border-radius: 10px; }
+.per-score-num { font-size: 1.4rem; font-weight: 700; color: #111827; line-height: 1; }
+.per-score-lbl { font-size: 0.7rem; color: #6b7280; margin-top: 2px; }
+.per-summary { font-size: 0.85rem; color: #4b5563; line-height: 1.5; margin: 0 0 1rem 0; }
+.per-primary { background: #f9fafb; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+.per-primary-lbl { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+.per-primary-val { font-size: 1.75rem; font-weight: 700; line-height: 1.1; margin: 0.25rem 0; }
+.per-primary-meta { font-size: 0.78rem; color: #6b7280; }
+.per-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+.per-sec-cell { background: #f9fafb; padding: 0.5rem 0.65rem; border-radius: 6px; }
+.per-sec-val { font-weight: 600; color: #111827; font-size: 0.9rem; }
+.per-sec-lbl { font-size: 0.72rem; color: #6b7280; margin-top: 2px; }
+.per-protocol { border-top: 1px solid #f3f4f6; padding-top: 0.75rem; }
+.per-protocol summary { cursor: pointer; font-size: 0.85rem; color: #111827; display: flex; justify-content: space-between; gap: 0.5rem; }
+.per-conf { font-size: 0.7rem; color: #6b7280; font-weight: 500; }
+.per-protocol-list { margin: 0.75rem 0 0.75rem 0; padding-left: 0; list-style: none; font-size: 0.82rem; color: #4b5563; line-height: 1.6; }
+.per-protocol-list li { padding: 0.3rem 0; border-bottom: 1px dashed #f3f4f6; }
+.per-cat-tag { display: inline-block; font-size: 0.65rem; background: #e5e7eb; color: #374151; padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 0.5rem; font-weight: 600; }
+.per-protocol-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.per-cta { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; }
+.per-cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.per-cta-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.per-cta h4 { margin: 0 0 0.5rem 0; font-size: 1rem; color: #111827; }
+.per-cta p { margin: 0; font-size: 0.88rem; color: #4b5563; line-height: 1.55; }
+.btn-sm { padding: 0.4rem 0.85rem; font-size: 0.82rem; }
+</style>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
