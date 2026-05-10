@@ -13,22 +13,22 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
     </div>
     <div class="feature-banner-cards">
         <div class="feature-banner-card"><a href="/admin/protocol-builder/">
-            <div class="fb-icon">✨</div>
+            <div class="fb-icon">{% icon "sparkles", "fb-icon-svg", 22 %}</div>
             <div class="fb-title">AI Protocol Builder</div>
             <div class="fb-desc">Consult recording → draft protocol with sources cited. Provider approves.</div>
         </a></div>
         <div class="feature-banner-card"><a href="/admin/personas/">
-            <div class="fb-icon">📊</div>
+            <div class="fb-icon">{% icon "chart-bar", "fb-icon-svg", 22 %}</div>
             <div class="fb-title">Patient Personas</div>
             <div class="fb-desc">5 cohorts. What's working, for whom, with what effectiveness.</div>
         </a></div>
         <div class="feature-banner-card"><a href="/admin/method/">
-            <div class="fb-icon">🔒</div>
+            <div class="fb-icon">{% icon "shield", "fb-icon-svg", 22 %}</div>
             <div class="fb-title">HIPAA Method</div>
             <div class="fb-desc">BAAs in place, no PCI scope, 4-week pilot path.</div>
         </a></div>
         <div class="feature-banner-card"><a href="/admin/personas/">
-            <div class="fb-icon">📈</div>
+            <div class="fb-icon">{% icon "trending-up", "fb-icon-svg", 22 %}</div>
             <div class="fb-title">156 patients · 5 cohorts</div>
             <div class="fb-desc">Already enough data to draft protocols with cited sources.</div>
         </a></div>
@@ -40,7 +40,7 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
     <div class="dashboard-card revenue-card">
         <div class="card-header">
             <h3 class="card-title">Monthly Revenue</h3>
-            <div class="card-icon">💰</div>
+            <div class="card-icon">{% icon "dollar", "icon", 20 %}</div>
         </div>
         <div class="card-value">{{ adminData.businessMetrics.monthlyRevenue | currency }}</div>
         <div class="card-change positive">+{{ adminData.analytics.revenueGrowth.growthPercent }}% from last month</div>
@@ -50,7 +50,7 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
     <div class="dashboard-card">
         <div class="card-header">
             <h3 class="card-title">New Patients</h3>
-            <div class="card-icon">👥</div>
+            <div class="card-icon">{% icon "users", "icon", 20 %}</div>
         </div>
         <div class="card-value">{{ adminData.businessMetrics.newPatientsThisMonth }}</div>
         <div class="card-change positive">This month</div>
@@ -60,7 +60,7 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
     <div class="dashboard-card">
         <div class="card-header">
             <h3 class="card-title">Avg Revenue/Patient</h3>
-            <div class="card-icon">📈</div>
+            <div class="card-icon">{% icon "trending-up", "icon", 20 %}</div>
         </div>
         <div class="card-value">${{ adminData.businessMetrics.averageRevenuePerPatient }}</div>
         <div class="card-change positive">+12% vs industry avg</div>
@@ -70,7 +70,7 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
     <div class="dashboard-card">
         <div class="card-header">
             <h3 class="card-title">This Week</h3>
-            <div class="card-icon">📅</div>
+            <div class="card-icon">{% icon "calendar", "icon", 20 %}</div>
         </div>
         <div class="card-value">{{ adminData.businessMetrics.appointmentsThisWeek }}</div>
         <div class="card-change">Appointments</div>

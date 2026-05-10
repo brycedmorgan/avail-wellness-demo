@@ -133,10 +133,8 @@
                 
 <div class="met-hero">
     <span class="met-pill">Compliance & Architecture</span>
-    <h2 style="color: white; margin: 0.5rem 0 0.5rem;">No EMR replacement. HIPAA-eligible from day one. Pilot in weeks, not quarters.</h2>
-    <p style="color: rgba(255,255,255,0.92); margin: 0; max-width: 780px; line-height: 1.55;">
-        Avail keeps the EMR they already use. We add a thin layer on top that turns consult recordings, lab data, and prior notes into <strong>draft protocols</strong> and <strong>cohort intelligence</strong>. Nothing is auto-sent. The provider always reviews and signs off.
-    </p>
+    <h2>No EMR replacement. HIPAA-eligible from day one. Pilot in weeks, not quarters.</h2>
+    <p>Avail keeps the EMR they already use. We add a thin layer on top that turns consult recordings, lab data, and prior notes into <strong>draft protocols</strong> and <strong>cohort intelligence</strong>. Nothing is auto-sent. The provider always reviews and signs off.</p>
 </div>
 
 <!-- Architecture diagram -->
@@ -145,28 +143,28 @@
     <div class="met-flow">
         <div class="met-step">
             <div class="met-step-num">1</div>
-            <div class="met-step-icon">🎙️</div>
+            <div class="met-step-icon"><svg class="met-step-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
             <h4>Capture consult</h4>
             <p>Patient signs a one-page consent. Brooke records on her phone or laptop. Auto-uploads to a HIPAA-compliant intake.</p>
         </div>
         <div class="met-arrow">→</div>
         <div class="met-step">
             <div class="met-step-num">2</div>
-            <div class="met-step-icon">🔐</div>
+            <div class="met-step-icon"><svg class="met-step-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
             <h4>Secure transcribe</h4>
             <p>Audio → text via a HIPAA-eligible transcription service (AWS Transcribe Medical, Azure Speech, or Whisper on a HIPAA-eligible host). PHI stays inside the BAA boundary.</p>
         </div>
         <div class="met-arrow">→</div>
         <div class="met-step">
             <div class="met-step-num">3</div>
-            <div class="met-step-icon">🧠</div>
+            <div class="met-step-icon"><svg class="met-step-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 0 0 12 21.978V5z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 0 1 12 21.978V5z"/></svg></div>
             <h4>Cohort match + draft</h4>
             <p>De-identified vector search across past patients. Claude (via AWS Bedrock w/ BAA) drafts the protocol with rationale and source citations.</p>
         </div>
         <div class="met-arrow">→</div>
         <div class="met-step">
             <div class="met-step-num">4</div>
-            <div class="met-step-icon">✅</div>
+            <div class="met-step-icon"><svg class="met-step-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             <h4>Provider review</h4>
             <p>Brooke or Nicki reviews the draft, edits, approves. Only then does anything reach the patient. Sign-off is logged.</p>
         </div>
@@ -178,7 +176,7 @@
     <h3>Compliance posture</h3>
     <div class="met-comp-grid">
         <div class="met-comp">
-            <div class="met-comp-head">🔒 HIPAA</div>
+            <div class="met-comp-head"><svg class="met-head-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> HIPAA</div>
             <ul>
                 <li>BAAs signed with every vendor that touches PHI (AWS, Anthropic, transcription provider).</li>
                 <li>PHI stored only in HIPAA-eligible services (AWS HealthLake / S3 with encryption + audit).</li>
@@ -188,14 +186,14 @@
             </ul>
         </div>
         <div class="met-comp">
-            <div class="met-comp-head">💳 PCI</div>
+            <div class="met-comp-head"><svg class="met-head-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> PCI</div>
             <ul>
                 <li><strong>We don't touch payments.</strong> Avail keeps using their existing billing system.</li>
                 <li>PCI scope for this product = zero. If billing ever connects, it's via a tokenized handoff to a Level-1 PCI provider (Stripe, Square).</li>
             </ul>
         </div>
         <div class="met-comp">
-            <div class="met-comp-head">📜 Consent</div>
+            <div class="met-comp-head"><svg class="met-head-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg> Consent</div>
             <ul>
                 <li>One-page recording consent added to existing intake. Patient can opt out anytime.</li>
                 <li>De-identified cohort data only — patients are never identifiable in trend views.</li>
@@ -203,7 +201,7 @@
             </ul>
         </div>
         <div class="met-comp">
-            <div class="met-comp-head">🛟 Liability</div>
+            <div class="met-comp-head"><svg class="met-head-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg> Liability</div>
             <ul>
                 <li>The system <strong>drafts</strong> — it does not prescribe. Provider sign-off is mandatory and logged.</li>
                 <li>All sources cited — Brooke can see exactly which past patient or note influenced the draft.</li>
@@ -270,30 +268,34 @@
 </div>
 
 <style>
-.met-hero { background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%); color: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-.met-pill { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; }
-.met-section { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; }
-.met-section h3 { margin: 0 0 1.25rem 0; font-size: 1.15rem; color: #111827; }
-.met-flow { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
-.met-step { flex: 1; min-width: 200px; background: #f9fafb; border-radius: 12px; padding: 1.25rem; }
-.met-step-num { background: #111827; color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
-.met-step-icon { font-size: 1.75rem; margin: 0.5rem 0; }
+.met-hero { background: #fff; color: #0a0a0a; border: 1px solid #e5e7eb; border-left: 3px solid #9C8366; border-radius: 8px; padding: 28px 32px; margin-bottom: 24px; }
+.met-hero h2 { color: #0a0a0a; margin: 8px 0 12px; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+.met-hero p { color: #525252; margin: 0; line-height: 1.6; font-size: 0.95rem; max-width: 70ch; }
+.met-hero strong { color: #0a0a0a; font-weight: 600; }
+.met-pill { display: inline-block; background: #f3f4f6; color: #374151; padding: 3px 10px; border-radius: 999px; font-size: 0.68rem; letter-spacing: 0.6px; text-transform: uppercase; font-weight: 600; }
+.met-section { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; }
+.met-section h3 { margin: 0 0 20px; font-size: 1.05rem; font-weight: 600; color: #0a0a0a; letter-spacing: -0.01em; }
+.met-flow { display: flex; align-items: stretch; gap: 12px; flex-wrap: wrap; }
+.met-step { flex: 1; min-width: 200px; background: #fafafa; border: 1px solid #f3f4f6; border-radius: 6px; padding: 18px; }
+.met-step-num { background: #0a0a0a; color: white; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; }
+.met-step-icon { color: #9C8366; margin: 10px 0 6px; }
 .met-step h4 { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #111827; }
 .met-step p { margin: 0; font-size: 0.82rem; color: #4b5563; line-height: 1.5; }
 .met-arrow { display: flex; align-items: center; color: #9ca3af; font-size: 1.5rem; padding: 0 0.25rem; }
-.met-comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
-.met-comp { background: #f9fafb; border-radius: 10px; padding: 1.25rem; }
-.met-comp-head { font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.met-comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+.met-comp { background: #fafafa; border: 1px solid #f3f4f6; border-radius: 6px; padding: 18px; }
+.met-comp-head { font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+.met-head-svg { color: #6b7280; }
 .met-comp ul { margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: #4b5563; line-height: 1.65; }
 .met-comp li { margin-bottom: 0.4rem; }
 .met-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
-.met-phase { background: #f9fafb; border-radius: 10px; padding: 1.25rem; }
-.met-phase-tag { display: inline-block; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; margin-bottom: 0.5rem; }
-.met-phase h4 { margin: 0.25rem 0 0.5rem 0; font-size: 1rem; color: #111827; }
-.met-phase p { margin: 0; font-size: 0.85rem; color: #4b5563; line-height: 1.5; }
-.met-phase-cost { font-size: 0.78rem; color: #6b7280; margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px dashed #e5e7eb; font-weight: 500; }
-.met-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
-.met-tool { background: #f9fafb; padding: 0.85rem 1rem; border-radius: 8px; }
+.met-phase { background: #fafafa; border: 1px solid #f3f4f6; border-radius: 6px; padding: 18px; }
+.met-phase-tag { display: inline-block; font-size: 0.65rem; padding: 3px 9px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
+.met-phase h4 { margin: 4px 0 6px; font-size: 0.95rem; font-weight: 600; color: #0a0a0a; }
+.met-phase p { margin: 0; font-size: 0.85rem; color: #525252; line-height: 1.55; }
+.met-phase-cost { font-size: 0.78rem; color: #6b7280; margin-top: 12px; padding-top: 8px; border-top: 1px solid #f3f4f6; font-weight: 500; }
+.met-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
+.met-tool { background: #fafafa; border: 1px solid #f3f4f6; padding: 12px 14px; border-radius: 6px; }
 .met-tool strong { display: block; color: #111827; font-size: 0.9rem; margin-bottom: 2px; }
 .met-tool span { font-size: 0.8rem; color: #6b7280; }
 </style>

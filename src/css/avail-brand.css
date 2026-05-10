@@ -220,18 +220,19 @@ body {
 }
 
 .welcome-message {
-  color: var(--avail-primary-dark);
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  color: var(--gray-500);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
 
 .admin-welcome {
-  color: var(--avail-primary-dark);
-  font-size: 16px;
+  color: var(--gray-500);
+  font-size: 12px;
   font-weight: 500;
-  margin-bottom: 8px;
-  opacity: 0.8;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
 
 /* Personalized touches */

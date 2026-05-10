@@ -3,7 +3,7 @@
     {
       "id": "low-t-male",
       "name": "Low Testosterone (Male)",
-      "icon": "♂",
+      "icon": "LT",
       "patientCount": 47,
       "color": "#3B82F6",
       "summary": "Men 35-65 presenting with fatigue, low libido, body comp changes. Total T <400 ng/dL at intake.",
@@ -33,7 +33,7 @@
     {
       "id": "perimenopause",
       "name": "Perimenopause",
-      "icon": "🌸",
+      "icon": "PM",
       "patientCount": 38,
       "color": "#EC4899",
       "summary": "Women 40-55 with irregular cycles, sleep disruption, weight gain, mood changes. Estradiol fluctuating, low progesterone.",
@@ -63,7 +63,7 @@
     {
       "id": "pcos",
       "name": "PCOS",
-      "icon": "🩺",
+      "icon": "PC",
       "patientCount": 23,
       "color": "#8B5CF6",
       "summary": "Women 25-40 with insulin resistance, irregular cycles, hyperandrogenism. Goal: metabolic + hormonal balance.",
@@ -93,7 +93,7 @@
     {
       "id": "weight-loss",
       "name": "Metabolic / Weight Loss",
-      "icon": "⚖",
+      "icon": "WL",
       "patientCount": 31,
       "color": "#10B981",
       "summary": "Patients with BMI 28-40, insulin resistance, prior failed diets. GLP-1 + lifestyle protocols.",
@@ -123,7 +123,7 @@
     {
       "id": "thyroid",
       "name": "Subclinical Hypothyroid",
-      "icon": "🦋",
+      "icon": "TH",
       "patientCount": 17,
       "color": "#F59E0B",
       "summary": "TSH elevated with normal-low free T4/T3. Symptoms: fatigue, cold intolerance, hair loss, weight retention.",

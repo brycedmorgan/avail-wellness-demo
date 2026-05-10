@@ -19,7 +19,7 @@ subtitle: Your personalized supplement regimen and adherence tracking
     <div class="protocol-section">
         <div class="section-header">
             <h3>Morning Protocol</h3>
-            <span class="time-badge">🌅 Upon Waking</span>
+            <span class="time-badge">{% icon "sunrise" %} Upon Waking</span>
         </div>
         <div class="supplement-grid">
             {% for supplement in patient.supplements.current.morning %}
@@ -37,7 +37,7 @@ subtitle: Your personalized supplement regimen and adherence tracking
     <div class="protocol-section">
         <div class="section-header">
             <h3>Afternoon Protocol</h3>
-            <span class="time-badge">🌤️ Mid-Day</span>
+            <span class="time-badge">{% icon "sun" %} Mid-Day</span>
         </div>
         <div class="supplement-grid">
             {% for supplement in patient.supplements.current.afternoon %}
@@ -55,7 +55,7 @@ subtitle: Your personalized supplement regimen and adherence tracking
     <div class="protocol-section">
         <div class="section-header">
             <h3>Evening Protocol</h3>
-            <span class="time-badge">🌙 Before Bed</span>
+            <span class="time-badge">{% icon "moon" %} Before Bed</span>
         </div>
         <div class="supplement-grid">
             {% for supplement in patient.supplements.current.night %}
