@@ -28,6 +28,67 @@ subtitle: Welcome back! Here's your health optimization summary.
     </div>
 </div>
 
+<!-- Weekly Check-in -->
+<div class="checkin-card" id="weeklyCheckin">
+    <div class="checkin-head">
+        <div>
+            <div class="checkin-eyebrow">Weekly check-in</div>
+            <h3>How are you feeling this week, {{ patient.patient.name.split(' ')[0] }}?</h3>
+            <p class="checkin-meta">Takes 30 seconds. Your provider sees this in real time and adjusts protocols accordingly.</p>
+        </div>
+        <div class="checkin-streak">
+            <div class="checkin-streak-num">11</div>
+            <div class="checkin-streak-lbl">week streak</div>
+        </div>
+    </div>
+    <div class="checkin-grid">
+        <div class="checkin-q">
+            <div class="checkin-q-label">Energy</div>
+            <div class="checkin-scale" data-q="energy">
+                <button type="button" class="ck" data-v="1">1</button>
+                <button type="button" class="ck" data-v="2">2</button>
+                <button type="button" class="ck" data-v="3">3</button>
+                <button type="button" class="ck" data-v="4">4</button>
+                <button type="button" class="ck active" data-v="5">5</button>
+            </div>
+        </div>
+        <div class="checkin-q">
+            <div class="checkin-q-label">Sleep quality</div>
+            <div class="checkin-scale" data-q="sleep">
+                <button type="button" class="ck" data-v="1">1</button>
+                <button type="button" class="ck" data-v="2">2</button>
+                <button type="button" class="ck" data-v="3">3</button>
+                <button type="button" class="ck active" data-v="4">4</button>
+                <button type="button" class="ck" data-v="5">5</button>
+            </div>
+        </div>
+        <div class="checkin-q">
+            <div class="checkin-q-label">Mood</div>
+            <div class="checkin-scale" data-q="mood">
+                <button type="button" class="ck" data-v="1">1</button>
+                <button type="button" class="ck" data-v="2">2</button>
+                <button type="button" class="ck" data-v="3">3</button>
+                <button type="button" class="ck" data-v="4">4</button>
+                <button type="button" class="ck active" data-v="5">5</button>
+            </div>
+        </div>
+        <div class="checkin-q">
+            <div class="checkin-q-label">Libido</div>
+            <div class="checkin-scale" data-q="libido">
+                <button type="button" class="ck" data-v="1">1</button>
+                <button type="button" class="ck" data-v="2">2</button>
+                <button type="button" class="ck" data-v="3">3</button>
+                <button type="button" class="ck active" data-v="4">4</button>
+                <button type="button" class="ck" data-v="5">5</button>
+            </div>
+        </div>
+    </div>
+    <div class="checkin-foot">
+        <input type="text" class="checkin-note" placeholder="Anything Brooke should know? (optional)">
+        <button type="button" class="btn btn-primary btn-sm">Submit check-in</button>
+    </div>
+</div>
+
 <!-- Key Metrics Grid -->
 <div class="metrics-grid">
     <div class="metric-card">
@@ -155,28 +216,45 @@ subtitle: Welcome back! Here's your health optimization summary.
     </div>
 </div>
 
-<!-- Provider Messaging (Prominent) -->
-<div class="dashboard-section messaging-section">
-    <div class="messaging-header">
-        <div class="provider-info">
+<!-- Provider Chat -->
+<div class="dashboard-section chat-section">
+    <div class="chat-head">
+        <div class="chat-provider">
             <div class="provider-avatar">BW</div>
             <div class="provider-details">
-                <h3>Message Your Provider</h3>
-                <p>Brooke Welsh, WHNP • Typically responds within 4 hours</p>
+                <div class="provider-name">Brooke Welsh, WHNP <span class="online-dot" aria-hidden="true"></span><span class="online-text">Online</span></div>
+                <div class="provider-meta">Typically responds in under 4 hours · Care team also includes Nicki Tran, NP</div>
             </div>
         </div>
-        <button class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            Send Message
-        </button>
+        <a href="#" class="section-link">View full thread →</a>
     </div>
-    <div class="recent-messages">
-        <div class="message-preview">
-            <strong>Latest from Brooke:</strong> "Your latest lab results look excellent! The testosterone optimization is working perfectly. See you at your follow-up next month."
+
+    <div class="chat-thread">
+        <div class="chat-msg from-them">
+            <div class="chat-bubble">Your Feb 19 labs look excellent — testosterone at 853 ng/dL, well into the optimized band. Free T jumped 213% from baseline. Pellet absorption is right on target.</div>
+            <div class="chat-meta">Brooke · 2 days ago</div>
+        </div>
+        <div class="chat-msg from-them">
+            <div class="chat-bubble">I'd like to keep the current protocol through your April 15 follow-up. If energy/sleep stay where they are, we'll discuss extending the pellet interval to 4 months at that visit.</div>
+            <div class="chat-meta">Brooke · 2 days ago</div>
+        </div>
+        <div class="chat-msg from-me">
+            <div class="chat-bubble">Sounds good. Energy is the highest it's been in years — hitting the gym 5x/week again. Will note in the weekly check-ins.</div>
+            <div class="chat-meta">You · yesterday</div>
+        </div>
+        <div class="chat-msg from-them unread">
+            <div class="chat-bubble">Love that. Keep an eye on hematocrit at the next draw — common with optimized T. Already added it to your panel for May.</div>
+            <div class="chat-meta">Brooke · 4 hours ago · <span class="chat-new">new</span></div>
         </div>
     </div>
+
+    <form class="chat-compose" onsubmit="event.preventDefault(); return false;">
+        <input type="text" class="chat-input" placeholder="Reply to Brooke…" aria-label="Message your provider">
+        <button type="button" class="btn-icon-only" aria-label="Attach file">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </button>
+        <button type="submit" class="btn btn-primary btn-sm">Send</button>
+    </form>
 </div>
 
 <!-- Upload Lab Results & Scans -->
@@ -458,6 +536,16 @@ const labTrendsChart = new Chart(labTrendsCtx, {
         }
     }
 });
+
+// Weekly check-in: tap to set value
+document.querySelectorAll('.checkin-scale').forEach(scale => {
+    scale.addEventListener('click', e => {
+        const btn = e.target.closest('.ck');
+        if (!btn) return;
+        scale.querySelectorAll('.ck').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
 </script>
 
 <style>
@@ -725,5 +813,299 @@ const labTrendsChart = new Chart(labTrendsCtx, {
     .upload-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Weekly Check-in widget */
+.checkin-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+}
+.checkin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+.checkin-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 4px;
+}
+.checkin-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: 0 0 3px;
+    letter-spacing: -0.015em;
+}
+.checkin-meta {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+.checkin-streak {
+    text-align: center;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 8px 14px;
+    flex-shrink: 0;
+}
+.checkin-streak-num {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+.checkin-streak-lbl {
+    font-size: 0.62rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+.checkin-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+@media (max-width: 800px) {
+    .checkin-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.checkin-q-label {
+    font-size: 0.7rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.checkin-scale {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+}
+.ck {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-variant-numeric: tabular-nums;
+}
+.ck:hover {
+    border-color: var(--primary);
+    color: var(--gray-900);
+}
+.ck.active {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+}
+.checkin-foot {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.checkin-note {
+    flex: 1;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.83rem;
+    color: var(--gray-900);
+    font-family: inherit;
+}
+.checkin-note:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+}
+
+/* Chat thread */
+.chat-section {
+    padding: 0;
+    overflow: hidden;
+}
+.chat-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--gray-100);
+    gap: 12px;
+}
+.chat-provider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+.chat-provider .provider-avatar {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+.chat-provider .provider-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--gray-900);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: -0.01em;
+}
+.online-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #16a34a;
+    margin-left: 4px;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.18);
+}
+.online-text {
+    font-size: 0.7rem;
+    color: #16a34a;
+    font-weight: 600;
+}
+.chat-provider .provider-meta {
+    font-size: 0.74rem;
+    color: var(--gray-500);
+    margin-top: 2px;
+}
+.chat-thread {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--gray-50);
+    max-height: 320px;
+    overflow-y: auto;
+}
+.chat-msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 78%;
+}
+.chat-msg.from-me {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+.chat-msg.from-them {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+.chat-bubble {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--gray-800);
+}
+.chat-msg.from-me .chat-bubble {
+    background: var(--primary-dark);
+    color: var(--white);
+    border-color: var(--primary-dark);
+}
+.chat-msg.from-them.unread .chat-bubble {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(184, 160, 130, 0.15);
+}
+.chat-meta {
+    font-size: 0.68rem;
+    color: var(--gray-400);
+    margin-top: 4px;
+    padding: 0 4px;
+}
+.chat-new {
+    background: var(--primary-dark);
+    color: var(--white);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    letter-spacing: 0.4px;
+}
+.chat-compose {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 12px 22px;
+    border-top: 1px solid var(--gray-100);
+}
+.chat-input {
+    flex: 1;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: var(--gray-900);
+    font-family: inherit;
+}
+.chat-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+}
+.btn-icon-only {
+    background: none;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-500);
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s, color 0.15s;
+}
+.btn-icon-only:hover {
+    border-color: var(--gray-400);
+    color: var(--gray-700);
+}
+
+/* Section link helper (reused) */
+.section-link {
+    font-size: 0.78rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+.section-link:hover {
+    background: var(--gray-50);
 }
 </style>
