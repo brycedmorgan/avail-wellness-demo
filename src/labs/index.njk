@@ -121,86 +121,101 @@ subtitle: Your comprehensive hormone and health panel history
 </div>
 
 <style>
-/* Lab-specific styles */
+/* Lab-specific styles — on-brand tan gradient, compact */
 .lab-summary-card {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    background: radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,0.10), transparent 55%),
+                linear-gradient(135deg, #B8A082 0%, #9C8366 60%, #6F5A47 100%);
     color: white;
-    padding: 32px;
-    border-radius: 16px;
-    margin-bottom: 32px;
-    box-shadow: var(--shadow-lg);
+    padding: 22px 28px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
 .summary-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+    gap: 12px;
 }
 
 .summary-header h3 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     margin: 0;
+    letter-spacing: -0.015em;
+    color: #fff;
 }
 
 .lab-status {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.62rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
 }
 
 .lab-status.complete {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
 }
 
 .summary-text {
-    font-size: 16px;
-    margin: 0 0 24px;
-    opacity: 0.9;
+    font-size: 0.83rem;
+    margin: 0 0 16px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.5;
 }
 
 .key-highlights {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
 }
 
 .highlight-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 12px 14px;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
 }
 
 .highlight-label {
     display: block;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.8;
-    margin-bottom: 8px;
+    letter-spacing: 0.6px;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 4px;
 }
 
 .highlight-value {
     display: block;
-    font-size: 24px;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    color: #fff;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
 }
 
 .highlight-change {
-    font-size: 14px;
+    font-size: 11.5px;
     font-weight: 600;
+    color: rgba(255,255,255,0.85);
 }
 
 .highlight-change.positive {
-    color: var(--accent-light);
+    color: #8ee5b3;
 }
 
 .chart-insights {

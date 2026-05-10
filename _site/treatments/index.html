@@ -88,80 +88,72 @@
                 
 <!-- Treatment Timeline Overview -->
 <div class="treatment-hero">
-    <div class="timeline-summary">
-        <h3>Bryce's Treatment Journey</h3>
-        <p>Complete history of your hormone optimization treatments with Avail Wellness.</p>
-        
-        <div class="journey-stats">
-            <div class="stat-item">
-                <div class="stat-value">1</div>
-                <div class="stat-label">Procedures Completed</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">204%</div>
-                <div class="stat-label">Testosterone Increase</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">3-6 months</div>
-                <div class="stat-label">Current Pellet Duration</div>
-            </div>
+    <div class="treatment-hero-text">
+        <span class="treatment-hero-pill">Treatment journey</span>
+        <h3>1 procedure · 204% testosterone increase</h3>
+        <p>Hormone optimization with Avail Wellness · pellet active until April 15, 2026</p>
+    </div>
+    <div class="journey-stats">
+        <div class="stat-item">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Procedures</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">204%</div>
+            <div class="stat-label">T increase</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">3–6<span class="stat-unit">mo</span></div>
+            <div class="stat-label">Pellet duration</div>
         </div>
     </div>
 </div>
 
 <!-- Treatment History -->
 <div class="dashboard-section">
-    <h3>Treatment History</h3>
-    <div class="treatment-timeline">
+    <h3>Treatment history</h3>
+    <ol class="treatment-timeline">
         
-        <div class="timeline-item completed">
-            <div class="timeline-marker">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-            </div>
+        <li class="timeline-item completed">
+            <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
                 <div class="treatment-header">
                     <h4>Male Pellet Implant</h4>
                     <div class="treatment-date">Jan 4, 2026</div>
                 </div>
-                <div class="treatment-details">
-                    <div class="treatment-cost">$800.00</div>
-                    <div class="treatment-provider">Provider: Brooke Welsh</div>
-                    <div class="treatment-notes">Testosterone pellet insertion. Expected duration 3-6 months.</div>
+                <div class="treatment-meta">
+                    <span class="treatment-cost">$800.00</span>
+                    <span class="treatment-meta-divider" aria-hidden="true">·</span>
+                    <span class="treatment-provider">Brooke Welsh</span>
                 </div>
+                <p class="treatment-notes">Testosterone pellet insertion. Expected duration 3-6 months.</p>
                 <div class="treatment-outcomes">
-                    <div class="outcome-badge success">Excellent Response</div>
-                    <div class="outcome-details">Testosterone levels optimized within 6 weeks</div>
+                    <span class="outcome-badge success">Excellent response</span>
+                    <span class="outcome-details">Testosterone optimized within 6 weeks</span>
                 </div>
             </div>
-        </div>
+        </li>
         
-        
-        <!-- Pre-treatment consultation -->
-        <div class="timeline-item completed">
-            <div class="timeline-marker">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-            </div>
+        <li class="timeline-item completed">
+            <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
                 <div class="treatment-header">
-                    <h4>Initial Consultation & Assessment</h4>
+                    <h4>Initial Consultation &amp; Assessment</h4>
                     <div class="treatment-date">March 4, 2025</div>
                 </div>
-                <div class="treatment-details">
-                    <div class="treatment-cost">$400.00</div>
-                    <div class="treatment-provider">Provider: Brooke Welsh, WHNP</div>
-                    <div class="treatment-notes">Comprehensive hormone evaluation, baseline labs ordered</div>
+                <div class="treatment-meta">
+                    <span class="treatment-cost">$400.00</span>
+                    <span class="treatment-meta-divider" aria-hidden="true">·</span>
+                    <span class="treatment-provider">Brooke Welsh, WHNP</span>
                 </div>
+                <p class="treatment-notes">Comprehensive hormone evaluation, baseline labs ordered</p>
                 <div class="treatment-outcomes">
-                    <div class="outcome-badge info">Assessment Complete</div>
-                    <div class="outcome-details">Treatment plan developed based on lab results</div>
+                    <span class="outcome-badge info">Assessment complete</span>
+                    <span class="outcome-details">Treatment plan developed based on lab results</span>
                 </div>
             </div>
-        </div>
-    </div>
+        </li>
+    </ol>
 </div>
 
 <!-- Current Treatment Status -->
@@ -249,7 +241,7 @@
 <div class="dashboard-section">
     <h3>Treatment Response Over Time</h3>
     <div class="chart-container">
-        <canvas id="treatmentChart" width="800" height="300"></canvas>
+        <canvas id="treatmentChart"></canvas>
     </div>
     <div class="chart-insights">
         <div class="insight-item">
@@ -281,219 +273,268 @@
 <style>
 /* Treatment page styles */
 .treatment-hero {
-    background: var(--avail-primary);
-    color: white;
-    padding: 32px;
-    border-radius: 16px;
-    margin-bottom: 32px;
-    box-shadow: var(--shadow-lg);
+    background: radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,0.10), transparent 55%),
+                linear-gradient(135deg, #B8A082 0%, #9C8366 60%, #6F5A47 100%);
+    color: var(--white);
+    padding: 22px 28px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
 }
 
-.timeline-summary h3 {
-    font-size: 24px;
+.treatment-hero-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
     font-weight: 600;
-    margin: 0 0 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
 }
 
-.timeline-summary p {
-    opacity: 0.9;
-    margin: 0 0 24px;
-    font-size: 16px;
+.treatment-hero-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 8px 0 4px;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.treatment-hero-text p {
+    margin: 0;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.83rem;
+    line-height: 1.45;
 }
 
 .journey-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    display: flex;
+    gap: 8px;
 }
 
-.stat-item {
+.journey-stats .stat-item {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 10px 14px;
     border-radius: 8px;
+    min-width: 80px;
 }
 
-.stat-value {
-    font-size: 28px;
+.journey-stats .stat-value {
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
 }
 
-.stat-label {
-    font-size: 14px;
-    opacity: 0.9;
+.journey-stats .stat-unit {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    margin-left: 1px;
 }
 
+.journey-stats .stat-label {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.78);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* Compact timeline */
 .treatment-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     position: relative;
-    padding-left: 40px;
 }
 
 .treatment-timeline::before {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
     background: var(--gray-200);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 32px;
-    padding-bottom: 24px;
+    padding-left: 26px;
+    padding-bottom: 16px;
 }
 
 .timeline-item:last-child {
-    margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.timeline-marker {
+.timeline-dot {
     position: absolute;
-    left: -40px;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    background: var(--avail-success);
-    color: white;
+    left: 2px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    background: var(--white);
+    border: 2px solid var(--primary-dark);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid white;
-    box-shadow: 0 0 0 2px var(--avail-success);
+}
+
+.timeline-item.completed .timeline-dot {
+    background: var(--primary-dark);
 }
 
 .timeline-content {
-    background: var(--white);
-    padding: 24px;
-    border-radius: 8px;
-    border-left: 4px solid var(--avail-success);
-    box-shadow: var(--shadow-sm);
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
 }
 
 .treatment-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
 }
 
 .treatment-header h4 {
     margin: 0;
-    color: var(--avail-text-primary);
-    font-weight: 600;
+    color: var(--gray-900);
+    font-weight: 700;
+    font-size: 0.93rem;
+    letter-spacing: -0.01em;
 }
 
 .treatment-date {
-    color: var(--avail-text-light);
-    font-size: 14px;
+    color: var(--gray-500);
+    font-size: 0.78rem;
     font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
 }
 
-.treatment-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
-    padding: 16px;
-    background: var(--avail-bg-secondary);
-    border-radius: 6px;
+.treatment-meta {
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
 .treatment-cost {
-    font-weight: 700;
-    color: var(--avail-primary);
-    font-size: 18px;
+    color: var(--gray-900);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
 }
 
-.treatment-provider,
+.treatment-meta-divider {
+    color: var(--gray-300);
+}
+
 .treatment-notes {
-    color: var(--avail-text-secondary);
-    font-size: 14px;
+    color: var(--gray-600);
+    font-size: 0.83rem;
+    line-height: 1.5;
+    margin: 0 0 6px;
 }
 
 .treatment-outcomes {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .outcome-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
 
 .outcome-badge.success {
-    background: rgba(107, 142, 90, 0.1);
-    color: var(--avail-success);
+    background: rgba(107, 142, 90, 0.12);
+    color: #4d6b3e;
 }
 
 .outcome-badge.info {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3B82F6;
+    background: rgba(59, 130, 246, 0.10);
+    color: #2563EB;
 }
 
 .outcome-details {
-    color: var(--avail-text-secondary);
-    font-size: 14px;
+    color: var(--gray-500);
+    font-size: 0.78rem;
 }
 
 .current-status-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
 }
 
 .status-card {
-    background: var(--white);
-    padding: 24px;
+    background: var(--gray-50);
+    padding: 16px 18px;
     border-radius: 8px;
     border: 1px solid var(--gray-200);
-    box-shadow: var(--shadow-sm);
 }
 
 .status-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .status-header h4 {
     margin: 0;
-    color: var(--avail-text-primary);
-    font-weight: 600;
+    color: var(--gray-900);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
 }
 
 .status-indicator {
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
 }
 
 .status-indicator.active {
-    background: var(--avail-success);
-    box-shadow: 0 0 0 3px rgba(107, 142, 90, 0.2);
+    background: var(--success);
 }
 
 .status-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
 }
 
 .detail-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 6px;
+    padding: 7px 0;
     border-bottom: 1px solid var(--gray-100);
 }
 
@@ -502,14 +543,15 @@
 }
 
 .detail-label {
-    color: var(--avail-text-secondary);
-    font-size: 14px;
+    color: var(--gray-500);
+    font-size: 0.78rem;
 }
 
 .detail-value {
-    color: var(--avail-text-primary);
-    font-weight: 500;
-    font-size: 14px;
+    color: var(--gray-900);
+    font-weight: 600;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
 }
 
 .effectiveness.excellent {
