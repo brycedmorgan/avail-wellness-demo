@@ -543,65 +543,81 @@ const labTrendsChart = new Chart(labTrendsCtx, {
 </script>
 
 <style>
-/* Progress Overview — flat white card, restrained */
+/* Progress Overview — warm gradient hero, real estate, real hierarchy */
 .progress-overview-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 40px;
-    background: var(--white);
-    color: var(--gray-900);
-    padding: 28px 32px;
-    border-radius: 8px;
-    border: 1px solid var(--gray-200);
-    border-left: 3px solid var(--primary-dark);
+    gap: 48px;
+    background: linear-gradient(135deg, #B8A082 0%, #9C8366 60%, #6F5A47 100%);
+    color: var(--white);
+    padding: 36px 40px;
+    border-radius: 14px;
     overflow: hidden;
+    position: relative;
+}
+
+.progress-overview-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(80% 60% at 100% 0%, rgba(255,255,255,0.15), transparent 60%);
+    pointer-events: none;
 }
 
 .progress-highlights {
     display: flex;
-    gap: 32px;
+    gap: 36px;
     flex-shrink: 0;
     flex-wrap: wrap;
+    order: 2;
+    position: relative;
 }
 
 .progress-item {
     text-align: left;
-    min-width: 100px;
+    min-width: 96px;
 }
 
 .progress-number {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 700;
     line-height: 1;
-    margin-bottom: 6px;
-    color: var(--gray-900);
-    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--white);
+    letter-spacing: -0.025em;
     font-variant-numeric: tabular-nums;
 }
 
 .progress-label {
-    font-size: 11px;
-    color: var(--gray-500);
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.78);
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.7px;
     line-height: 1.2;
     font-weight: 600;
 }
 
+.progress-details {
+    order: 1;
+    position: relative;
+}
+
 .progress-details h3 {
-    margin: 0 0 6px;
-    font-size: 1.3rem;
+    margin: 0 0 8px;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--gray-900);
+    color: var(--white);
     letter-spacing: -0.025em;
+    line-height: 1.2;
 }
 
 .progress-details p {
     margin: 0;
-    color: var(--gray-600);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.55;
-    font-size: 0.92rem;
-    max-width: 50ch;
+    font-size: 0.95rem;
+    max-width: 52ch;
 }
 
 /* Lab Trends Styles */

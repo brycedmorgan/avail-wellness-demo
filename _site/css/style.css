@@ -146,9 +146,9 @@ body {
 .user-avatar {
   width: 40px;
   height: 40px;
-  background: #0A0A0A;
+  background: var(--primary);
   color: var(--white);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -559,15 +559,15 @@ body {
 }
 
 .btn-primary {
-  background: #0A0A0A;
+  background: var(--primary-dark);
   color: var(--white);
-  border-color: #0A0A0A;
+  border-color: var(--primary-dark);
   font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: #262626;
-  border-color: #262626;
+  background: #7a634b;
+  border-color: #7a634b;
 }
 
 .btn-outline {
