@@ -123,8 +123,7 @@ body {
   color: var(--avail-warning);
 }
 
-/* Appointment and activity items */
-.appointment-time,
+/* Activity icon stays branded */
 .activity-icon {
   background: var(--avail-primary);
 }

@@ -47,49 +47,47 @@ subtitle: Your comprehensive hormone and health panel history
 
 <!-- Lab History Timeline -->
 <div class="dashboard-section">
-    <h3>Complete Lab History</h3>
-    <div class="lab-timeline">
+    <h3>Complete lab history</h3>
+    <ol class="lab-timeline">
         {% for lab in patient.labResults %}
-        <div class="timeline-item">
-            <div class="timeline-date">
-                <div class="date-circle"></div>
-                <span>{{ lab.date | dateFormat }}</span>
-            </div>
-            <div class="timeline-content">
-                <div class="lab-header">
-                    <h4>{{ lab.lab }} - {{ lab.status }}</h4>
+        <li class="lab-tl-item">
+            <div class="lab-tl-dot" aria-hidden="true"></div>
+            <div class="lab-tl-content">
+                <div class="lab-tl-head">
+                    <div>
+                        <h4>{{ lab.lab }}</h4>
+                        <div class="lab-tl-sub">{{ lab.status }} · {{ lab.date | dateFormat }}</div>
+                    </div>
                     {% if lab.highlights.totalTestosterone.flag %}
                     <span class="lab-flag {{ lab.highlights.totalTestosterone.flag }}">{{ lab.highlights.totalTestosterone.flag }}</span>
                     {% endif %}
                 </div>
                 <p class="lab-summary">{{ lab.summary }}</p>
-                
                 <div class="lab-highlights">
                     <div class="lab-metric">
-                        <span class="metric-name">Total T:</span>
+                        <span class="metric-name">Total T</span>
                         <span class="metric-value">{{ lab.highlights.totalTestosterone.value }} {{ lab.highlights.totalTestosterone.unit }}</span>
-                        <span class="metric-range">({{ lab.highlights.totalTestosterone.range }})</span>
+                        <span class="metric-range">{{ lab.highlights.totalTestosterone.range }}</span>
                     </div>
                     <div class="lab-metric">
-                        <span class="metric-name">Free T:</span>
+                        <span class="metric-name">Free T</span>
                         <span class="metric-value">{{ lab.highlights.freeTestosterone.value }} {{ lab.highlights.freeTestosterone.unit }}</span>
-                        <span class="metric-range">({{ lab.highlights.freeTestosterone.range }})</span>
+                        <span class="metric-range">{{ lab.highlights.freeTestosterone.range }}</span>
                     </div>
                     <div class="lab-metric">
-                        <span class="metric-name">Estradiol:</span>
+                        <span class="metric-name">Estradiol</span>
                         <span class="metric-value">{{ lab.highlights.estradiol.value }} {{ lab.highlights.estradiol.unit }}</span>
-                        <span class="metric-range">({{ lab.highlights.estradiol.range }})</span>
+                        <span class="metric-range">{{ lab.highlights.estradiol.range }}</span>
                     </div>
                 </div>
-                
                 <div class="lab-actions">
-                    <button class="btn btn-outline btn-sm">View Full Report</button>
-                    <button class="btn btn-outline btn-sm">Download PDF</button>
+                    <a href="#" class="lab-action-link">View full report</a>
+                    <a href="#" class="lab-action-link">Download PDF</a>
                 </div>
             </div>
-        </div>
+        </li>
         {% endfor %}
-    </div>
+    </ol>
 </div>
 
 <!-- Reference Ranges Info -->
@@ -241,71 +239,59 @@ subtitle: Your comprehensive hormone and health panel history
     line-height: 1.6;
 }
 
-/* Lab Timeline */
+/* Lab Timeline — compact, dot+rule pattern */
 .lab-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     position: relative;
-    padding-left: 40px;
 }
-
 .lab-timeline::before {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
     background: var(--gray-200);
 }
-
-.timeline-item {
+.lab-tl-item {
     position: relative;
-    margin-bottom: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--gray-100);
+    padding-left: 26px;
+    padding-bottom: 18px;
 }
-
-.timeline-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.timeline-date {
+.lab-tl-item:last-child { padding-bottom: 0; }
+.lab-tl-dot {
     position: absolute;
-    left: -40px;
-    top: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--gray-600);
-}
-
-.date-circle {
-    width: 12px;
-    height: 12px;
-    background: var(--primary);
+    left: 2px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    background: var(--primary-dark);
+    border: 2px solid var(--white);
     border-radius: 50%;
-    border: 3px solid white;
-    box-shadow: 0 0 0 2px var(--primary);
+    box-shadow: 0 0 0 1px var(--gray-200);
 }
-
-.timeline-content {
-    margin-left: 20px;
-}
-
-.lab-header {
+.lab-tl-content { min-width: 0; }
+.lab-tl-head {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 4px;
 }
-
-.lab-header h4 {
+.lab-tl-head h4 {
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--gray-900);
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
+}
+.lab-tl-sub {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
 }
 
 .lab-flag {
@@ -314,59 +300,66 @@ subtitle: Your comprehensive hormone and health panel history
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
 }
-
-.lab-flag.H {
-    background: var(--error);
-    color: white;
-}
-
-.lab-flag.L {
-    background: var(--warning);
-    color: white;
-}
+.lab-flag.H { background: var(--error); color: white; }
+.lab-flag.L { background: var(--warning); color: white; }
 
 .lab-summary {
     color: var(--gray-600);
-    margin: 0 0 16px;
-    line-height: 1.6;
+    margin: 0 0 10px;
+    line-height: 1.5;
+    font-size: 0.83rem;
 }
 
 .lab-highlights {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 6px;
+    margin-bottom: 8px;
 }
-
 .lab-metric {
     background: var(--gray-50);
-    padding: 12px;
+    border: 1px solid var(--gray-100);
+    padding: 8px 10px;
     border-radius: 6px;
-    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
-
 .metric-name {
+    font-size: 10.5px;
     font-weight: 600;
-    color: var(--gray-700);
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-
 .metric-value {
     font-weight: 700;
     color: var(--gray-900);
-    margin-left: 4px;
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.015em;
 }
-
 .metric-range {
-    color: var(--gray-500);
-    font-size: 12px;
-    margin-left: 4px;
+    color: var(--gray-400);
+    font-size: 10.5px;
+    font-variant-numeric: tabular-nums;
 }
 
 .lab-actions {
     display: flex;
-    gap: 8px;
+    gap: 16px;
+    margin-top: 4px;
 }
+.lab-action-link {
+    color: var(--primary-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.lab-action-link:hover { text-decoration: underline; }
 
 .btn-sm {
     padding: 6px 12px;
@@ -380,21 +373,24 @@ subtitle: Your comprehensive hormone and health panel history
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
 }
 
 .info-card {
     background: var(--gray-50);
-    padding: 24px;
+    padding: 16px 18px;
     border-radius: 8px;
-    border-left: 4px solid var(--primary);
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--primary-dark);
 }
 
 .info-card h4 {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     color: var(--gray-900);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
 }
 
 .info-card p {
