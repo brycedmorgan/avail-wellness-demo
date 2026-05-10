@@ -1,0 +1,441 @@
+---
+layout: base.njk
+title: Prescriptions
+subtitle: Active medications, pharmacies, refills, and shipment tracking
+---
+
+{% set rx = patient.prescriptions %}
+
+<!-- Hero summary -->
+<div class="rx-hero">
+    <div class="rx-hero-text">
+        <span class="rx-hero-pill">Prescriptions</span>
+        <h3>{{ rx.summary.activeCount }} active · {{ rx.summary.dueForRefill }} pending refill</h3>
+        <p>Next delivery expected {{ rx.summary.nextDelivery | dateFormat }} · all scripts written by Brooke Welsh, WHNP and tracked end-to-end through your Avail care plan.</p>
+    </div>
+    <div class="rx-hero-stats">
+        <div class="rx-hero-stat">
+            <div class="rx-hero-stat-num">{{ rx.summary.activeCount }}</div>
+            <div class="rx-hero-stat-lbl">Active</div>
+        </div>
+        <div class="rx-hero-stat">
+            <div class="rx-hero-stat-num">{{ rx.summary.dueForRefill }}</div>
+            <div class="rx-hero-stat-lbl">Due for refill</div>
+        </div>
+        <div class="rx-hero-stat">
+            <div class="rx-hero-stat-num">3</div>
+            <div class="rx-hero-stat-lbl">Pharmacies</div>
+        </div>
+    </div>
+</div>
+
+<!-- Active prescriptions list -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Active prescriptions</h3>
+            <p class="section-meta">All medications currently prescribed by your care team</p>
+        </div>
+        <button class="btn btn-outline btn-sm" type="button">Request refill</button>
+    </div>
+
+    <div class="rx-list">
+        {% for r in rx.active %}
+        <article class="rx-row">
+            <div class="rx-cat">
+                <span class="rx-cat-tag">{{ r.category }}</span>
+            </div>
+            <div class="rx-main">
+                <div class="rx-row-head">
+                    <h4>{{ r.drug }}</h4>
+                    <span class="rx-status rx-status-{{ r.status | replace(' ', '-') | lower }}">{{ r.status }}</span>
+                </div>
+                <div class="rx-dose">{{ r.dose }} · {{ r.frequency }}</div>
+                <div class="rx-meta">
+                    <div class="rx-meta-block">
+                        <div class="rx-meta-lbl">Prescriber</div>
+                        <div class="rx-meta-val">{{ r.prescriber }}</div>
+                        <div class="rx-meta-sub">Written {{ r.prescribedDate | dateFormat }}</div>
+                    </div>
+                    <div class="rx-meta-block">
+                        <div class="rx-meta-lbl">Pharmacy</div>
+                        <div class="rx-meta-val">{{ r.pharmacy.name }}</div>
+                        <div class="rx-meta-sub">{{ r.pharmacy.type }} · {{ r.pharmacy.location }}</div>
+                    </div>
+                    <div class="rx-meta-block">
+                        <div class="rx-meta-lbl">Last fill</div>
+                        <div class="rx-meta-val">{{ r.lastFill.deliveredDate | dateFormat }}</div>
+                        <div class="rx-meta-sub">{{ r.lastFill.status }}{% if r.lastFill.tracking %} · <a href="#" class="rx-track">{{ r.lastFill.tracking | truncate(18, true, '…') }}</a>{% endif %}</div>
+                    </div>
+                    <div class="rx-meta-block">
+                        <div class="rx-meta-lbl">Refills</div>
+                        <div class="rx-meta-val">{{ r.refills.remaining }}/{{ r.refills.total }} remaining</div>
+                        <div class="rx-meta-sub">Rx expires {{ r.refills.expires | dateFormat }}</div>
+                    </div>
+                </div>
+                <div class="rx-foot">
+                    <div class="rx-ship-to">
+                        Ships to <strong>{{ r.pharmacy.shipsTo }}</strong>
+                    </div>
+                    <div class="rx-next-action">{{ r.nextAction }}</div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Pharmacy partners -->
+<div class="dashboard-section">
+    <h3>Your pharmacy partners</h3>
+    <div class="pharmacy-grid">
+        <div class="pharmacy-card">
+            <div class="pharmacy-name">Empower Pharmacy</div>
+            <div class="pharmacy-type">503B compounding · Houston, TX</div>
+            <div class="pharmacy-meds">Testosterone pellets · injectable T history</div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-name">Olympia Pharmacy</div>
+            <div class="pharmacy-type">503A compounding · Orlando, FL</div>
+            <div class="pharmacy-meds">DHEA · pregnenolone history</div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-name">Strive Pharmacy</div>
+            <div class="pharmacy-type">503A compounding · Gilbert, AZ</div>
+            <div class="pharmacy-meds">Vitamin D3/K2 Rx</div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-name">Costco Pharmacy</div>
+            <div class="pharmacy-type">Retail · San Diego, CA</div>
+            <div class="pharmacy-meds">Anastrozole</div>
+        </div>
+    </div>
+</div>
+
+<!-- Discontinued history -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Prescription history</h3>
+            <p class="section-meta">Discontinued medications — kept for clinical context</p>
+        </div>
+    </div>
+    <ul class="rx-history">
+        {% for h in rx.history %}
+        <li class="rx-history-item">
+            <div class="rx-history-line">
+                <strong>{{ h.drug }}</strong>
+                <span class="rx-history-dates">{{ h.prescribedDate | dateFormat }} → {{ h.discontinuedDate | dateFormat }}</span>
+            </div>
+            <div class="rx-history-meta">{{ h.dose }} · {{ h.pharmacy }}</div>
+            <div class="rx-history-reason">{{ h.reason }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+/* Hero */
+.rx-hero {
+    background: radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,0.10), transparent 55%),
+                linear-gradient(135deg, #B8A082 0%, #9C8366 60%, #6F5A47 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 22px 28px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+}
+.rx-hero-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+}
+.rx-hero-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 8px 0 4px;
+    letter-spacing: -0.025em;
+    color: #fff;
+}
+.rx-hero-text p {
+    margin: 0;
+    color: rgba(255,255,255,0.82);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 56ch;
+}
+.rx-hero-stats {
+    display: flex;
+    gap: 8px;
+}
+.rx-hero-stat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 80px;
+    backdrop-filter: blur(6px);
+}
+.rx-hero-stat-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+}
+.rx-hero-stat-lbl {
+    font-size: 10px;
+    color: rgba(255,255,255,0.78);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Section head reused */
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+.section-head h3 {
+    margin: 0 0 3px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.015em;
+}
+.section-meta {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--gray-500);
+}
+
+/* Rx list */
+.rx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.rx-row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    transition: border-color 0.15s ease;
+}
+.rx-row:hover {
+    border-color: var(--gray-300);
+}
+.rx-cat {
+    padding-top: 2px;
+}
+.rx-cat-tag {
+    display: inline-block;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.rx-main {
+    min-width: 0;
+}
+.rx-row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 2px;
+}
+.rx-row-head h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.01em;
+}
+.rx-status {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
+}
+.rx-status-active {
+    background: rgba(22, 163, 74, 0.10);
+    color: #16a34a;
+}
+.rx-status-refill-pending {
+    background: rgba(217, 119, 6, 0.12);
+    color: #b45309;
+}
+.rx-dose {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    margin-bottom: 12px;
+}
+.rx-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    padding: 12px 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.rx-meta-block { min-width: 0; }
+.rx-meta-lbl {
+    font-size: 10px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.rx-meta-val {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 2px;
+    letter-spacing: -0.005em;
+}
+.rx-meta-sub {
+    font-size: 0.74rem;
+    color: var(--gray-500);
+    line-height: 1.35;
+}
+.rx-track {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+}
+.rx-track:hover { text-decoration: underline; }
+.rx-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.78rem;
+}
+.rx-ship-to {
+    color: var(--gray-600);
+}
+.rx-ship-to strong {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+.rx-next-action {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* Pharmacies */
+.pharmacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+}
+.pharmacy-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.pharmacy-name {
+    font-weight: 700;
+    color: var(--gray-900);
+    font-size: 0.88rem;
+    margin-bottom: 2px;
+    letter-spacing: -0.01em;
+}
+.pharmacy-type {
+    font-size: 0.74rem;
+    color: var(--gray-500);
+    margin-bottom: 6px;
+}
+.pharmacy-meds {
+    font-size: 0.78rem;
+    color: var(--gray-700);
+}
+
+/* History */
+.rx-history {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.rx-history-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+.rx-history-item:last-child { border-bottom: none; }
+.rx-history-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 3px;
+}
+.rx-history-line strong {
+    font-size: 0.9rem;
+    color: var(--gray-900);
+    font-weight: 700;
+}
+.rx-history-dates {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    font-variant-numeric: tabular-nums;
+}
+.rx-history-meta {
+    font-size: 0.78rem;
+    color: var(--gray-600);
+    margin-bottom: 3px;
+}
+.rx-history-reason {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    font-style: italic;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .rx-row {
+        grid-template-columns: 1fr;
+    }
+    .rx-hero {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

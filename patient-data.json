@@ -14,34 +14,98 @@
       "lab": "Access Medical Labs",
       "status": "Complete",
       "highlights": {
-        "totalTestosterone": { "value": 853, "unit": "ng/dl", "range": "238-1048", "trend": "up", "change": "+204%" },
-        "freeTestosterone": { "value": 21.3, "unit": "ng/dl", "range": "5.7-17.9", "trend": "up", "flag": "H", "change": "+213%" },
-        "estradiol": { "value": 38.0, "unit": "pg/mL", "range": "11.3-43.2", "trend": "up" },
-        "shbg": { "value": 28, "unit": "nmol/L", "range": "16.5-55.9", "trend": "stable" }
+        "totalTestosterone": {
+          "value": 853,
+          "unit": "ng/dl",
+          "range": "238-1048",
+          "trend": "up",
+          "change": "+204%"
+        },
+        "freeTestosterone": {
+          "value": 21.3,
+          "unit": "ng/dl",
+          "range": "5.7-17.9",
+          "trend": "up",
+          "flag": "H",
+          "change": "+213%"
+        },
+        "estradiol": {
+          "value": 38.0,
+          "unit": "pg/mL",
+          "range": "11.3-43.2",
+          "trend": "up"
+        },
+        "shbg": {
+          "value": 28,
+          "unit": "nmol/L",
+          "range": "16.5-55.9",
+          "trend": "stable"
+        }
       },
       "summary": "Excellent response to pellet therapy. Testosterone optimized with balanced estradiol."
     },
     {
       "date": "2025-12-18",
-      "lab": "Access Medical Labs", 
+      "lab": "Access Medical Labs",
       "status": "Complete",
       "highlights": {
-        "totalTestosterone": { "value": 281, "unit": "ng/dl", "range": "238-1048", "trend": "down" },
-        "freeTestosterone": { "value": 6.8, "unit": "ng/dl", "range": "5.7-17.9", "trend": "down" },
-        "estradiol": { "value": "<5", "unit": "pg/mL", "range": "11.3-43.2", "trend": "down", "flag": "L" },
-        "hba1c": { "value": 5.6, "unit": "%", "range": "<5.7", "trend": "stable" }
+        "totalTestosterone": {
+          "value": 281,
+          "unit": "ng/dl",
+          "range": "238-1048",
+          "trend": "down"
+        },
+        "freeTestosterone": {
+          "value": 6.8,
+          "unit": "ng/dl",
+          "range": "5.7-17.9",
+          "trend": "down"
+        },
+        "estradiol": {
+          "value": "<5",
+          "unit": "pg/mL",
+          "range": "11.3-43.2",
+          "trend": "down",
+          "flag": "L"
+        },
+        "hba1c": {
+          "value": 5.6,
+          "unit": "%",
+          "range": "<5.7",
+          "trend": "stable"
+        }
       },
       "summary": "Low testosterone and estradiol. Excellent candidate for hormone optimization."
     },
     {
       "date": "2025-09-25",
       "lab": "Access Medical Labs",
-      "status": "Complete", 
+      "status": "Complete",
       "highlights": {
-        "totalTestosterone": { "value": 586, "unit": "ng/dl", "range": "280-1100", "trend": "stable" },
-        "freeTestosterone": { "value": 17.4, "unit": "ng/dl", "range": "4.3-24.0", "trend": "stable" },
-        "estradiol": { "value": 23.4, "unit": "pg/mL", "range": "11.8-39.9", "trend": "stable" },
-        "cortisol": { "value": 7.8, "unit": "ug/dl", "range": "5.2-22.5", "trend": "stable" }
+        "totalTestosterone": {
+          "value": 586,
+          "unit": "ng/dl",
+          "range": "280-1100",
+          "trend": "stable"
+        },
+        "freeTestosterone": {
+          "value": 17.4,
+          "unit": "ng/dl",
+          "range": "4.3-24.0",
+          "trend": "stable"
+        },
+        "estradiol": {
+          "value": 23.4,
+          "unit": "pg/mL",
+          "range": "11.8-39.9",
+          "trend": "stable"
+        },
+        "cortisol": {
+          "value": 7.8,
+          "unit": "ug/dl",
+          "range": "5.2-22.5",
+          "trend": "stable"
+        }
       },
       "summary": "Baseline hormone assessment. Testosterone in normal range but suboptimal."
     },
@@ -50,10 +114,33 @@
       "lab": "LabCorp",
       "status": "Complete",
       "highlights": {
-        "totalTestosterone": { "value": 305, "unit": "ng/dl", "range": "264-916", "trend": "baseline" },
-        "freeTestosterone": { "value": 7.3, "unit": "pg/mL", "range": "8.7-25.1", "trend": "baseline", "flag": "L" },
-        "cholesterol": { "value": 275, "unit": "mg/dL", "range": "100-199", "trend": "baseline", "flag": "H" },
-        "hba1c": { "value": 5.7, "unit": "%", "range": "4.8-5.6", "trend": "baseline", "flag": "H" }
+        "totalTestosterone": {
+          "value": 305,
+          "unit": "ng/dl",
+          "range": "264-916",
+          "trend": "baseline"
+        },
+        "freeTestosterone": {
+          "value": 7.3,
+          "unit": "pg/mL",
+          "range": "8.7-25.1",
+          "trend": "baseline",
+          "flag": "L"
+        },
+        "cholesterol": {
+          "value": 275,
+          "unit": "mg/dL",
+          "range": "100-199",
+          "trend": "baseline",
+          "flag": "H"
+        },
+        "hba1c": {
+          "value": 5.7,
+          "unit": "%",
+          "range": "4.8-5.6",
+          "trend": "baseline",
+          "flag": "H"
+        }
       },
       "summary": "Initial comprehensive panel. Low-normal testosterone, elevated cholesterol."
     }
@@ -68,7 +155,7 @@
       "summary": "Significant improvement in body composition"
     },
     {
-      "date": "2024-01-20", 
+      "date": "2024-01-20",
       "bodyFatPercentage": 31.1,
       "leanMass": 68.9,
       "visceralFat": 3.8,
@@ -88,20 +175,59 @@
   "supplements": {
     "current": {
       "morning": [
-        { "name": "Tongkat Ali", "dosage": "2 pills", "purpose": "Testosterone support" },
-        { "name": "Omega 3", "dosage": "1 capsule", "purpose": "Cardiovascular health" },
-        { "name": "Tyrosine", "dosage": "1 capsule", "purpose": "Cognitive function" },
-        { "name": "Vitamin D3K2", "dosage": "1 capsule", "purpose": "Bone health, hormone production" },
-        { "name": "Nitric Oxide", "dosage": "1 serving", "purpose": "Circulation, exercise performance" }
+        {
+          "name": "Tongkat Ali",
+          "dosage": "2 pills",
+          "purpose": "Testosterone support"
+        },
+        {
+          "name": "Omega 3",
+          "dosage": "1 capsule",
+          "purpose": "Cardiovascular health"
+        },
+        {
+          "name": "Tyrosine",
+          "dosage": "1 capsule",
+          "purpose": "Cognitive function"
+        },
+        {
+          "name": "Vitamin D3K2",
+          "dosage": "1 capsule",
+          "purpose": "Bone health, hormone production"
+        },
+        {
+          "name": "Nitric Oxide",
+          "dosage": "1 serving",
+          "purpose": "Circulation, exercise performance"
+        }
       ],
-      "afternoon": [
-      ],
+      "afternoon": [],
       "night": [
-        { "name": "L-Theanine", "dosage": "1 capsule", "purpose": "Stress management, focus" },
-        { "name": "Calm Magnesium", "dosage": "1 serving", "purpose": "Sleep, muscle recovery" },
-        { "name": "Citrate", "dosage": "1 capsule", "purpose": "Mineral absorption" },
-        { "name": "Zinc", "dosage": "1 capsule", "purpose": "Immune support, hormone production" },
-        { "name": "Sunfiber GI", "dosage": "1 serving", "purpose": "Digestive health" }
+        {
+          "name": "L-Theanine",
+          "dosage": "1 capsule",
+          "purpose": "Stress management, focus"
+        },
+        {
+          "name": "Calm Magnesium",
+          "dosage": "1 serving",
+          "purpose": "Sleep, muscle recovery"
+        },
+        {
+          "name": "Citrate",
+          "dosage": "1 capsule",
+          "purpose": "Mineral absorption"
+        },
+        {
+          "name": "Zinc",
+          "dosage": "1 capsule",
+          "purpose": "Immune support, hormone production"
+        },
+        {
+          "name": "Sunfiber GI",
+          "dosage": "1 serving",
+          "purpose": "Digestive health"
+        }
       ]
     }
   },
@@ -113,9 +239,9 @@
       "status": "Paid"
     },
     {
-      "date": "2026-01-05", 
+      "date": "2026-01-05",
       "description": "Male Pellet Implant",
-      "amount": 800.00,
+      "amount": 800.0,
       "status": "Paid"
     }
   ],
@@ -132,7 +258,7 @@
     "past": [
       {
         "date": "2026-01-05",
-        "time": "2:00 PM", 
+        "time": "2:00 PM",
         "type": "Pellet Insertion",
         "provider": "Brooke Welsh",
         "notes": "Testosterone pellet placed. No complications."
@@ -154,5 +280,156 @@
       "mood": 8,
       "focus": 8
     }
+  },
+  "prescriptions": {
+    "summary": {
+      "activeCount": 4,
+      "dueForRefill": 1,
+      "nextDelivery": "2026-04-12"
+    },
+    "active": [
+      {
+        "id": "rx-001",
+        "drug": "Testosterone Cypionate Pellets",
+        "category": "Hormone",
+        "dose": "10 \u00d7 200mg pellets \u00b7 subcutaneous",
+        "frequency": "Every 3-6 months",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2026-01-03",
+        "pharmacy": {
+          "name": "Empower Pharmacy",
+          "type": "Compounding (503B)",
+          "location": "Houston, TX",
+          "shipsTo": "Avail Wellness Clinic"
+        },
+        "refills": {
+          "remaining": 0,
+          "total": 0,
+          "expires": "2026-04-15",
+          "note": "Provider re-evaluation required"
+        },
+        "lastFill": {
+          "date": "2026-01-03",
+          "shippedDate": "2026-01-04",
+          "deliveredDate": "2026-01-05",
+          "status": "Implanted Jan 5, 2026",
+          "tracking": "FedEx 7942 8821 4567"
+        },
+        "nextAction": "Re-eval visit Apr 15",
+        "status": "Active"
+      },
+      {
+        "id": "rx-002",
+        "drug": "Anastrozole",
+        "category": "Adjunct (estrogen blocker)",
+        "dose": "0.5mg tablet",
+        "frequency": "Once weekly \u00b7 Mondays",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2026-01-05",
+        "pharmacy": {
+          "name": "Costco Pharmacy",
+          "type": "Retail",
+          "location": "San Diego, CA",
+          "shipsTo": "Pickup"
+        },
+        "refills": {
+          "remaining": 4,
+          "total": 6,
+          "expires": "2026-12-15",
+          "note": null
+        },
+        "lastFill": {
+          "date": "2026-03-12",
+          "shippedDate": null,
+          "deliveredDate": "2026-03-12",
+          "status": "Picked up",
+          "tracking": null
+        },
+        "nextAction": "Auto-refill Apr 12",
+        "status": "Active"
+      },
+      {
+        "id": "rx-003",
+        "drug": "DHEA",
+        "category": "Hormone precursor",
+        "dose": "25mg capsule",
+        "frequency": "Daily \u00b7 morning",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2025-09-08",
+        "pharmacy": {
+          "name": "Olympia Pharmacy",
+          "type": "Compounding (503A)",
+          "location": "Orlando, FL",
+          "shipsTo": "Home (1247 Sunset Cliffs Blvd)"
+        },
+        "refills": {
+          "remaining": 2,
+          "total": 6,
+          "expires": "2026-09-08",
+          "note": null
+        },
+        "lastFill": {
+          "date": "2026-03-02",
+          "shippedDate": "2026-03-03",
+          "deliveredDate": "2026-03-05",
+          "status": "Delivered",
+          "tracking": "USPS 9405 5036 9930 0234"
+        },
+        "nextAction": "Refill due May 2",
+        "status": "Active"
+      },
+      {
+        "id": "rx-004",
+        "drug": "Vitamin D3 + K2 (Rx-strength)",
+        "category": "Cofactor",
+        "dose": "50,000 IU D3 + 200mcg K2 \u00b7 capsule",
+        "frequency": "Once weekly",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2025-09-08",
+        "pharmacy": {
+          "name": "Strive Pharmacy",
+          "type": "Compounding (503A)",
+          "location": "Gilbert, AZ",
+          "shipsTo": "Home (1247 Sunset Cliffs Blvd)"
+        },
+        "refills": {
+          "remaining": 0,
+          "total": 6,
+          "expires": "2026-04-08",
+          "note": "Refill request pending provider review"
+        },
+        "lastFill": {
+          "date": "2025-12-18",
+          "shippedDate": "2025-12-19",
+          "deliveredDate": "2025-12-22",
+          "status": "Delivered",
+          "tracking": "UPS 1Z999AA10123456784"
+        },
+        "nextAction": "Refill requested \u00b7 awaiting Brooke",
+        "status": "Refill pending"
+      }
+    ],
+    "history": [
+      {
+        "id": "rx-h-001",
+        "drug": "Pregnenolone",
+        "dose": "50mg \u00b7 daily",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2025-03-08",
+        "discontinuedDate": "2025-09-08",
+        "pharmacy": "Olympia Pharmacy",
+        "reason": "Discontinued \u2014 no measurable benefit on cortisol panel"
+      },
+      {
+        "id": "rx-h-002",
+        "drug": "Testosterone Cypionate (injectable)",
+        "dose": "200mg/mL \u00b7 0.5mL IM weekly",
+        "prescriber": "Brooke Welsh, WHNP",
+        "prescribedDate": "2025-03-12",
+        "discontinuedDate": "2026-01-05",
+        "pharmacy": "Empower Pharmacy",
+        "reason": "Switched to pellet protocol \u2014 improved compliance"
+      }
+    ]
   }
 }
