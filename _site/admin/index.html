@@ -108,7 +108,6 @@
             <header class="admin-header">
                 <div class="header-content">
                     <div class="header-title">
-                        <div class="admin-welcome">Provider Dashboard — Brooke Welsh, WHNP</div>
                         <h1>Provider Dashboard</h1>
                         
                         <p class="header-subtitle">Outcome intelligence + AI-assisted protocols, on top of your existing systems</p>
@@ -118,11 +117,17 @@
                         <div class="quick-stats">
                             <div class="stat-item">
                                 <span class="stat-value">156</span>
-                                <span class="stat-label">Active Patients</span>
+                                <span class="stat-label">Active patients</span>
                             </div>
+                            <div class="stat-divider" aria-hidden="true"></div>
                             <div class="stat-item">
                                 <span class="stat-value">5</span>
                                 <span class="stat-label">Cohorts</span>
+                            </div>
+                            <div class="stat-divider" aria-hidden="true"></div>
+                            <div class="stat-item">
+                                <span class="stat-value">91<span class="stat-unit">%</span></span>
+                                <span class="stat-label">Adherence</span>
                             </div>
                         </div>
                     </div>
@@ -208,59 +213,87 @@
 <!-- Today's Schedule -->
 <div class="appointments-today">
     <div class="dashboard-section">
-        <h3>Today's Schedule - March 31, 2026</h3>
-        
-        <div class="appointment-item">
-            <div class="appointment-time">9:00 AM</div>
-            <div class="appointment-details">
-                <div class="appointment-patient">Jennifer Smith</div>
-                <div class="appointment-type">Follow-up Consultation</div>
+        <div class="section-head">
+            <div>
+                <h3>Today's schedule</h3>
+                <p class="section-meta">Monday, March 31 · 4 appointments · $1,525 booked</p>
             </div>
-            <div class="appointment-revenue">$125.00</div>
-            <div class="appointment-status status-confirmed">
-                Confirmed
-            </div>
+            <a href="/admin/appointments/" class="section-link">View calendar →</a>
         </div>
-        
-        <div class="appointment-item">
-            <div class="appointment-time">10:30 AM</div>
-            <div class="appointment-details">
-                <div class="appointment-patient">New Patient - Lisa Garcia</div>
-                <div class="appointment-type">Initial Consultation</div>
+        <div class="appointment-list">
+            
+            
+            
+            <div class="appointment-row">
+                <div class="appointment-time">
+                    <span class="appt-time-value">9:00 AM</span>
+                    <span class="appt-time-duration">45 min</span>
+                </div>
+                <div class="appt-avatar">JS</div>
+                <div class="appointment-details">
+                    <div class="appointment-patient">Jennifer Smith</div>
+                    <div class="appointment-type">Follow-up Consultation</div>
+                </div>
+                <div class="appointment-revenue">$125.00</div>
+                <div class="appointment-status status-confirmed">
+                    Confirmed
+                </div>
             </div>
-            <div class="appointment-revenue">$400.00</div>
-            <div class="appointment-status status-confirmed">
-                Confirmed
+            
+            
+            
+            <div class="appointment-row">
+                <div class="appointment-time">
+                    <span class="appt-time-value">10:30 AM</span>
+                    <span class="appt-time-duration">45 min</span>
+                </div>
+                <div class="appt-avatar">NP</div>
+                <div class="appointment-details">
+                    <div class="appointment-patient">New Patient - Lisa Garcia</div>
+                    <div class="appointment-type">Initial Consultation</div>
+                </div>
+                <div class="appointment-revenue">$400.00</div>
+                <div class="appointment-status status-confirmed">
+                    Confirmed
+                </div>
             </div>
-        </div>
-        
-        <div class="appointment-item">
-            <div class="appointment-time">2:00 PM</div>
-            <div class="appointment-details">
-                <div class="appointment-patient">Mark Rodriguez</div>
-                <div class="appointment-type">Pellet Insertion</div>
+            
+            
+            
+            <div class="appointment-row">
+                <div class="appointment-time">
+                    <span class="appt-time-value">2:00 PM</span>
+                    <span class="appt-time-duration">45 min</span>
+                </div>
+                <div class="appt-avatar">MR</div>
+                <div class="appointment-details">
+                    <div class="appointment-patient">Mark Rodriguez</div>
+                    <div class="appointment-type">Pellet Insertion</div>
+                </div>
+                <div class="appointment-revenue">$800.00</div>
+                <div class="appointment-status status-confirmed">
+                    Confirmed
+                </div>
             </div>
-            <div class="appointment-revenue">$800.00</div>
-            <div class="appointment-status status-confirmed">
-                Confirmed
+            
+            
+            
+            <div class="appointment-row">
+                <div class="appointment-time">
+                    <span class="appt-time-value">3:30 PM</span>
+                    <span class="appt-time-duration">45 min</span>
+                </div>
+                <div class="appt-avatar">AT</div>
+                <div class="appointment-details">
+                    <div class="appointment-patient">Amanda Taylor</div>
+                    <div class="appointment-type">Weight Loss Consultation</div>
+                </div>
+                <div class="appointment-revenue">$200.00</div>
+                <div class="appointment-status status-pending-confirmation">
+                    Pending Confirmation
+                </div>
             </div>
-        </div>
-        
-        <div class="appointment-item">
-            <div class="appointment-time">3:30 PM</div>
-            <div class="appointment-details">
-                <div class="appointment-patient">Amanda Taylor</div>
-                <div class="appointment-type">Weight Loss Consultation</div>
-            </div>
-            <div class="appointment-revenue">$200.00</div>
-            <div class="appointment-status status-pending-confirmation">
-                Pending Confirmation
-            </div>
-        </div>
-        
-        
-        <div class="schedule-summary">
-            <strong>Daily Total: $1,525 • 4 appointments</strong>
+            
         </div>
     </div>
 </div>

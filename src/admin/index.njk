@@ -81,23 +81,33 @@ subtitle: Outcome intelligence + AI-assisted protocols, on top of your existing 
 <!-- Today's Schedule -->
 <div class="appointments-today">
     <div class="dashboard-section">
-        <h3>Today's Schedule - March 31, 2026</h3>
-        {% for appointment in adminData.appointments %}
-        <div class="appointment-item">
-            <div class="appointment-time">{{ appointment.time }}</div>
-            <div class="appointment-details">
-                <div class="appointment-patient">{{ appointment.patient }}</div>
-                <div class="appointment-type">{{ appointment.type }}</div>
+        <div class="section-head">
+            <div>
+                <h3>Today's schedule</h3>
+                <p class="section-meta">Monday, March 31 · 4 appointments · $1,525 booked</p>
             </div>
-            <div class="appointment-revenue">{{ appointment.revenue | currency }}</div>
-            <div class="appointment-status status-{{ appointment.status | replace(' ', '-') | lower }}">
-                {{ appointment.status }}
-            </div>
+            <a href="/admin/appointments/" class="section-link">View calendar →</a>
         </div>
-        {% endfor %}
-        
-        <div class="schedule-summary">
-            <strong>Daily Total: $1,525 • 4 appointments</strong>
+        <div class="appointment-list">
+            {% for appointment in adminData.appointments %}
+            {% set parts = appointment.patient.split(' ') %}
+            {% set initials = parts[0][0] + (parts[1][0] if parts | length > 1 else '') %}
+            <div class="appointment-row">
+                <div class="appointment-time">
+                    <span class="appt-time-value">{{ appointment.time }}</span>
+                    <span class="appt-time-duration">45 min</span>
+                </div>
+                <div class="appt-avatar">{{ initials }}</div>
+                <div class="appointment-details">
+                    <div class="appointment-patient">{{ appointment.patient }}</div>
+                    <div class="appointment-type">{{ appointment.type }}</div>
+                </div>
+                <div class="appointment-revenue">{{ appointment.revenue | currency }}</div>
+                <div class="appointment-status status-{{ appointment.status | replace(' ', '-') | lower }}">
+                    {{ appointment.status }}
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
