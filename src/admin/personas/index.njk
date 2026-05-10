@@ -36,7 +36,7 @@ subtitle: Cohort trends across your patient base — what's working, for whom, a
 
         <div class="per-primary">
             <div class="per-primary-lbl">{{ cohort.outcomes.primary.label }}</div>
-            <div class="per-primary-val" style="color: {{ cohort.color }};">{{ cohort.outcomes.primary.value }}</div>
+            <div class="per-primary-val">{{ cohort.outcomes.primary.value }}</div>
             <div class="per-primary-meta">{{ cohort.outcomes.primary.from }} → {{ cohort.outcomes.primary.to }} · over {{ cohort.outcomes.primary.weeks }} wks</div>
         </div>
 
@@ -90,7 +90,7 @@ subtitle: Cohort trends across your patient base — what's working, for whom, a
 </div>
 
 <style>
-.per-hero { background: radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,0.10), transparent 55%), linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%); color: #fff; border-radius: 14px; padding: 36px 40px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; position: relative; overflow: hidden; }
+.per-hero { background: radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,0.12), transparent 55%), linear-gradient(135deg, #B8A082 0%, #9C8366 50%, #6F5A47 100%); color: #fff; border-radius: 14px; padding: 36px 40px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; position: relative; overflow: hidden; }
 .per-hero h2 { color: #fff; margin: 10px 0 10px; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
 .per-hero p { color: rgba(255,255,255,0.85); margin: 0; line-height: 1.6; font-size: 0.95rem; max-width: 56ch; }
 .per-hero strong { color: #fff; font-weight: 600; }
@@ -127,7 +127,7 @@ subtitle: Cohort trends across your patient base — what's working, for whom, a
 .per-protocol-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
 .per-cta { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 2rem; }
 .per-cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-.per-cta-icon { color: #6366F1; margin-bottom: 0.75rem; }
+.per-cta-icon { color: #6F5A47; margin-bottom: 0.75rem; }
 .per-cta-svg { width: 28px; height: 28px; }
 .per-cta h4 { margin: 0 0 0.5rem 0; font-size: 1rem; color: #111827; }
 .per-cta p { margin: 0; font-size: 0.88rem; color: #4b5563; line-height: 1.55; }
