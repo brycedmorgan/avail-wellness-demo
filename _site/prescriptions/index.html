@@ -125,7 +125,7 @@
             <h3>Active prescriptions</h3>
             <p class="section-meta">All medications currently prescribed by your care team</p>
         </div>
-        <button class="btn btn-outline btn-sm" type="button">Request refill</button>
+        <button class="btn btn-outline btn-sm" type="button" data-rx-refill-open>Request refill</button>
     </div>
 
     <div class="rx-list">
@@ -320,6 +320,56 @@
             <div class="pharmacy-name">Costco Pharmacy</div>
             <div class="pharmacy-type">Retail · San Diego, CA</div>
             <div class="pharmacy-meds">Anastrozole</div>
+        </div>
+    </div>
+</div>
+
+<!-- Refill request modal -->
+<div class="rx-modal-overlay" id="rxRefillModal" hidden>
+    <div class="rx-modal" role="dialog" aria-labelledby="rxRefillTitle">
+        <div class="rx-modal-head">
+            <h3 id="rxRefillTitle">Request a refill</h3>
+            <button type="button" class="rx-modal-close" data-rx-refill-close aria-label="Close">×</button>
+        </div>
+        <form class="rx-modal-body" id="rxRefillForm">
+            <label class="rx-modal-field">
+                <span class="rx-modal-lbl">Which prescription?</span>
+                <select required>
+                    
+                    <option value="rx-001">Testosterone Cypionate Pellets (10 × 200mg pellets · subcutaneous)</option>
+                    
+                    <option value="rx-002">Anastrozole (0.5mg tablet)</option>
+                    
+                    <option value="rx-003">DHEA (25mg capsule)</option>
+                    
+                    <option value="rx-004">Vitamin D3 + K2 (Rx-strength) (50,000 IU D3 + 200mcg K2 · capsule)</option>
+                    
+                </select>
+            </label>
+            <label class="rx-modal-field">
+                <span class="rx-modal-lbl">How urgent?</span>
+                <div class="rx-modal-radios">
+                    <label class="rx-modal-radio"><input type="radio" name="urgency" value="normal" checked> Standard · 24-48h</label>
+                    <label class="rx-modal-radio"><input type="radio" name="urgency" value="urgent"> Urgent · running out today</label>
+                </div>
+            </label>
+            <label class="rx-modal-field">
+                <span class="rx-modal-lbl">Anything Brooke should know? <span class="rx-modal-opt">(optional)</span></span>
+                <textarea rows="3" placeholder="e.g. side effects, dose questions, change of address…"></textarea>
+            </label>
+            <div class="rx-modal-foot-meta">
+                Brooke or Nicki typically reviews within 4 hours during clinic hours. We'll route directly to your usual pharmacy unless you tell us otherwise.
+            </div>
+            <div class="rx-modal-actions">
+                <button type="button" class="btn btn-outline" data-rx-refill-close>Cancel</button>
+                <button type="submit" class="btn btn-primary">Send request</button>
+            </div>
+        </form>
+        <div class="rx-modal-success" hidden>
+            <div class="rx-modal-success-icon"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <h3>Request sent</h3>
+            <p>Brooke has been notified. You'll see status updates here and in your provider chat. Most refills are approved within 4 hours.</p>
+            <button type="button" class="btn btn-primary" data-rx-refill-close>Done</button>
         </div>
     </div>
 </div>
@@ -650,6 +700,158 @@
     font-style: italic;
 }
 
+/* Refill modal */
+.rx-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 12, 8, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.rx-modal-overlay[hidden] { display: none; }
+.rx-modal {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.rx-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--gray-100);
+}
+.rx-modal-head h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.015em;
+}
+.rx-modal-close {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    line-height: 1;
+}
+.rx-modal-close:hover { background: var(--gray-50); color: var(--gray-700); }
+.rx-modal-body {
+    padding: 18px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.rx-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.rx-modal-lbl {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+.rx-modal-opt {
+    font-weight: 400;
+    color: var(--gray-400);
+}
+.rx-modal-field select,
+.rx-modal-field textarea {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: var(--gray-900);
+    font-family: inherit;
+    resize: vertical;
+}
+.rx-modal-field select:focus,
+.rx-modal-field textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(184, 160, 130, 0.18);
+}
+.rx-modal-radios { display: flex; flex-direction: column; gap: 6px; }
+.rx-modal-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    font-size: 0.83rem;
+    color: var(--gray-700);
+    cursor: pointer;
+}
+.rx-modal-radio:has(input:checked) {
+    border-color: var(--primary-dark);
+    background: rgba(184, 160, 130, 0.08);
+    color: var(--gray-900);
+    font-weight: 500;
+}
+.rx-modal-foot-meta {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+.rx-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.rx-modal-success {
+    padding: 28px 22px 22px;
+    text-align: center;
+}
+.rx-modal-success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+.rx-modal-success h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gray-900);
+}
+.rx-modal-success p {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .rx-row {
@@ -660,6 +862,36 @@
     }
 }
 </style>
+
+<script>
+(function() {
+    const overlay = document.getElementById('rxRefillModal');
+    const form = document.getElementById('rxRefillForm');
+    const success = overlay.querySelector('.rx-modal-success');
+
+    function open() {
+        form.hidden = false;
+        success.hidden = true;
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        overlay.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-rx-refill-open]').forEach(b => b.addEventListener('click', open));
+    document.querySelectorAll('[data-rx-refill-close]').forEach(b => b.addEventListener('click', close));
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !overlay.hidden) close(); });
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        form.hidden = true;
+        success.hidden = false;
+    });
+})();
+</script>
 
             </div>
         </main>

@@ -35,7 +35,7 @@ The current stack (EMR for charting, scheduling tool for calendar, Stripe/Square
 | 1 (4 weeks) | — (sits alongside) | $0 | AI protocol drafts, cohort intelligence, weekly check-ins, provider chat |
 | 2 (3 months) | Intake forms + secure messaging + check-in surveys | ~$300/mo | Single source of truth for patient state |
 | 3 (6 months) | Scheduling + appointment reminders | ~$400/mo | Calendar tied directly to outcome data |
-| 4 (9 months) | EMR documentation (charting + e-prescribing pass-through to Surescripts) | ~$1,200/mo | Brooke's notes feed protocols automatically; no double-entry |
+| 4 (9 months) | EMR documentation + **Surescripts e-prescribing** (EPCS-certified, 99% US pharmacy coverage) | ~$1,200/mo | Brooke writes the script once and it ships to Empower / Olympia / Strive / CVS / wherever — no faxing, no double-entry, full audit trail |
 | 5 (12+ months) | Billing handoff to Stripe/payor APIs | ~$300/mo | One workflow from intake → outcome → invoice |
 
 That's a **~$2,200/month** software stack consolidation, plus an estimated **15-20 hrs/week** of Brooke's and Nicki's time that today goes into tool-switching, double-entry, and recreating context. At Brooke's effective hourly value, that's the much bigger number.
@@ -49,6 +49,7 @@ That's a **~$2,200/month** software stack consolidation, plus an estimated **15-
 - **AI Protocol Builder** (`/admin/protocol-builder/`) — consult recording → cohort match → draft protocol with rationale and source citations. Provider always reviews and approves. Now with HIPAA architecture diagram.
 - **Patient Personas** (`/admin/personas/`) — five cohorts (Low T male, perimenopause, PCOS, weight loss, subclinical hypothyroid) with effectiveness scores. "Patients like you typically see X% improvement on this protocol" — backed by Avail's real outcome data.
 - **How It Works / Method** (`/admin/method/`) — the compliance + architecture single-pager. HIPAA, PCI scope, consent, liability, phased rollout. This is the page you send to your malpractice carrier.
+- **Prescriptions tracking** (both portals) — patient sees every active script, where it's filled (Empower, Olympia, Strive, retail), tracking numbers, refill counts. Provider sees the refill queue across all 142 patients on Rx, pharmacy performance (avg fill time, on-time rate, issues), top meds by cohort, and a complete prescribing audit trail. This is the data the existing EMR doesn't surface.
 - **Weekly check-in** (patient side) — the part of the system that actually feeds the protocol intelligence. Patients answer 4 questions in 30 seconds; provider sees correlations between subjective state and objective labs over time.
 - **Provider chat** (patient side) — direct messaging, threaded, with read state. Replaces secure email. This is the feature patients ask for most often.
 

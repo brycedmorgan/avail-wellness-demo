@@ -25,7 +25,9 @@
       "monthlyRevenue": 200,
       "program": "Hormone Support",
       "adherence": 89,
-      "flags": ["Excellent Response"],
+      "flags": [
+        "Excellent Response"
+      ],
       "recentLabs": "Complete - Optimized",
       "treatmentStart": "2025-03-04"
     },
@@ -34,13 +36,15 @@
       "name": "Jennifer Smith",
       "age": 42,
       "gender": "Female",
-      "status": "Active", 
+      "status": "Active",
       "lastVisit": "2026-03-20",
       "nextAppointment": "2026-05-01",
       "monthlyRevenue": 375,
       "program": "Hormone + Weight Loss",
       "adherence": 92,
-      "flags": ["Due for Labs"],
+      "flags": [
+        "Due for Labs"
+      ],
       "recentLabs": "Pending",
       "treatmentStart": "2025-08-15"
     },
@@ -48,14 +52,17 @@
       "id": "P003",
       "name": "Michael Johnson",
       "age": 51,
-      "gender": "Male", 
+      "gender": "Male",
       "status": "Active",
       "lastVisit": "2026-03-15",
       "nextAppointment": "2026-04-22",
       "monthlyRevenue": 250,
       "program": "Hormone Support",
       "adherence": 76,
-      "flags": ["Low Adherence", "Follow-up Needed"],
+      "flags": [
+        "Low Adherence",
+        "Follow-up Needed"
+      ],
       "recentLabs": "Complete - Needs Adjustment",
       "treatmentStart": "2024-11-20"
     },
@@ -70,7 +77,9 @@
       "monthlyRevenue": 450,
       "program": "Hormone + Tirzepatide",
       "adherence": 96,
-      "flags": ["Star Patient"],
+      "flags": [
+        "Star Patient"
+      ],
       "recentLabs": "Complete - Excellent",
       "treatmentStart": "2025-01-10"
     },
@@ -85,7 +94,10 @@
       "monthlyRevenue": 0,
       "program": "Former Hormone Support",
       "adherence": 0,
-      "flags": ["Lapsed", "Re-engagement Needed"],
+      "flags": [
+        "Lapsed",
+        "Re-engagement Needed"
+      ],
       "recentLabs": "Overdue",
       "treatmentStart": "2024-06-15"
     }
@@ -100,7 +112,7 @@
       "revenue": 125
     },
     {
-      "time": "10:30 AM", 
+      "time": "10:30 AM",
       "date": "2026-03-31",
       "patient": "New Patient - Lisa Garcia",
       "type": "Initial Consultation",
@@ -109,7 +121,7 @@
     },
     {
       "time": "2:00 PM",
-      "date": "2026-03-31", 
+      "date": "2026-03-31",
       "patient": "Mark Rodriguez",
       "type": "Pellet Insertion",
       "status": "Confirmed",
@@ -119,7 +131,7 @@
       "time": "3:30 PM",
       "date": "2026-03-31",
       "patient": "Amanda Taylor",
-      "type": "Weight Loss Consultation", 
+      "type": "Weight Loss Consultation",
       "status": "Pending Confirmation",
       "revenue": 200
     }
@@ -134,7 +146,7 @@
     },
     {
       "patient": "Michael Johnson",
-      "ordered": "2026-03-15", 
+      "ordered": "2026-03-15",
       "type": "Follow-up Testosterone",
       "status": "Results Available",
       "expectedDate": "2026-03-29"
@@ -158,13 +170,13 @@
       "score": 85
     },
     {
-      "name": "James Wilson", 
+      "name": "James Wilson",
       "email": "jwilson@email.com",
       "phone": "(801) 555-0156",
       "source": "Patient Referral",
       "inquiry": "Weight loss consultation",
       "date": "2026-03-27",
-      "status": "Called - Interested", 
+      "status": "Called - Interested",
       "score": 92
     }
   ],
@@ -174,8 +186,8 @@
       "currentStock": 45,
       "reorderPoint": 20,
       "monthlySales": 28,
-      "cost": 15.50,
-      "retailPrice": 35.00,
+      "cost": 15.5,
+      "retailPrice": 35.0,
       "status": "In Stock"
     },
     {
@@ -183,8 +195,8 @@
       "currentStock": 12,
       "reorderPoint": 25,
       "monthlySales": 35,
-      "cost": 12.00,
-      "retailPrice": 28.00,
+      "cost": 12.0,
+      "retailPrice": 28.0,
       "status": "Low Stock"
     },
     {
@@ -192,8 +204,8 @@
       "currentStock": 67,
       "reorderPoint": 30,
       "monthlySales": 42,
-      "cost": 18.00,
-      "retailPrice": 45.00,
+      "cost": 18.0,
+      "retailPrice": 45.0,
       "status": "In Stock"
     }
   ],
@@ -210,9 +222,303 @@
       "patientSatisfaction": 4.8
     },
     "referralSources": [
-      { "source": "Patient Referrals", "count": 8, "revenue": 12400 },
-      { "source": "Google Ads", "count": 3, "revenue": 3600 },
-      { "source": "Social Media", "count": 1, "revenue": 400 }
+      {
+        "source": "Patient Referrals",
+        "count": 8,
+        "revenue": 12400
+      },
+      {
+        "source": "Google Ads",
+        "count": 3,
+        "revenue": 3600
+      },
+      {
+        "source": "Social Media",
+        "count": 1,
+        "revenue": 400
+      }
+    ]
+  },
+  "prescriptions": {
+    "summary": {
+      "activeTotal": 487,
+      "patientsOnRx": 142,
+      "pendingRefills": 8,
+      "avgFillDays": 2.3,
+      "thisWeekNew": 12,
+      "thisWeekRefilled": 47
+    },
+    "pendingRefills": [
+      {
+        "id": "pr-1",
+        "patient": "Bryce Morgan",
+        "patientId": "P001",
+        "drug": "Vitamin D3 + K2 (Rx-strength)",
+        "dose": "50,000 IU weekly",
+        "lastFill": "2025-12-18",
+        "pharmacy": "Strive Pharmacy",
+        "requestedDate": "2026-04-09",
+        "daysWaiting": 0,
+        "priority": "normal",
+        "note": "Running low \u2014 last bottle this week"
+      },
+      {
+        "id": "pr-2",
+        "patient": "Jennifer Smith",
+        "patientId": "P002",
+        "drug": "Estradiol Cypionate",
+        "dose": "0.5mg weekly IM",
+        "lastFill": "2026-02-15",
+        "pharmacy": "Empower Pharmacy",
+        "requestedDate": "2026-04-09",
+        "daysWaiting": 0,
+        "priority": "normal"
+      },
+      {
+        "id": "pr-3",
+        "patient": "Michael Johnson",
+        "patientId": "P003",
+        "drug": "Testosterone Cypionate",
+        "dose": "200mg/mL \u00b7 0.5mL IM weekly",
+        "lastFill": "2026-02-08",
+        "pharmacy": "Empower Pharmacy",
+        "requestedDate": "2026-04-08",
+        "daysWaiting": 1,
+        "priority": "normal"
+      },
+      {
+        "id": "pr-4",
+        "patient": "Sarah Williams",
+        "patientId": "P004",
+        "drug": "Tirzepatide",
+        "dose": "5mg/0.5mL weekly SQ",
+        "lastFill": "2026-03-15",
+        "pharmacy": "Olympia Pharmacy",
+        "requestedDate": "2026-04-08",
+        "daysWaiting": 1,
+        "priority": "urgent",
+        "note": "Patient flagged side effects in check-in \u2014 review before approving"
+      },
+      {
+        "id": "pr-5",
+        "patient": "Robert Davis",
+        "patientId": "P005",
+        "drug": "NDT (Armour Thyroid)",
+        "dose": "60mg daily",
+        "lastFill": "2026-03-01",
+        "pharmacy": "Costco Pharmacy",
+        "requestedDate": "2026-04-07",
+        "daysWaiting": 2,
+        "priority": "normal"
+      },
+      {
+        "id": "pr-6",
+        "patient": "Amanda Taylor",
+        "patientId": "P006",
+        "drug": "Progesterone (micronized)",
+        "dose": "200mg nightly",
+        "lastFill": "2026-02-22",
+        "pharmacy": "Empower Pharmacy",
+        "requestedDate": "2026-04-06",
+        "daysWaiting": 3,
+        "priority": "normal"
+      },
+      {
+        "id": "pr-7",
+        "patient": "David Rodriguez",
+        "patientId": "P007",
+        "drug": "Anastrozole",
+        "dose": "0.5mg weekly",
+        "lastFill": "2026-02-19",
+        "pharmacy": "CVS Pharmacy",
+        "requestedDate": "2026-04-05",
+        "daysWaiting": 4,
+        "priority": "normal"
+      },
+      {
+        "id": "pr-8",
+        "patient": "Lisa Garcia",
+        "patientId": "P008",
+        "drug": "Semaglutide",
+        "dose": "0.5mg/0.25mL weekly SQ",
+        "lastFill": "2026-03-10",
+        "pharmacy": "Olympia Pharmacy",
+        "requestedDate": "2026-04-04",
+        "daysWaiting": 5,
+        "priority": "normal",
+        "note": "Long-standing patient, auto-approve historically"
+      }
+    ],
+    "pharmacies": [
+      {
+        "name": "Empower Pharmacy",
+        "type": "503B compounding",
+        "location": "Houston, TX",
+        "activeScripts": 124,
+        "avgFillDays": 2.8,
+        "onTimeRate": 96.4,
+        "issuesLast30d": 2,
+        "topMeds": "Testosterone, Estradiol, Progesterone"
+      },
+      {
+        "name": "Olympia Pharmacy",
+        "type": "503A compounding",
+        "location": "Orlando, FL",
+        "activeScripts": 87,
+        "avgFillDays": 3.1,
+        "onTimeRate": 94.1,
+        "issuesLast30d": 4,
+        "topMeds": "GLP-1s, DHEA, Pregnenolone"
+      },
+      {
+        "name": "Strive Pharmacy",
+        "type": "503A compounding",
+        "location": "Gilbert, AZ",
+        "activeScripts": 62,
+        "avgFillDays": 2.4,
+        "onTimeRate": 98.2,
+        "issuesLast30d": 0,
+        "topMeds": "Vitamin D3/K2, B-complex"
+      },
+      {
+        "name": "BioTE Network",
+        "type": "503B compounding",
+        "location": "Dallas, TX",
+        "activeScripts": 41,
+        "avgFillDays": 1.9,
+        "onTimeRate": 97.6,
+        "issuesLast30d": 1,
+        "topMeds": "Pellet protocols (BHRT)"
+      },
+      {
+        "name": "Costco Pharmacy",
+        "type": "Retail",
+        "location": "Multiple",
+        "activeScripts": 89,
+        "avgFillDays": 1.0,
+        "onTimeRate": 99.1,
+        "issuesLast30d": 0,
+        "topMeds": "Anastrozole, NDT, generics"
+      },
+      {
+        "name": "CVS Pharmacy",
+        "type": "Retail",
+        "location": "Multiple",
+        "activeScripts": 84,
+        "avgFillDays": 1.0,
+        "onTimeRate": 97.9,
+        "issuesLast30d": 1,
+        "topMeds": "Adjuncts, generics"
+      }
+    ],
+    "topMeds": [
+      {
+        "drug": "Testosterone Cypionate",
+        "category": "Hormone",
+        "patientCount": 47,
+        "trend": "+8 last 30d",
+        "cohort": "Low-T male"
+      },
+      {
+        "drug": "Estradiol Cypionate",
+        "category": "Hormone",
+        "patientCount": 38,
+        "trend": "+5 last 30d",
+        "cohort": "Perimenopause"
+      },
+      {
+        "drug": "Progesterone (micronized)",
+        "category": "Hormone",
+        "patientCount": 36,
+        "trend": "+5 last 30d",
+        "cohort": "Perimenopause"
+      },
+      {
+        "drug": "Tirzepatide",
+        "category": "GLP-1",
+        "patientCount": 24,
+        "trend": "+11 last 30d",
+        "cohort": "Weight loss"
+      },
+      {
+        "drug": "Semaglutide",
+        "category": "GLP-1",
+        "patientCount": 19,
+        "trend": "+3 last 30d",
+        "cohort": "Weight loss"
+      },
+      {
+        "drug": "Anastrozole",
+        "category": "Adjunct",
+        "patientCount": 31,
+        "trend": "+6 last 30d",
+        "cohort": "Low-T male"
+      },
+      {
+        "drug": "NDT (Armour Thyroid)",
+        "category": "Hormone",
+        "patientCount": 22,
+        "trend": "+2 last 30d",
+        "cohort": "Subclinical hypothyroid"
+      },
+      {
+        "drug": "DHEA",
+        "category": "Precursor",
+        "patientCount": 28,
+        "trend": "+1 last 30d",
+        "cohort": "Multiple"
+      }
+    ],
+    "recentActivity": [
+      {
+        "date": "2026-04-09",
+        "patient": "Bryce Morgan",
+        "drug": "Vitamin D3+K2",
+        "action": "Refill requested",
+        "pharmacy": "Strive"
+      },
+      {
+        "date": "2026-04-09",
+        "patient": "Jennifer Smith",
+        "drug": "Estradiol Cypionate",
+        "action": "Refill requested",
+        "pharmacy": "Empower"
+      },
+      {
+        "date": "2026-04-08",
+        "patient": "New Patient \u00b7 Lisa Garcia",
+        "drug": "Semaglutide 0.25mg",
+        "action": "Prescribed (initial)",
+        "pharmacy": "Olympia"
+      },
+      {
+        "date": "2026-04-07",
+        "patient": "Mark Rodriguez",
+        "drug": "Testosterone Pellet",
+        "action": "Implanted (10 \u00d7 200mg)",
+        "pharmacy": "Empower"
+      },
+      {
+        "date": "2026-04-05",
+        "patient": "Amanda Taylor",
+        "drug": "Tirzepatide",
+        "action": "Dose \u2191 5mg \u2192 7.5mg",
+        "pharmacy": "Olympia"
+      },
+      {
+        "date": "2026-04-04",
+        "patient": "Robert Davis",
+        "drug": "NDT 30mg",
+        "action": "Discontinued",
+        "pharmacy": "Costco"
+      },
+      {
+        "date": "2026-04-04",
+        "patient": "Robert Davis",
+        "drug": "NDT 60mg",
+        "action": "Prescribed (titration)",
+        "pharmacy": "Costco"
+      }
     ]
   }
 }

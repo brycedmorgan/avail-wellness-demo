@@ -1,0 +1,404 @@
+---
+layout: admin.njk
+title: Prescriptions
+subtitle: Active scripts, pending refills, and pharmacy performance across the practice
+---
+
+{% set rx = adminData.prescriptions %}
+
+<!-- Top KPIs -->
+<div class="dashboard-cards">
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Active Scripts</h3>
+            <div class="card-icon">{% icon "file-text", "icon", 20 %}</div>
+        </div>
+        <div class="card-value">{{ rx.summary.activeTotal }}</div>
+        <div class="card-change positive">+{{ rx.summary.thisWeekNew }} this week</div>
+        <div class="card-subtitle">Across {{ rx.summary.patientsOnRx }} patients</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Pending Refills</h3>
+            <div class="card-icon">{% icon "info", "icon", 20 %}</div>
+        </div>
+        <div class="card-value">{{ rx.summary.pendingRefills }}</div>
+        <div class="card-change">Awaiting your review</div>
+        <div class="card-subtitle">2 flagged urgent</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Avg Fill Time</h3>
+            <div class="card-icon">{% icon "calendar", "icon", 20 %}</div>
+        </div>
+        <div class="card-value">{{ rx.summary.avgFillDays }}<span class="metric-unit">days</span></div>
+        <div class="card-change positive">Order to delivery</div>
+        <div class="card-subtitle">{{ rx.pharmacies | length }} pharmacy partners</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Refilled This Week</h3>
+            <div class="card-icon">{% icon "check-circle", "icon", 20 %}</div>
+        </div>
+        <div class="card-value">{{ rx.summary.thisWeekRefilled }}</div>
+        <div class="card-change positive">Approved &amp; sent</div>
+        <div class="card-subtitle">Avg approval time: 6h</div>
+    </div>
+</div>
+
+<!-- Pending refill queue -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Refill queue</h3>
+            <p class="section-meta">{{ rx.pendingRefills | length }} requests waiting · sorted by priority &amp; days waiting</p>
+        </div>
+        <div class="head-actions">
+            <button class="btn btn-outline btn-sm" type="button">Auto-approve historical</button>
+            <button class="btn btn-primary btn-sm" type="button">Approve all normal</button>
+        </div>
+    </div>
+
+    <div class="refill-queue">
+        {% for r in rx.pendingRefills %}
+        {% set parts = r.patient.split(' ') %}
+        {% set initials = parts[0][0] + (parts[1][0] if parts | length > 1 else '') %}
+        <div class="refill-row {% if r.priority == 'urgent' %}is-urgent{% endif %}">
+            <div class="refill-priority">
+                {% if r.priority == 'urgent' %}
+                <span class="prio-pill prio-urgent">Urgent</span>
+                {% else %}
+                <span class="prio-pill prio-normal">Normal</span>
+                {% endif %}
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">{{ initials }}</div>
+                <div>
+                    <div class="refill-patient-name">{{ r.patient }}</div>
+                    <div class="refill-patient-id">{{ r.patientId }}</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">{{ r.drug }}</div>
+                <div class="refill-drug-dose">{{ r.dose }}</div>
+            </div>
+            <div class="refill-pharmacy">{{ r.pharmacy }}</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">{{ r.daysWaiting }}d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            {% if r.note %}
+            <div class="refill-note">
+                <span class="refill-note-tag">Note</span>
+                {{ r.note }}
+            </div>
+            {% endif %}
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Pharmacy performance + Top meds -->
+<div class="rx-split">
+    <div class="dashboard-section">
+        <div class="section-head">
+            <div>
+                <h3>Pharmacy performance</h3>
+                <p class="section-meta">Last 30 days · order-to-delivery</p>
+            </div>
+        </div>
+        <div class="pharm-table">
+            <div class="pharm-row pharm-head">
+                <div>Pharmacy</div>
+                <div>Active</div>
+                <div>Avg fill</div>
+                <div>On-time</div>
+                <div>Issues</div>
+            </div>
+            {% for p in rx.pharmacies %}
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">{{ p.name }}</div>
+                    <div class="pharm-sub">{{ p.type }} · {{ p.location }}</div>
+                </div>
+                <div class="pharm-num">{{ p.activeScripts }}</div>
+                <div class="pharm-num">{{ p.avgFillDays }}d</div>
+                <div class="pharm-num pharm-rate {% if p.onTimeRate >= 97 %}rate-good{% elif p.onTimeRate >= 95 %}rate-ok{% else %}rate-low{% endif %}">{{ p.onTimeRate }}%</div>
+                <div class="pharm-num pharm-issues">
+                    {% if p.issuesLast30d == 0 %}—{% else %}{{ p.issuesLast30d }}{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="section-head">
+            <div>
+                <h3>Top medications</h3>
+                <p class="section-meta">By patient count · last 30-day trend</p>
+            </div>
+            <a href="/admin/personas/" class="section-link">Cohort view →</a>
+        </div>
+        <ul class="topmeds">
+            {% for m in rx.topMeds %}
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: {{ (m.patientCount / 47 * 100) | round }}%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">{{ m.drug }}</div>
+                    <div class="topmed-meta">{{ m.cohort }} · {{ m.category }}</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">{{ m.patientCount }}</div>
+                    <div class="topmed-trend">{{ m.trend }}</div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- Recent activity -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Recent prescribing activity</h3>
+            <p class="section-meta">All Rx events across the practice · last 7 days</p>
+        </div>
+        <a href="#" class="section-link">View full audit log →</a>
+    </div>
+    <ul class="rx-activity">
+        {% for a in rx.recentActivity %}
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">{{ a.date | dateFormat }}</div>
+            <div class="rx-activity-patient">{{ a.patient }}</div>
+            <div class="rx-activity-action">
+                <strong>{{ a.action }}</strong> · {{ a.drug }}
+            </div>
+            <div class="rx-activity-pharm">→ {{ a.pharmacy }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- E-prescribing footer note -->
+<div class="dashboard-section rx-eprescribe-note">
+    <div class="eprescribe-icon">{% icon "shield", "", 20 %}</div>
+    <div>
+        <div class="eprescribe-title">E-prescribing via Surescripts (Phase 4)</div>
+        <p class="eprescribe-body">Once we wire up Surescripts integration, every Rx written here flows directly to the pharmacy network — no faxing, no manual entry. EPCS-certified for controlled substances. Full audit trail surfaces here. Until then, this dashboard reflects the existing EMR's prescribing data, surfaced and organized.</p>
+    </div>
+</div>
+
+<style>
+.head-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* Refill queue */
+.refill-queue { display: flex; flex-direction: column; gap: 6px; }
+.refill-row {
+    display: grid;
+    grid-template-columns: 80px minmax(160px, 1.1fr) minmax(160px, 1.4fr) minmax(120px, 0.8fr) 60px auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    transition: border-color 0.15s ease;
+}
+.refill-row:hover { border-color: var(--gray-300); }
+.refill-row.is-urgent {
+    border-left: 3px solid #d97706;
+    background: #fffbeb;
+}
+.prio-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.prio-normal { background: var(--gray-100); color: var(--gray-700); }
+.prio-urgent { background: #fef3c7; color: #92400e; }
+
+.refill-patient { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.refill-patient-name { font-weight: 700; color: var(--gray-900); font-size: 0.85rem; letter-spacing: -0.005em; }
+.refill-patient-id { font-size: 0.7rem; color: var(--gray-500); margin-top: 1px; font-variant-numeric: tabular-nums; }
+
+.refill-drug { min-width: 0; }
+.refill-drug-name { font-weight: 600; color: var(--gray-900); font-size: 0.83rem; }
+.refill-drug-dose { font-size: 0.74rem; color: var(--gray-500); margin-top: 1px; }
+
+.refill-pharmacy { font-size: 0.8rem; color: var(--gray-700); }
+
+.refill-waiting { text-align: center; }
+.refill-waiting-num { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -0.02em; }
+.refill-waiting-lbl { font-size: 9.5px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-top: 3px; }
+
+.refill-note {
+    grid-column: 2 / -1;
+    background: rgba(217, 119, 6, 0.08);
+    border-left: 2px solid #d97706;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #78350f;
+}
+.refill-note-tag {
+    display: inline-block;
+    background: #d97706;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.refill-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.refill-actions .btn { padding: 5px 12px; font-size: 0.78rem; }
+
+/* Split layout: pharmacies + top meds */
+.rx-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.rx-split > .dashboard-section { margin-bottom: 0; }
+@media (max-width: 1200px) {
+    .rx-split { grid-template-columns: 1fr; }
+}
+
+/* Pharmacy table */
+.pharm-table { display: flex; flex-direction: column; gap: 0; }
+.pharm-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) 70px 70px 80px 70px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.83rem;
+}
+.pharm-row:last-child { border-bottom: none; }
+.pharm-row.pharm-head {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 8px;
+}
+.pharm-name { font-weight: 700; color: var(--gray-900); font-size: 0.85rem; letter-spacing: -0.005em; }
+.pharm-sub { font-size: 0.72rem; color: var(--gray-500); margin-top: 2px; }
+.pharm-num { text-align: right; font-variant-numeric: tabular-nums; color: var(--gray-700); font-weight: 600; font-size: 0.83rem; }
+.pharm-rate.rate-good { color: #16a34a; }
+.pharm-rate.rate-ok { color: #d97706; }
+.pharm-rate.rate-low { color: #dc2626; }
+.pharm-issues { color: var(--gray-500); }
+
+/* Top meds */
+.topmeds { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.topmed-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.topmed-bar {
+    position: absolute;
+    inset: 0;
+    width: var(--bar, 0%);
+    background: linear-gradient(90deg, rgba(184,160,130,0.18), rgba(184,160,130,0.04));
+    z-index: 0;
+}
+.topmed-info, .topmed-stat { position: relative; z-index: 1; }
+.topmed-name { font-weight: 600; color: var(--gray-900); font-size: 0.83rem; }
+.topmed-meta { font-size: 0.7rem; color: var(--gray-500); margin-top: 1px; }
+.topmed-stat { text-align: right; }
+.topmed-count { font-weight: 700; color: var(--gray-900); font-size: 0.95rem; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -0.02em; }
+.topmed-trend { font-size: 0.7rem; color: #16a34a; font-weight: 600; margin-top: 2px; }
+
+/* Recent activity feed */
+.rx-activity { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.rx-activity-row {
+    display: grid;
+    grid-template-columns: 100px minmax(120px, 1fr) minmax(0, 2fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.83rem;
+}
+.rx-activity-row:last-child { border-bottom: none; }
+.rx-activity-date { color: var(--gray-500); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
+.rx-activity-patient { font-weight: 600; color: var(--gray-900); }
+.rx-activity-action { color: var(--gray-700); }
+.rx-activity-action strong { color: var(--gray-900); font-weight: 700; }
+.rx-activity-pharm { color: var(--gray-500); font-size: 0.78rem; white-space: nowrap; }
+
+/* E-prescribe note */
+.rx-eprescribe-note {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--gray-50) !important;
+    border-style: dashed !important;
+}
+.eprescribe-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.eprescribe-title {
+    font-weight: 700;
+    color: var(--gray-900);
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+.eprescribe-body {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+    max-width: 80ch;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .refill-row {
+        grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr) auto;
+    }
+    .refill-pharmacy, .refill-waiting { display: none; }
+    .rx-activity-row {
+        grid-template-columns: 90px minmax(0, 1fr) minmax(0, 1.5fr);
+    }
+    .rx-activity-pharm { display: none; }
+}
+</style>

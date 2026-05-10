@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions - Avail Wellness Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/avail-brand.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-theme">
+    <div class="admin-container">
+        <!-- Admin Navigation -->
+        <nav class="admin-sidebar">
+            <div class="logo">
+                <img src="/images/avail-logo-real.png" alt="Avail Wellness" class="logo-img">
+                <div class="logo-text">
+                    <span class="admin-badge">Provider Portal</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="/admin/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    </svg>
+                    Dashboard
+                </a>
+
+                <div class="nav-section-label">AI Tools</div>
+
+                <a href="/admin/protocol-builder/" class="nav-item nav-item-feature ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Protocol Builder
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/personas/" class="nav-item nav-item-feature ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                    Patient Personas
+                    <span class="nav-new">New</span>
+                </a>
+                <a href="/admin/method/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                    How It Works
+                </a>
+
+                <div class="nav-section-label">Patient Care</div>
+
+                <a href="/admin/patients/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63c-.34-1.02-1.3-1.74-2.46-1.74s-2.12.72-2.46 1.74L12.5 16H15v6h5zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm1.5 2h-3C2.67 8 2 8.67 2 9.5v7h2v7h4v-7h2v-7C10 8.67 9.33 8 8.5 8z"/>
+                    </svg>
+                    Patients
+                </a>
+                <a href="/admin/labs/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 2v3h2V2h2v3h2V2h2v5H7V2h2zm8 8.5c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1zM9 12c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/>
+                    </svg>
+                    Labs &amp; Results
+                </a>
+                <a href="/admin/prescriptions/" class="nav-item active">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+                        <path d="m8.5 8.5 7 7"/>
+                    </svg>
+                    Prescriptions
+                </a>
+                <a href="/admin/analytics/" class="nav-item ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/>
+                    </svg>
+                    Analytics
+                </a>
+
+                <div class="nav-section-label">Existing systems</div>
+                <a href="/admin/appointments/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    Calendar <span class="nav-ext">EMR</span>
+                </a>
+                <a href="/admin/billing/" class="nav-item nav-item-external ">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    Billing <span class="nav-ext">EMR</span>
+                </a>
+            </div>
+            
+            <div class="nav-footer">
+                <div class="admin-profile">
+                    <div class="user-avatar provider">BW</div>
+                    <div class="user-info">
+                        <div class="user-name">Brooke Welsh</div>
+                        <div class="user-role">Provider • Admin</div>
+                    </div>
+                </div>
+                <div class="portal-switch">
+                    <a href="/" class="switch-link">
+                        <svg class="switch-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6C15 7.1 14.1 8 13 8H11C9.9 8 9 7.1 9 6V4L3 7V9H21ZM22 16C22 17.1 21.1 18 20 18H4C2.9 18 2 17.1 2 16V10H22V16Z"/>
+                        </svg>
+                        View Patient Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Admin Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h1>Prescriptions</h1>
+                        
+                        <p class="header-subtitle">Active scripts, pending refills, and pharmacy performance across the practice</p>
+                        
+                    </div>
+                    <div class="header-actions">
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">156</span>
+                                <span class="stat-label">Active patients</span>
+                            </div>
+                            <div class="stat-divider" aria-hidden="true"></div>
+                            <div class="stat-item">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Cohorts</span>
+                            </div>
+                            <div class="stat-divider" aria-hidden="true"></div>
+                            <div class="stat-item">
+                                <span class="stat-value">91<span class="stat-unit">%</span></span>
+                                <span class="stat-label">Adherence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="admin-content">
+                
+
+
+<!-- Top KPIs -->
+<div class="dashboard-cards">
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Active Scripts</h3>
+            <div class="card-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+        </div>
+        <div class="card-value">487</div>
+        <div class="card-change positive">+12 this week</div>
+        <div class="card-subtitle">Across 142 patients</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Pending Refills</h3>
+            <div class="card-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        </div>
+        <div class="card-value">8</div>
+        <div class="card-change">Awaiting your review</div>
+        <div class="card-subtitle">2 flagged urgent</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Avg Fill Time</h3>
+            <div class="card-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        </div>
+        <div class="card-value">2.3<span class="metric-unit">days</span></div>
+        <div class="card-change positive">Order to delivery</div>
+        <div class="card-subtitle">6 pharmacy partners</div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Refilled This Week</h3>
+            <div class="card-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        </div>
+        <div class="card-value">47</div>
+        <div class="card-change positive">Approved &amp; sent</div>
+        <div class="card-subtitle">Avg approval time: 6h</div>
+    </div>
+</div>
+
+<!-- Pending refill queue -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Refill queue</h3>
+            <p class="section-meta">8 requests waiting · sorted by priority &amp; days waiting</p>
+        </div>
+        <div class="head-actions">
+            <button class="btn btn-outline btn-sm" type="button">Auto-approve historical</button>
+            <button class="btn btn-primary btn-sm" type="button">Approve all normal</button>
+        </div>
+    </div>
+
+    <div class="refill-queue">
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">BM</div>
+                <div>
+                    <div class="refill-patient-name">Bryce Morgan</div>
+                    <div class="refill-patient-id">P001</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Vitamin D3 + K2 (Rx-strength)</div>
+                <div class="refill-drug-dose">50,000 IU weekly</div>
+            </div>
+            <div class="refill-pharmacy">Strive Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">0d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-note">
+                <span class="refill-note-tag">Note</span>
+                Running low — last bottle this week
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">JS</div>
+                <div>
+                    <div class="refill-patient-name">Jennifer Smith</div>
+                    <div class="refill-patient-id">P002</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Estradiol Cypionate</div>
+                <div class="refill-drug-dose">0.5mg weekly IM</div>
+            </div>
+            <div class="refill-pharmacy">Empower Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">0d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">MJ</div>
+                <div>
+                    <div class="refill-patient-name">Michael Johnson</div>
+                    <div class="refill-patient-id">P003</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Testosterone Cypionate</div>
+                <div class="refill-drug-dose">200mg/mL · 0.5mL IM weekly</div>
+            </div>
+            <div class="refill-pharmacy">Empower Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">1d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row is-urgent">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-urgent">Urgent</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">SW</div>
+                <div>
+                    <div class="refill-patient-name">Sarah Williams</div>
+                    <div class="refill-patient-id">P004</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Tirzepatide</div>
+                <div class="refill-drug-dose">5mg/0.5mL weekly SQ</div>
+            </div>
+            <div class="refill-pharmacy">Olympia Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">1d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-note">
+                <span class="refill-note-tag">Note</span>
+                Patient flagged side effects in check-in — review before approving
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">RD</div>
+                <div>
+                    <div class="refill-patient-name">Robert Davis</div>
+                    <div class="refill-patient-id">P005</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">NDT (Armour Thyroid)</div>
+                <div class="refill-drug-dose">60mg daily</div>
+            </div>
+            <div class="refill-pharmacy">Costco Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">2d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">AT</div>
+                <div>
+                    <div class="refill-patient-name">Amanda Taylor</div>
+                    <div class="refill-patient-id">P006</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Progesterone (micronized)</div>
+                <div class="refill-drug-dose">200mg nightly</div>
+            </div>
+            <div class="refill-pharmacy">Empower Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">3d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">DR</div>
+                <div>
+                    <div class="refill-patient-name">David Rodriguez</div>
+                    <div class="refill-patient-id">P007</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Anastrozole</div>
+                <div class="refill-drug-dose">0.5mg weekly</div>
+            </div>
+            <div class="refill-pharmacy">CVS Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">4d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="refill-row ">
+            <div class="refill-priority">
+                
+                <span class="prio-pill prio-normal">Normal</span>
+                
+            </div>
+            <div class="refill-patient">
+                <div class="appt-avatar">LG</div>
+                <div>
+                    <div class="refill-patient-name">Lisa Garcia</div>
+                    <div class="refill-patient-id">P008</div>
+                </div>
+            </div>
+            <div class="refill-drug">
+                <div class="refill-drug-name">Semaglutide</div>
+                <div class="refill-drug-dose">0.5mg/0.25mL weekly SQ</div>
+            </div>
+            <div class="refill-pharmacy">Olympia Pharmacy</div>
+            <div class="refill-waiting">
+                <div class="refill-waiting-num">5d</div>
+                <div class="refill-waiting-lbl">waiting</div>
+            </div>
+            
+            <div class="refill-note">
+                <span class="refill-note-tag">Note</span>
+                Long-standing patient, auto-approve historically
+            </div>
+            
+            <div class="refill-actions">
+                <button class="btn btn-outline btn-sm" type="button">Review</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Pharmacy performance + Top meds -->
+<div class="rx-split">
+    <div class="dashboard-section">
+        <div class="section-head">
+            <div>
+                <h3>Pharmacy performance</h3>
+                <p class="section-meta">Last 30 days · order-to-delivery</p>
+            </div>
+        </div>
+        <div class="pharm-table">
+            <div class="pharm-row pharm-head">
+                <div>Pharmacy</div>
+                <div>Active</div>
+                <div>Avg fill</div>
+                <div>On-time</div>
+                <div>Issues</div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">Empower Pharmacy</div>
+                    <div class="pharm-sub">503B compounding · Houston, TX</div>
+                </div>
+                <div class="pharm-num">124</div>
+                <div class="pharm-num">2.8d</div>
+                <div class="pharm-num pharm-rate rate-ok">96.4%</div>
+                <div class="pharm-num pharm-issues">
+                    2
+                </div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">Olympia Pharmacy</div>
+                    <div class="pharm-sub">503A compounding · Orlando, FL</div>
+                </div>
+                <div class="pharm-num">87</div>
+                <div class="pharm-num">3.1d</div>
+                <div class="pharm-num pharm-rate rate-low">94.1%</div>
+                <div class="pharm-num pharm-issues">
+                    4
+                </div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">Strive Pharmacy</div>
+                    <div class="pharm-sub">503A compounding · Gilbert, AZ</div>
+                </div>
+                <div class="pharm-num">62</div>
+                <div class="pharm-num">2.4d</div>
+                <div class="pharm-num pharm-rate rate-good">98.2%</div>
+                <div class="pharm-num pharm-issues">
+                    —
+                </div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">BioTE Network</div>
+                    <div class="pharm-sub">503B compounding · Dallas, TX</div>
+                </div>
+                <div class="pharm-num">41</div>
+                <div class="pharm-num">1.9d</div>
+                <div class="pharm-num pharm-rate rate-good">97.6%</div>
+                <div class="pharm-num pharm-issues">
+                    1
+                </div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">Costco Pharmacy</div>
+                    <div class="pharm-sub">Retail · Multiple</div>
+                </div>
+                <div class="pharm-num">89</div>
+                <div class="pharm-num">1d</div>
+                <div class="pharm-num pharm-rate rate-good">99.1%</div>
+                <div class="pharm-num pharm-issues">
+                    —
+                </div>
+            </div>
+            
+            <div class="pharm-row">
+                <div>
+                    <div class="pharm-name">CVS Pharmacy</div>
+                    <div class="pharm-sub">Retail · Multiple</div>
+                </div>
+                <div class="pharm-num">84</div>
+                <div class="pharm-num">1d</div>
+                <div class="pharm-num pharm-rate rate-good">97.9%</div>
+                <div class="pharm-num pharm-issues">
+                    1
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="section-head">
+            <div>
+                <h3>Top medications</h3>
+                <p class="section-meta">By patient count · last 30-day trend</p>
+            </div>
+            <a href="/admin/personas/" class="section-link">Cohort view →</a>
+        </div>
+        <ul class="topmeds">
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 100%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Testosterone Cypionate</div>
+                    <div class="topmed-meta">Low-T male · Hormone</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">47</div>
+                    <div class="topmed-trend">+8 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 81%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Estradiol Cypionate</div>
+                    <div class="topmed-meta">Perimenopause · Hormone</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">38</div>
+                    <div class="topmed-trend">+5 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 77%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Progesterone (micronized)</div>
+                    <div class="topmed-meta">Perimenopause · Hormone</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">36</div>
+                    <div class="topmed-trend">+5 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 51%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Tirzepatide</div>
+                    <div class="topmed-meta">Weight loss · GLP-1</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">24</div>
+                    <div class="topmed-trend">+11 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 40%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Semaglutide</div>
+                    <div class="topmed-meta">Weight loss · GLP-1</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">19</div>
+                    <div class="topmed-trend">+3 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 66%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">Anastrozole</div>
+                    <div class="topmed-meta">Low-T male · Adjunct</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">31</div>
+                    <div class="topmed-trend">+6 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 47%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">NDT (Armour Thyroid)</div>
+                    <div class="topmed-meta">Subclinical hypothyroid · Hormone</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">22</div>
+                    <div class="topmed-trend">+2 last 30d</div>
+                </div>
+            </li>
+            
+            <li class="topmed-row">
+                <div class="topmed-bar" style="--bar: 60%;"></div>
+                <div class="topmed-info">
+                    <div class="topmed-name">DHEA</div>
+                    <div class="topmed-meta">Multiple · Precursor</div>
+                </div>
+                <div class="topmed-stat">
+                    <div class="topmed-count">28</div>
+                    <div class="topmed-trend">+1 last 30d</div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!-- Recent activity -->
+<div class="dashboard-section">
+    <div class="section-head">
+        <div>
+            <h3>Recent prescribing activity</h3>
+            <p class="section-meta">All Rx events across the practice · last 7 days</p>
+        </div>
+        <a href="#" class="section-link">View full audit log →</a>
+    </div>
+    <ul class="rx-activity">
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 8, 2026</div>
+            <div class="rx-activity-patient">Bryce Morgan</div>
+            <div class="rx-activity-action">
+                <strong>Refill requested</strong> · Vitamin D3+K2
+            </div>
+            <div class="rx-activity-pharm">→ Strive</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 8, 2026</div>
+            <div class="rx-activity-patient">Jennifer Smith</div>
+            <div class="rx-activity-action">
+                <strong>Refill requested</strong> · Estradiol Cypionate
+            </div>
+            <div class="rx-activity-pharm">→ Empower</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 7, 2026</div>
+            <div class="rx-activity-patient">New Patient · Lisa Garcia</div>
+            <div class="rx-activity-action">
+                <strong>Prescribed (initial)</strong> · Semaglutide 0.25mg
+            </div>
+            <div class="rx-activity-pharm">→ Olympia</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 6, 2026</div>
+            <div class="rx-activity-patient">Mark Rodriguez</div>
+            <div class="rx-activity-action">
+                <strong>Implanted (10 × 200mg)</strong> · Testosterone Pellet
+            </div>
+            <div class="rx-activity-pharm">→ Empower</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 4, 2026</div>
+            <div class="rx-activity-patient">Amanda Taylor</div>
+            <div class="rx-activity-action">
+                <strong>Dose ↑ 5mg → 7.5mg</strong> · Tirzepatide
+            </div>
+            <div class="rx-activity-pharm">→ Olympia</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 3, 2026</div>
+            <div class="rx-activity-patient">Robert Davis</div>
+            <div class="rx-activity-action">
+                <strong>Discontinued</strong> · NDT 30mg
+            </div>
+            <div class="rx-activity-pharm">→ Costco</div>
+        </li>
+        
+        <li class="rx-activity-row">
+            <div class="rx-activity-date">Apr 3, 2026</div>
+            <div class="rx-activity-patient">Robert Davis</div>
+            <div class="rx-activity-action">
+                <strong>Prescribed (titration)</strong> · NDT 60mg
+            </div>
+            <div class="rx-activity-pharm">→ Costco</div>
+        </li>
+        
+    </ul>
+</div>
+
+<!-- E-prescribing footer note -->
+<div class="dashboard-section rx-eprescribe-note">
+    <div class="eprescribe-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <div>
+        <div class="eprescribe-title">E-prescribing via Surescripts (Phase 4)</div>
+        <p class="eprescribe-body">Once we wire up Surescripts integration, every Rx written here flows directly to the pharmacy network — no faxing, no manual entry. EPCS-certified for controlled substances. Full audit trail surfaces here. Until then, this dashboard reflects the existing EMR's prescribing data, surfaced and organized.</p>
+    </div>
+</div>
+
+<style>
+.head-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* Refill queue */
+.refill-queue { display: flex; flex-direction: column; gap: 6px; }
+.refill-row {
+    display: grid;
+    grid-template-columns: 80px minmax(160px, 1.1fr) minmax(160px, 1.4fr) minmax(120px, 0.8fr) 60px auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    transition: border-color 0.15s ease;
+}
+.refill-row:hover { border-color: var(--gray-300); }
+.refill-row.is-urgent {
+    border-left: 3px solid #d97706;
+    background: #fffbeb;
+}
+.prio-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.prio-normal { background: var(--gray-100); color: var(--gray-700); }
+.prio-urgent { background: #fef3c7; color: #92400e; }
+
+.refill-patient { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.refill-patient-name { font-weight: 700; color: var(--gray-900); font-size: 0.85rem; letter-spacing: -0.005em; }
+.refill-patient-id { font-size: 0.7rem; color: var(--gray-500); margin-top: 1px; font-variant-numeric: tabular-nums; }
+
+.refill-drug { min-width: 0; }
+.refill-drug-name { font-weight: 600; color: var(--gray-900); font-size: 0.83rem; }
+.refill-drug-dose { font-size: 0.74rem; color: var(--gray-500); margin-top: 1px; }
+
+.refill-pharmacy { font-size: 0.8rem; color: var(--gray-700); }
+
+.refill-waiting { text-align: center; }
+.refill-waiting-num { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -0.02em; }
+.refill-waiting-lbl { font-size: 9.5px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-top: 3px; }
+
+.refill-note {
+    grid-column: 2 / -1;
+    background: rgba(217, 119, 6, 0.08);
+    border-left: 2px solid #d97706;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #78350f;
+}
+.refill-note-tag {
+    display: inline-block;
+    background: #d97706;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.refill-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.refill-actions .btn { padding: 5px 12px; font-size: 0.78rem; }
+
+/* Split layout: pharmacies + top meds */
+.rx-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.rx-split > .dashboard-section { margin-bottom: 0; }
+@media (max-width: 1200px) {
+    .rx-split { grid-template-columns: 1fr; }
+}
+
+/* Pharmacy table */
+.pharm-table { display: flex; flex-direction: column; gap: 0; }
+.pharm-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) 70px 70px 80px 70px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.83rem;
+}
+.pharm-row:last-child { border-bottom: none; }
+.pharm-row.pharm-head {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 8px;
+}
+.pharm-name { font-weight: 700; color: var(--gray-900); font-size: 0.85rem; letter-spacing: -0.005em; }
+.pharm-sub { font-size: 0.72rem; color: var(--gray-500); margin-top: 2px; }
+.pharm-num { text-align: right; font-variant-numeric: tabular-nums; color: var(--gray-700); font-weight: 600; font-size: 0.83rem; }
+.pharm-rate.rate-good { color: #16a34a; }
+.pharm-rate.rate-ok { color: #d97706; }
+.pharm-rate.rate-low { color: #dc2626; }
+.pharm-issues { color: var(--gray-500); }
+
+/* Top meds */
+.topmeds { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.topmed-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.topmed-bar {
+    position: absolute;
+    inset: 0;
+    width: var(--bar, 0%);
+    background: linear-gradient(90deg, rgba(184,160,130,0.18), rgba(184,160,130,0.04));
+    z-index: 0;
+}
+.topmed-info, .topmed-stat { position: relative; z-index: 1; }
+.topmed-name { font-weight: 600; color: var(--gray-900); font-size: 0.83rem; }
+.topmed-meta { font-size: 0.7rem; color: var(--gray-500); margin-top: 1px; }
+.topmed-stat { text-align: right; }
+.topmed-count { font-weight: 700; color: var(--gray-900); font-size: 0.95rem; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -0.02em; }
+.topmed-trend { font-size: 0.7rem; color: #16a34a; font-weight: 600; margin-top: 2px; }
+
+/* Recent activity feed */
+.rx-activity { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.rx-activity-row {
+    display: grid;
+    grid-template-columns: 100px minmax(120px, 1fr) minmax(0, 2fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.83rem;
+}
+.rx-activity-row:last-child { border-bottom: none; }
+.rx-activity-date { color: var(--gray-500); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
+.rx-activity-patient { font-weight: 600; color: var(--gray-900); }
+.rx-activity-action { color: var(--gray-700); }
+.rx-activity-action strong { color: var(--gray-900); font-weight: 700; }
+.rx-activity-pharm { color: var(--gray-500); font-size: 0.78rem; white-space: nowrap; }
+
+/* E-prescribe note */
+.rx-eprescribe-note {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--gray-50) !important;
+    border-style: dashed !important;
+}
+.eprescribe-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.eprescribe-title {
+    font-weight: 700;
+    color: var(--gray-900);
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+.eprescribe-body {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+    max-width: 80ch;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .refill-row {
+        grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr) auto;
+    }
+    .refill-pharmacy, .refill-waiting { display: none; }
+    .rx-activity-row {
+        grid-template-columns: 90px minmax(0, 1fr) minmax(0, 1.5fr);
+    }
+    .rx-activity-pharm { display: none; }
+}
+</style>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
